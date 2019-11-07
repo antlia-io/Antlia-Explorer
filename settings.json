@@ -1,0 +1,43 @@
+{
+    "public":{
+        "chainName": "Dashboard",
+        "chainId": "colors-test-01",
+        "gtm": "{Add your Google Tag Manager ID here}",
+        "slashingWindow": 10000,
+        "uptimeWindow": 250,
+        "initialPageSize": 30,
+        "bech32PrefixAccAddr": "colors",
+        "bech32PrefixAccPub": "colorspub",
+        "bech32PrefixValAddr": "colorsvaloper",
+        "bech32PrefixValPub": "colorsvaloperpub",
+        "bech32PrefixConsAddr": "colorsvalcons",
+        "bech32PrefixConsPub": "colorsvalconspub",
+        "stakingDenom": "CLR",
+        "mintingDenom": " uclr",
+        "stakingFraction": 1000000,
+        "coingeckoId": "colorplatform"
+    },
+    "genesisFile": "https://rpc.testnet.color-platform.org/genesis",
+    "remote":{
+        "rpc":"https://rpc.testnet.color-platform.org",
+        "lcd":"https://lcd.testnet.color-platform.org"
+    },
+    "debug": {
+        "startTimer": true,
+        "readGenesis": true
+    },
+    "bin":{
+        "gaiadebug": "/path/to/gaiadebug"
+    },
+    "params":{
+        "startHeight": 0,
+        "defaultBlockTime": 5000,
+        "blockInterval": 15000,
+        "consensusInterval": 1000,
+        "statusInterval":7500,
+        "signingInfoInterval": 1800000,
+        "proposalInterval": 5000,
+        "missedBlocksInterval": 60000,
+        "delegationInterval": 900000
+    }
+}
