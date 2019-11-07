@@ -1,12 +1,8 @@
-![Color-Wallet logo — spaceship blasting off](/public/img/Colorblackplatform.png)
+![ANTLIA logo — spaceship blasting off](/public/img/antlia.png)
 
-# Welcome to Color Explorer!
+# Welcome to ANTLIA Explorer!
 
-## Project running on testnet
-[Color Explorer by Color-Platform](http://explorer.color-platform.org/)
-
-
-## How to run Color Explorer
+## How to run ANTLIA Explorer
 
 1. Copy `settings.json.default` to `settings.json`.
 2. Update the RPC and LCD URLs.
@@ -32,6 +28,6 @@ It will create a packaged Node JS tarball at `../output`. Deploy that packaged N
 ---
 ## Donations :pray:
 
-Color Platform is always free and open. Anyone can use to monitor available Color hub or zones, or port to your own chain built with Color SDK. We welcome any supports to help us improve this project.
+ANTLIA is always free and open. Anyone can use to monitor available ANTLIA hub or zones, or port to your own chain built with ANTLIA SDK. We welcome any supports to help us improve this project.
 
-CLR: `colors1p9nck20mlgf7nn9yg7rpf5mg0uuztn4skv4q6d`\
+ANTLIA: `antlia1p9nck20mlgf7nn9yg7rpf5mg0uuztn4skv4q6d`\
