@@ -5,13 +5,15 @@ import Consensus from './ConsensusContainer.js';
 // import TopValidators from './TopValidatorsContainer.js';
 import RandomStatus from './RandomStatus/RandomStatus'
 import Blocks from './Block/BlocksTable.jsx'
-// import Blocks from './Block/Blocks.js'
-import Transactions from './Transactions'
+import Transaction from './Transactions/TransactionsList.jsx';
+import Test from './Transactions/TestContainer.js';
+// import Transactions from './Transactions'
 // import Chart from './ChartContainer.js';
 // import ChainStates from '../components/ChainStatesContainer.js'
 import { Helmet } from "react-helmet";
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import {IndividualTransaction} from './Transactions/IndividualTransaction.jsx'
 // import MainSideMenu from '../components/MainSideMenu.js'
 // import PieChart from './PieChart.js';
 
@@ -93,7 +95,12 @@ export default class Home extends Component {
                             <Blocks/>
                         </Col>
                         <Col lg={7} md={12}>
-                        <Transactions/>
+                        <Transaction/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={12} md={12}>
+                            {/* <IndividualTransaction props={this.props}/> */}
                         </Col>
                     </Row>
                     {/* <Row>

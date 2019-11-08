@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from 'reactstrap';
+import { Button } from 'reactstrap';
 import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
@@ -8,49 +8,49 @@ export const MsgType = (props) => {
     switch (props.type){
     // bank
     case "cosmos-sdk/MsgSend":
-        return <Badge color="success"><T>messageTypes.send</T></Badge>
+        return <Button color="success"><T>messageTypes.send</T></Button>
     case "cosmos-sdk/MsgMultiSend":
-        return <Badge color="success"><T>messageTypes.multiSend</T></Badge>
+        return <Button color="success"><T>messageTypes.multiSend</T></Button>
         
         // staking
     case "cosmos-sdk/MsgCreateValidator":
-        return <Badge color="warning"><T>messageTypes.createValidator</T></Badge>;
+        return <Button color="warning"><T>messageTypes.createValidator</T></Button>;
     case "cosmos-sdk/MsgEditValidator":
-        return <Badge color="warning"><T>messageTypes.editValidator</T></Badge>;
+        return <Button color="warning"><T>messageTypes.editValidator</T></Button>;
     case "cosmos-sdk/MsgDelegate":
-        return <Badge color="warning"><T>messageTypes.delegate</T></Badge>;
+        return <Button color="warning"><T>messageTypes.delegate</T></Button>;
     case "cosmos-sdk/MsgUndelegate":
-        return <Badge color="warning"><T>messageTypes.undelegate</T></Badge>;
+        return <Button color="warning"><T>messageTypes.undelegate</T></Button>;
     case "cosmos-sdk/MsgBeginRedelegate":
-        return <Badge color="warning"><T>messageTypes.redelegate</T></Badge>;
+        return <Button color="warning"><T>messageTypes.redelegate</T></Button>;
         
         // gov
     case "cosmos-sdk/MsgSubmitProposal":
-        return <Badge color="info"><T>messageTypes.submitProposal</T></Badge>
+        return <Button color="info"><T>messageTypes.submitProposal</T></Button>
     case "cosmos-sdk/MsgDeposit":
-        return <Badge color="info"><T>messageTypes.deposit</T></Badge>
+        return <Button color="info"><T>messageTypes.deposit</T></Button>
     case "cosmos-sdk/MsgVote":
-        return <Badge color="info"><T>messageTypes.vote</T></Badge>;
+        return <Button color="info"><T>messageTypes.vote</T></Button>;
         
         // distribution
     case "cosmos-sdk/MsgWithdrawValidatorCommission":
-        return <Badge color="secondary"><T>messageTypes.withdrawComission</T></Badge>;
+        return <Button color="secondary"><T>messageTypes.withdrawComission</T></Button>;
     case "cosmos-sdk/MsgWithdrawDelegationReward":
-        return <Badge color="secondary"><T>messageTypes.withdrawReward</T></Badge>;
+        return <Button color="secondary"><T>messageTypes.withdrawReward</T></Button>;
     case "cosmos-sdk/MsgModifyWithdrawAddress":
-        return <Badge color="secondary"><T>messgeTypes.modifyWithdrawAddress</T></Badge>;
+        return <Button color="secondary"><T>messgeTypes.modifyWithdrawAddress</T></Button>;
 
         // slashing
     case "cosmos-sdk/MsgUnjail":
-        return <Badge color="danger"><T>messageTypes.unjail</T></Badge>;
+        return <Button color="danger"><T>messageTypes.unjail</T></Button>;
         
         // ibc
     case "cosmos-sdk/IBCTransferMsg":
-        return <Badge color="dark"><T>messageTypes.IBCTransfer</T></Badge>;
+        return <Button color="dark"><T>messageTypes.IBCTransfer</T></Button>;
     case "cosmos-sdk/IBCReceiveMsg":
-        return <Badge color="dark"><T>messageTypes.IBCReceive</T></Badge>;
+        return <Button color="dark"><T>messageTypes.IBCReceive</T></Button>;
 
     default:
-        return <Badge color="primary">{props.type}</Badge>;
+        return <Button color="primary">{props.type}</Button>;
     }
 }

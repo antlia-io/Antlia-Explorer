@@ -47,9 +47,9 @@ export const VoteIcon = (props) => {
 
 export const TxIcon = (props) => {
     if (props.valid){
-        return <span className="text-success text-nowrap"><i className="fas fa-check-circle">Success</i></span>;
+        return <span className="text-nowrap"><i className="fas fa-check-circle"></i>Success</span>;
     }
     else{
-        return <span className="text-danger text-nowrap"><i className="fas fa-times-circle">Failed</i></span>;
+        return <span className="text-danger text-nowrap"><i className="fas fa-times-circle"></i>Failed</span>;
     }
 }

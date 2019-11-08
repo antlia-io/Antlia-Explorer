@@ -97,7 +97,7 @@ export default class BlocksTable extends Component {
 
             <div>
                 <Helmet>
-                    <title>Latest Blocks on Color Explorer | Color</title>
+                    <title>Latest Blocks on Antlia Explorer | Antlia</title>
                     <meta name="description" content="Latest blocks committed by validators on Color Explorer" />
                 </Helmet>
 

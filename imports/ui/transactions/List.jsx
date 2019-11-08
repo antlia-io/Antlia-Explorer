@@ -35,6 +35,7 @@ export default class Transactions extends Component{
     }
 
     render(){
+        console.log(this.props)
         if (this.props.loading){
             return <Spinner type="grow" color="primary" />
         }

@@ -1550,6 +1550,7 @@ div#voting-power-dist .card{
     .transactions .header{
         display: flex;
         justify-content: space-between;
+        border: none !important;
     }
     .transactions h4{
         font-size: 22px;
@@ -1572,9 +1573,6 @@ div#voting-power-dist .card{
         margin: 0 10px 15px 0;
         display: flex;
         justify-content: flex-start;
-    }
-    .transactions .transaction-item:last-child {
-        margin: 0 10px 0 0;
     }
     .transactions .trans-img {
         width: 6%;
@@ -1608,7 +1606,7 @@ div#voting-power-dist .card{
     .transactions .transaction-item .from{
         margin: 0 20px 0 0;
     }
-    .transactions .transaction-item a{
+    .transactions .transaction-item .from-to a{
         color: #84a0a0;
         margin: 0 0 0 5px;
         width: 100px;
@@ -1618,6 +1616,9 @@ div#voting-power-dist .card{
     .transactions .transaction-item a:hover{
         color: #005aff;
 
+    }
+    .transactions .transaction-item .txlink{
+width: 100% !important;
     }
     .transactions .action {
         display: flex;
@@ -1632,6 +1633,7 @@ div#voting-power-dist .card{
         height: 20px;
         background: #f4f4f4;
         margin: 0 0 5px;
+        color: #000 !important;
     }
     .transactions .action p {
         color: #444;
@@ -1649,7 +1651,9 @@ div#voting-power-dist .card{
         height: 20px;
         background: #80b180 !important;
         margin: 0 0 5px;
-        color: #fff;
+    }
+    .transactions .status .text-nowrap{
+        color: #fff !important;
     }
 
     @media(max-width:1200px){
