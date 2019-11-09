@@ -177,6 +177,7 @@ div.validator-list div.validator-info div.data{
 }
 div.validator-list div.validator-info div.data:nth-child(5),
 div.validator-list div.validator-info div.data:nth-child(6),
+div.validator-list div.validator-info div.data:nth-child(7),
 div.validator-list div.validator-info div.data:last-child{
     justify-content: center;
    
