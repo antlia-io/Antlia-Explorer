@@ -139,10 +139,10 @@ export default class Transactions extends Component {
                     <SideNav.Nav selected={selected} defaultSelected="transactions">
                         <NavItem title="Explorer">
                             <NavIcon>
-                                <i className="fa fa-fw fa-angle-right" />
+                            <i className="fa fa-fw fa-angle-right" />
                             </NavIcon>
                             <NavText>
-                                Explorer
+                            Explorer
                         </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
