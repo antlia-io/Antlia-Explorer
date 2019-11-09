@@ -15,7 +15,6 @@ import Coin from "/both/utils/coins.js";
 export const TransactionRow = props => {
   let tx = props.tx;
   let txTags = props.tx.tags;
-  console.log(tx.tx.value.msg[0].type);
   let from = txTags[1].value;
   let to = txTags[2].value;
   //    console.log(from)
