@@ -172,7 +172,30 @@ div.validator-list div.validator-info div.data{
     white-space: nowrap;
     /* overflow: hidden; */
     text-overflow: ellipsis;
+    display: flex !important;
+    align-items: center;
 }
+div.validator-list div.validator-info div.data:nth-child(5),
+div.validator-list div.validator-info div.data:nth-child(6),
+div.validator-list div.validator-info div.data:last-child{
+    justify-content: center;
+   
+}
+@media(max-width:767px){
+    div.validator-list div.validator-info div.data{
+        margin: 0 0 30px;
+        display: inline-flex;
+        justify-content: space-between;
+    }
+    div.validator-list div.validator-info div.data:nth-child(5),
+    div.validator-list div.validator-info div.data:nth-child(6),
+    div.validator-list div.validator-info div.data:last-child{
+        margin: 0 0 15px;
+        justify-content: space-between;
+    }
+
+}
+
 
 div.validator-list div.validator-info div.data span.moniker{
     line-height: 1.5;
@@ -223,6 +246,11 @@ table.proposal-list td{
 table th.voting-power,
 table td.voting-power{
     text-align:right;
+}
+.validator-info .voting-power{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 table.random-validators th.moniker{
@@ -780,7 +808,7 @@ div#voting-power-dist .card{
 
     div.validator-list div.card-body:nth-child(2n) div.validator-info,
     .proposal .tally-result-table div.card-body:nth-child(2n) .voter-info{
-        background-color: rgba(0,0,0,0.05);
+        background-color:white
     }
 
     div.transactions-list div.header,
@@ -1715,6 +1743,104 @@ div#voting-power-dist .card{
         }
     }
 
+/* Validators List Styling */
+.vnav-item{
+    background:white !important;
+    border-radius:100rem !important;
+    color:#a0a0a0;
+    border:1px solid grey;
+    margin-right: 10px;
+    height:2.5rem;
+    width:100px;
+    text-align: center;
+}
+.vnav-item.active{
+    background: #4eb862 !important;
+    border-radius:100rem !important;
+    border: none
+}
+.vnav-item.active:hover{
+    background: #4eb862 !important;
+    color:white !important;
+}
+.vnav-search{
+  border:1px solid grey !important;
+  border-radius:100rem !important;
+  background:#F4F4F4;
+}
+#vnav-searchbar .form-control{
+    height: auto;
+    padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+    width:300px;
+}
+    .vnav-validatordetails {
+        width: 100%;
+        background: #e6e6e6;
+        padding: 15px 5px 0;
+        margin-bottom:10px;
+        border-radius: 5px;
+    }
+    .vnav-validatordetails  .status {
+        display: flex;
+        justify-content: flex-end;
+    }
 
-   
- 
+    .vnav-validatordetails .status-item{
+        display: flex;
+        justify-content: center;
+        width: 24%;
+        margin: 0 5px;
+    }
+    @media(max-width:1200px){
+        .vnav-validatordetails {
+            width: 80%;
+        }
+    }
+    @media(max-width:992px){
+        .vnav-validatordetails {
+            width: 100%;padding: 20px 20px 0;
+        }
+    }
+    @media(max-width:640px){
+        .vnav-validatordetails .status{
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        .vnav-validatordetails .status-item{
+            width: 45%;
+            margin: 10px;
+            justify-content: flex-start;
+        }
+    }
+    @media(max-width:414px){
+        .vnav-validatordetails .status-item{
+            width: 90%;
+        }
+    }
+    .vtable-votingtext{
+        text-align: right;
+    }
+    .self-delegation {
+        text-align: right;
+    }
+    .commission{
+        text-align: right;
+    }
+    .uptime{
+        text-align: right;
+    }
+
+    .validator-listindex{
+    height: 30px;
+    width: 30px;
+    background-color:rgb(0,0,0,0.1)	;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .validator-tablehead-border{
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
