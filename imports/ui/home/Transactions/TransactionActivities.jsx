@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import { MsgType } from './MsgType.jsx';
+import { MsgType } from '../../components/MsgType.jsx';
 import { Link } from 'react-router-dom';
 import numbro from 'numbro';
 import Account from './Account.jsx';

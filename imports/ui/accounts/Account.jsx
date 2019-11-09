@@ -207,63 +207,66 @@ export default class AccountDetails extends Component{
                 </Row>
             </div>
             <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
-                <SideNav.Toggle />
-                <SideNav.Nav selected={selected} defaultSelected="transactions">
-                    <NavItem eventKey="dashboard" onClick={ e => this.props.history.push("/") } title="Dashboard">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-home" style={{ fontSize: '1.5em', color: 'black' }} />
-                        </NavIcon>
-                        <NavText>
-                            Dashboard
+                    <SideNav.Toggle />
+                    <SideNav.Nav selected={selected} defaultSelected="transactions">
+                        <NavItem title="Explorer">
+                            <NavIcon>
+                            <i className="fa fa-fw fa-angle-right" />
+                            </NavIcon>
+                            <NavText>
+                            Explorer
                         </NavText>
-                        
-                    </NavItem>
-                    <NavItem eventKey="validators" onClick={ e => this.props.history.push("/validators") } title="Validators">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-spinner" style={{ fontSize: '1.5em', color: 'black' }} />
-                        </NavIcon>
-                        <NavText>
-                            Validators
+                        </NavItem>
+                        <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-home" />
+                            </NavIcon>
+                            <NavText>
+                                Dashboard
                         </NavText>
-                        
-                    </NavItem>
-                    <NavItem eventKey="blocks" onClick={ e => this.props.history.push("/blocks") } title="Blocks">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-cube" style={{ fontSize: '1.5em', color: 'black' }} />
-                        </NavIcon>
-                        <NavText>
-                            Blocks
+                        </NavItem>
+                        <NavItem eventKey="validators" onClick={e => this.props.history.push("/validators")} title="Validators">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-spinner" />
+                            </NavIcon>
+                            <NavText>
+                                Validators
                         </NavText>
-                        
-                    </NavItem>
-                    <NavItem eventKey="transactions" onClick={ e => this.props.history.push("/transactions") } title="Transactions">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-random" style={{ fontSize: '1.5em', color: 'black' }} />
-                        </NavIcon>
-                        <NavText>
-                            Transactions
+                        </NavItem>
+                        <NavItem eventKey="blocks" onClick={e => this.props.history.push("/blocks")} title="Blocks">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-cube" />
+                            </NavIcon>
+                            <NavText>
+                                Blocks
                         </NavText>
-                        
-                    </NavItem>
-                    <NavItem eventKey="proposals" onClick={ e => this.props.history.push("/proposals") } title="Proposals">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-edit" style={{ fontSize: '1.5em', color: 'black' }} />
-                        </NavIcon>
-                        <NavText>
-                            Proposals
+                        </NavItem>
+                        <NavItem eventKey="transactions" onClick={e => this.props.history.push("/transactions")} title="Transactions">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-random" />
+                            </NavIcon>
+                            <NavText>
+                                Transactions
                         </NavText>
-                        
-                    </NavItem>
-                    <NavItem eventKey="voting-power-distribution" onClick={ e => this.props.history.push("/voting-power-distribution") } title="Voting Power">
-                        <NavIcon>
-                            <i className="fa fa-fw fa-chart-bar"/>
-                        </NavIcon>
-                        <NavText>
-                            Voting Power
+                        </NavItem>
+                        <NavItem eventKey="proposals" onClick={e => this.props.history.push("/proposals")} title="Proposals">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-edit" />
+                            </NavIcon>
+                            <NavText>
+                                Proposals
                         </NavText>
-                    </NavItem>
-                </SideNav.Nav>
-            </SideNav>
+                        </NavItem>
+                        <NavItem eventKey="voting-power-distribution" onClick={e => this.props.history.push("/voting-power-distribution")} title="Voting Power">
+                            <NavIcon>
+                                <i className="fa fa-fw fa-chart-bar" />
+                            </NavIcon>
+                            <NavText>
+                                Voting Power
+                        </NavText>
+                        </NavItem>
+                    </SideNav.Nav>
+                </SideNav>
             </div>
             )
         }

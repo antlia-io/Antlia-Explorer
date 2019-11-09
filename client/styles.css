@@ -1158,6 +1158,12 @@ div#voting-power-dist .card{
         width: 100%;
         padding: 0 15px;
     }
+    .activestatus .validator-height .CircularProgressbar .CircularProgressbar-path{
+       stroke: #660099;
+     }
+     .activestatus .validator-height .CircularProgressbar .CircularProgressbar-trail{
+        stroke: #ddd;
+      }
     .activestatus .CircularProgressbar .CircularProgressbar-text{
         font-size: 12px;
     }
@@ -1194,13 +1200,13 @@ div#voting-power-dist .card{
         font-size: 30px;
         font-weight: 700;
         width: 100%;
-        color: #4eb862;
+        color: #24b862;
     }
     .activestatus .averagetime .value{
         font-size: 30px;
         font-weight: 700;
         width: 100%;
-        color: #6b4999;
+        color: #660099;
     }
     .activestatus p{
         margin: 0;
@@ -1352,7 +1358,7 @@ div#voting-power-dist .card{
     }
     .randomstatus .bonded .semi-donut{
         --percentage: 50;
-        --fill: #6b4999;
+        --fill: #660099;
         width: 150px;
         height: 75px;
         position: relative;
@@ -1381,7 +1387,7 @@ div#voting-power-dist .card{
       }
       .randomstatus .validators .semi-donut{
         --percentage: 50;
-        --fill: #ffba2f;
+        --fill: #ffb901;
         width: 150px;
         height: 75px;
         position: relative;
@@ -1413,7 +1419,7 @@ div#voting-power-dist .card{
         font-size: 30px;
         font-weight: 700;
         width: 100%;
-        color: #ffba2f;
+        color: #ffb901;
         margin: 0 0 7px;
         display: block;    
     }
@@ -1421,7 +1427,7 @@ div#voting-power-dist .card{
         font-size: 30px;
         font-weight: 700;
         width: 100%;
-        color: #6b4999;
+        color: #660099;
         margin: 0 0 7px;
         display: block;    
     }
@@ -1439,7 +1445,7 @@ div#voting-power-dist .card{
         margin: 0 10px 0 0;
     }
     .randomstatus .bonded .color-values .item:first-child span {
-        background: #6b4999;
+        background: #660099;
     }
     .randomstatus .color-values .item {
         display: flex;
@@ -1457,13 +1463,13 @@ div#voting-power-dist .card{
     .randomstatus .validators .color-values .item span {
         width: 10px;
         height: 10px;
-        background: #cfcfcf;
+        background: #ddd;
         border-radius: 50%;
         display: block;
         margin: 0 10px 0 0;
     }
     .randomstatus .validators .color-values .item:first-child span {
-        background: #ffba2f;
+        background: #ffb901;
     }
     .randomstatus p{
         margin: 0;
@@ -1578,6 +1584,7 @@ div#voting-power-dist .card{
     .transactions .header{
         display: flex;
         justify-content: space-between;
+        border: none !important;
     }
     .transactions h4{
         font-size: 22px;
@@ -1601,9 +1608,6 @@ div#voting-power-dist .card{
         display: flex;
         justify-content: flex-start;
     }
-    .transactions .transaction-item:last-child {
-        margin: 0 10px 0 0;
-    }
     .transactions .trans-img {
         width: 6%;
         display: flex;
@@ -1614,7 +1618,7 @@ div#voting-power-dist .card{
     }
     .transactions .trans-details {
         width: 60%;
-        padding: 0 10px;
+        padding: 0 0 0 10px;
     }
     .transactions .trans-details .from-to {
         display: flex;
@@ -1622,30 +1626,36 @@ div#voting-power-dist .card{
     }
 
     .transactions .transaction-item p{
-        color: #84a0a0;
+        color: #848688 !important;
         margin: 0;
     }
     .transactions .transaction-item .tc{
-        color: #005aff;
-        width: 80%;
+        width: 90%;
         overflow: hidden;
-        display: flex;
+        display: grid;
         margin: 0 0 5px;
-        word-break: break-all;
+    }
+    .transactions .transaction-item .txlink{
+        color: #004bff;
     }
     .transactions .transaction-item .from{
         margin: 0 20px 0 0;
     }
-    .transactions .transaction-item a{
+    .transactions .transaction-item .from-to a{
         color: #84a0a0;
         margin: 0 0 0 5px;
-        width: 100px;
+        width: 100%;
+        max-width: 50px;
+        max-width: 100px;
         overflow: hidden;
         display: inline-flex;
     }
     .transactions .transaction-item a:hover{
-        color: #005aff;
+        color: #004bff;
 
+    }
+    .transactions .transaction-item .txlink{
+width: 100% !important;
     }
     .transactions .action {
         display: flex;
@@ -1653,13 +1663,21 @@ div#voting-power-dist .card{
         justify-content: center;
         width: 20%;
     }
+    .transactions .action div {
+        width: 100%;
+        text-align: center;
+    }
     .transactions .action .btn {
         border-radius: 3.25rem !important;
         text-transform: capitalize;
-        padding: 0 1rem !important;
-        height: 20px;
+        padding: 0 3px !important;
+        min-height: 20px;
         background: #f4f4f4;
-        margin: 0 0 5px;
+        margin: 0 auto 5px;
+        color: #000 !important;
+        width: 100%;
+        display: block;
+        max-width: 90px;
     }
     .transactions .action p {
         color: #444;
@@ -1677,7 +1695,9 @@ div#voting-power-dist .card{
         height: 20px;
         background: #80b180 !important;
         margin: 0 0 5px;
-        color: #fff;
+    }
+    .transactions .status .text-nowrap{
+        color: #fff !important;
     }
 
     @media(max-width:1200px){
