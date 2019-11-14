@@ -9,25 +9,27 @@ const T = i18n.createComponent();
 
 MultiSend = (props) => {
     return <div>
-        <p><T>activities.single</T> <MsgType type={props.msg.type} /> <T>activities.happened</T></p>
+        {/* <p><T>activities.single</T>  */}
+        {/* <MsgType type={props.msg.type} />  */}
+        {/* <T>activities.happened</T></p>
         <p><T>activities.senders</T>
             <ul>
                 {props.msg.value.inputs.map((data,i) =>{
                     return <li key={i}><Account address={data.address}/> <T>activities.sent</T> {data.coins.map((coin, j) =>{
-                        return <em key={j} className="text-success">{numbro(coin.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</em>
+                        return <p key={j} className="text-success">{numbro(coin.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</p>
                     })}
                     </li>
                 })}
             </ul>
-            <T>activities.receivers</T> 
+            <p><T>activities.receivers</T> </p>
             <ul>
                 {props.msg.value.outputs.map((data,i) =>{
                     return <li key={i}><Account address={data.address}/> <T>activities.received</T> {data.coins.map((coin,j) =>{
-                        return <em key={j} className="text-success">{numbro(coin.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</em>
+                        return <p key={j} className="text-success">{numbro(coin.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</p>
                     })}</li>
                 })}
             </ul>
-        </p>
+        </p> */}
     </div>
 }
 
@@ -51,57 +53,60 @@ export default class TransactionActivities extends Component {
                     amount += numbro(msg.value.amount[a].amount/Meteor.settings.public.stakingFraction).format("0,0")+" "+Meteor.settings.public.stakingDenom;
                 }
             }
-            return <p><Account address={msg.value.from_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <em className="text-success">{amount}</em> <T>activities.to</T> <span className="address"><Account address={msg.value.to_address} /></span><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.from_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <span>{amount}</span> <T>activities.to</T> <span className="address"><Account address={msg.value.to_address} /></span></p>
         case "cosmos-sdk/MsgMultiSend":
             return <MultiSend msg={msg} />
             
             // staking
         case "cosmos-sdk/MsgCreateValidator":
-            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.operatingAt</T> <span className="address"><Account address={msg.value.validator_address}/></span> <T>activities.withMoniker</T> <Link to="#">{msg.value.description.moniker}</Link><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.operatingAt</T> <span className="address"><Account address={msg.value.validator_address}/></span> <T>activities.withMoniker</T> <Link to="#">{msg.value.description.moniker}</Link></p>
         case "cosmos-sdk/MsgEditValidator":
             return <p><Account address={msg.value.address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /></p>
         case "cosmos-sdk/MsgDelegate":
-            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <em className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</em> <T>activities.to</T> <Account address={msg.value.validator_address} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <span className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</span> <T>activities.to</T> <Account address={msg.value.validator_address} /></p>
         case "cosmos-sdk/MsgUndelegate":
-            return <p><Account address={msg.value.delegator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <em className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</em> <T>activities.from</T> <Account address={msg.value.validator_address} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <span className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</span> <T>activities.from</T> <Account address={msg.value.validator_address} /></p>
         case "cosmos-sdk/MsgBeginRedelegate":
-            return <p><Account address={msg.value.delegator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <em className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</em> <T>activities.from</T> <Account address={msg.value.validator_src_address} /> <T>activities.to</T> <Account address={msg.value.validator_dst_address} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <span className="text-warning">{numbro(msg.value.amount.amount/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</span> <T>activities.from</T> <Account address={msg.value.validator_src_address} /> <T>activities.to</T> <Account address={msg.value.validator_dst_address} /></p>
             
             // gov
         case "cosmos-sdk/MsgSubmitProposal":
-            return <p><Account address={msg.value.proposer} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.withTitle</T> <Link to={"/proposals/"+this.props.tags[2].value}>{msg.value.title}</Link><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.proposer} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.withTitle</T> <Link to={"/proposals/"+this.props.tags[2].value}>{msg.value.title}</Link></p>
         case "cosmos-sdk/MsgDeposit":
-            return <p><Account address={msg.value.depositor} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <em className="text-info">{msg.value.amount.map((amount,i) =>{
+            return <p><Account address={msg.value.depositor} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <span className="text-info">{msg.value.amount.map((amount,i) =>{
                 if (i>0){
                     return " ,"+numbro(amount.amount/Meteor.settings.public.stakingFraction).format("0,0")+" "+Meteor.settings.public.stakingDenom;
                 }
                 else{
                     return numbro(amount.amount/Meteor.settings.public.stakingFraction).format("0,0")+" "+Meteor.settings.public.stakingDenom;
                 }
-            })}</em> <T>activities.to</T> <Link to={"/proposals/"+msg.value.proposal_id}><T>proposals.proposal</T> {msg.value.proposal_id}</Link><T>common.fullStop</T></p>
+            })}</span> <T>activities.to</T> <Link to={"/proposals/"+msg.value.proposal_id}><T>proposals.proposal</T> {msg.value.proposal_id}</Link></p>
         case "cosmos-sdk/MsgVote":
-            return <p><Account address={msg.value.voter} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} />  <Link to={"/proposals/"+msg.value.proposal_id}><T>activities.proposal</T> {msg.value.proposal_id}</Link> <T>activities.withA</T> <em className="text-info">{msg.value.option}</em><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.voter} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} />  <Link to={"/proposals/"+msg.value.proposal_id}><T>activities.proposal</T> {msg.value.proposal_id}</Link> <T>activities.withA</T> <p className="text-info">{msg.value.option}</p></p>
             
             // distribution
         case "cosmos-sdk/MsgWithdrawValidatorCommission":
-            return <p><Account address={msg.value.validator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.validator_address} /> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /></p>
         case "cosmos-sdk/MsgWithdrawDelegationReward":
-            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.from</T> <Account address={msg.value.validator_address} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /> <T>activities.from</T> <Account address={msg.value.validator_address} /></p>
         case "cosmos-sdk/MsgModifyWithdrawAddress":
             return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /></p>
     
             // slashing
         case "cosmos-sdk/MsgUnjail":
-            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /><T>common.fullStop</T></p>
+            return <p><Account address={msg.value.delegator_address}/> {(this.props.invalid)?<T>activities.failedTo</T>:''}<MsgType type={msg.type} /></p>
             
             // ibc
         case "cosmos-sdk/IBCTransferMsg":
             return <MsgType type={msg.type} />
-        case "cosmos-sdk/IBCReceiveMsg":
+        case "cosmos-sdk/IBCReceivpsg":
             return <MsgType type={msg.type} />
     
         default:
-            return <div>{JSON.stringify(msg.value)}</div>
+            return <div>
+                testing
+                {/* {JSON.stringify(msg.value)} */}
+                </div>
         }
     }
 }

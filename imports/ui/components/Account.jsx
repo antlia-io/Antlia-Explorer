@@ -48,11 +48,11 @@ export default class Account extends Component {
       <span
         className={
           this.props.copy
-            ? "address overflow-auto d-inline-block copy"
-            : "address overflow-auto d-inline"
+            ? "overflow-auto d-inline-block copy"
+            : "overflow-auto d-inline"
         }
       >
-        <Link to={this.state.address}>{this.state.moniker}</Link>
+        <Link to={this.state.address} className="al">{this.state.moniker}.</Link>
       </span>
     );
   }

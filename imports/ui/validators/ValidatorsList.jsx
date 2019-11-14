@@ -114,10 +114,10 @@ export default class Validators extends Component {
           }}
         >
           <Helmet>
-            <title>Validators on Color Explorer | Color</title>
+            <title>Validators on Antlia Explorer | Antlia</title>
             <meta
               name="description"
-              content="Here is a list of Color Validators"
+              content="Here is a list of Antlia Validators"
             />
           </Helmet>
           <Row>

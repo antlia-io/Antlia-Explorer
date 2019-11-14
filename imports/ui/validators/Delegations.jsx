@@ -36,8 +36,9 @@ export default class ValidatorDelegations extends Component{
                     numDelegatiors:delegations.length,
                     delegations: delegations.map((d, i) => {
                         return <Row key={i} className="delegation-info">
-                            <Col md={8} className="text-nowrap overflow-auto"><Account address={d.delegator_address} /></Col>
-                            <Col md={4}>{numbro(d.shares/this.props.shares*this.props.tokens/Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                            <Col lg={5} md={12} className="text-nowrap overflow-auto"><Account address={d.delegator_address} /></Col>
+                            <Col lg={4} md={12} className="textAlign">{numbro(d.shares/this.props.shares*this.props.tokens/Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                            <Col lg={3} md={12} className="textAlign">{numbro(d.shares/this.props.shares*this.props.tokens/Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
                         </Row>
                     })
                 })
@@ -50,18 +51,20 @@ export default class ValidatorDelegations extends Component{
             return <div><Spinner type="grow" color="primary"/></div>
         }
         else{
-            return <Card>
-                <CardHeader>{(this.state.numDelegatiors > 0)?this.state.numDelegatiors:'No'} <T>common.delegators</T> {(this.state.numDelegatiors > 0)?<small className="text-secondary">({numbro(this.props.tokens/this.state.numDelegatiors/Meteor.settings.public.stakingFraction).format('0,0.00')} {Meteor.settings.public.stakingDenom} / delegator)</small>:''}</CardHeader>
+            return <div className="delegation">
+                {/* <T>common.delegators</T> */}
+                <CardHeader><h4>Delegators</h4><span className="userdelegate"><i className="fas fa-user-circle"></i>{(this.state.numDelegatiors > 0)?this.state.numDelegatiors:'No'}  {(this.state.numDelegatiors > 0)?<small className="text-secondary">(<i className="fas fa-arrow-up"></i>{numbro(this.props.tokens/this.state.numDelegatiors/Meteor.settings.public.stakingFraction).format('0,0.00')} {Meteor.settings.public.stakingDenom} in 24h)</small>:''}</span></CardHeader>
                 <CardBody className="list">
                     <Container fluid>
-                        <Row className="header text-nowrap d-none d-lg-flex">
-                            <Col md={8}><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
-                            <Col md={4}><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
+                        <Row className="header text-nowrap d-lg-flex">
+                            <Col lg={5} md={12}><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
+                            <Col lg={4} md={12} className="textAlign"><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
+                            <Col lg={3} md={12} className="textAlign"><i className="fas fa-share"></i> <span>Share</span></Col>
                         </Row>
                         {this.state.delegations}
                     </Container>
                 </CardBody>
-            </Card>
+            </div>
         }
     }
 }

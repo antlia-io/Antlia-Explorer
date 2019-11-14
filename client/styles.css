@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+
 body {
     font-size: inherit !important;
 }
@@ -450,18 +452,85 @@ div#countdown {
     font-size: 1.5em;
 }
 
-.validator-details .moniker{
-    font-size: 180%;
-    margin: 0.25em 0;
+
+/* Validators Details Styles */
+.validator-details .validator-status{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+}
+.validator-details a{
+    color: #004bff !important;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    word-break: break-all;
+}
+.validator-details .btn-link{
+    text-align: left;
 }
 
-.validator-details .validator-avatar{
+.validator-details .card-body{
+    border-left: 1px solid #ddd;
+    padding: 0 15px 0 30px ;
+}
+.validator-details .validator-status p{
+    color: #323232 !important;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+.validator-details .validator-status .badge{
+    font-size: 16px;
+    border-radius: 4.25rem;
+    width: 100px;
+    margin: 15px 0 0;
+    padding: 5px;
+}
+
+.validator-details .validator-status .validator-avatar{
+    width: 30%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.validator-details .validator-status .validator-avatar img{
+    width: 100px;
+}
+.validator-details .validator-status .validator-link{
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.validator-details .moniker{
+    font-size: 30px;
+    margin: 0;
+    color: #004bff !important;
+    font-family: 'Roboto', sans-serif;
+}
+.validator-details .label{
+    font-size: 16px;
+    font-weight: 400 !important;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 0 5px;
+}
+.validator-details .value{
+    font-size: 16px;
+    font-weight: 300 !important;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 0 5px;
+}
+/* .validator-details .validator-avatar{
     max-width: 150px;
     margin: 0 auto;
-}
+} */
 
 .validator-details .card{
-    margin-bottom: 1em;
+    margin-bottom: 30px;
+    padding: 30px 15px;
 }
 
 .validator-details .card-body h3 .badge.badge-danger{
@@ -470,6 +539,53 @@ div#countdown {
 
 .validator-details  ul.nav{
     margin-bottom: 0.8em;
+}
+@media(min-width:1440px){
+    .validator-details .card-body{
+        padding: 0 15px 0 60px ;
+    }
+}
+@media(max-width:1350px){
+    .validator-details .validator-status{
+        justify-content: center;
+        flex-wrap: wrap;
+        height: 100%;
+    }
+  
+    .validator-details .moniker{
+        width: 100%;
+        text-align: center;
+    }
+    .validator-details .validator-status .validator-avatar{
+        width: 100%;
+    }
+    .validator-details .validator-status .validator-link{
+        width: 100%;
+         justify-content: center;
+    }
+    .validator-details .validator-link .address{
+        width: 100%;
+        text-align: center;
+        }
+    .validator-details a,
+    .validator-details .validator-status p{
+        text-align: center;
+        width: 100%;
+    }
+    .validator-details .validator-status .badge{
+margin: 15px auto;
+        /* width: 100%; */
+        max-width: 150px;
+    }
+}
+
+@media(max-width:767px){
+    .validator-details .card-body{
+        border-top: 1px solid #ddd;
+        border-left:none;
+        padding: 30px 15px;
+        margin: 30px 0 0;
+    }
 }
 
 .address.copy{
@@ -486,9 +602,9 @@ div#countdown {
     padding-bottom: 0.2em;
 }
 
-.fee {
+/* .fee {
     padding-left: 2rem !important
-}
+} */
 
 #account .infinity{
     display: inline-block;
@@ -526,16 +642,19 @@ div#countdown {
 
 .vp-diff{
     display:inline-block;
-    transform: translateY(-5px);
+    /* transform: translateY(-5px); */
 }
 
 div.block-info,
-div.tx-info,
 div.delegation-info{
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid #dee2e6;
 }
+/* div.tx-info{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+} */
 
 .tx-info.invalid {
     background-color: rgba(237, 20, 61, 0.2) !important;
@@ -552,7 +671,8 @@ div.delegation-info{
 div#block-table div.block-info:nth-child(2n),
 div.transactions-list div.tx-info:nth-child(2n),
 div.delegation-info:nth-child(2n){
-    background-color: rgba(0,0,0,0.05);
+    /* background-color: rgba(0,0,0,0.05); */
+    background-color: #f9f9f9;
 }
 
 div.transactions-list div.tx-info .activity{
@@ -655,9 +775,10 @@ div.transactions-list div.header{
 }
 
 .power-history .voting-power {
-    font-size: 160%;
+    font-size: 30px;
+    font-weight: 500;
     position: relative;
-    top: -4px;
+    margin: 0 10px;
     transform: initial !important;
 }
 
@@ -1620,6 +1741,9 @@ div#voting-power-dist .card{
     .transactions .trans-details {
         width: 60%;
         padding: 0 0 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     .transactions .trans-details .from-to {
         display: flex;
@@ -1647,7 +1771,7 @@ div#voting-power-dist .card{
         margin: 0 0 0 5px;
         width: 100%;
         max-width: 50px;
-        max-width: 100px;
+        max-width: 95px;
         overflow: hidden;
         display: inline-flex;
     }
@@ -1865,3 +1989,416 @@ width: 100% !important;
     .validator-tablehead-border{
         border-bottom: 1px solid rgba(0,0,0,0.1);
     }
+
+    /* Validator Details - Delegated Styles */
+   
+    .delegated .card{
+        padding: 15px;
+
+    }
+    .delegated h4{
+        font-size: 30px;
+        color: #848688;
+        padding: 15px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .delegated h6{
+        font-size: 30px;
+        color: #000;
+        font-weight: 600;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        width: 100%;
+    }
+    .delegated .chart-view {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .delegated .chart-view text{
+        font-size: 30px;
+        color: #848688;
+        font-weight: 600;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+    }
+    .delegated .chart-details {
+        display: flex;
+        justify-content: space-around;
+        margin: 50px 0 30px;
+    }
+    .delegated .chart-details .self {
+        border-left: 5px solid #23b861;
+        padding: 0 0 0 10px;
+    }
+    .delegated .chart-details .others{
+        border-left: 5px solid #660099;
+        padding: 0 0 0 10px;
+    }
+    .delegated .chart-details p{
+        margin: 5px 0;
+    }
+    @media(min-width:767px) and (max-width:1024px){
+        .delegated .chart-details {
+            flex-wrap: wrap;
+            padding: 0 30px;
+        }
+        .delegated .chart-details .self{
+            width: 100%;
+            margin: 0 0 20px;
+        }
+        .delegated .chart-details .others{
+            width: 100%;
+        }
+    }
+    @media(max-width:767px){
+        .delegated{
+            margin: 0 0 30px;
+        }
+    }
+    @media(max-width:480px){
+        .delegated .chart-details {
+            flex-wrap: wrap;
+            padding: 0 30px;
+        }
+        .delegated .chart-details .self{
+            width: 100%;
+            margin: 0 0 20px;
+        }
+        .delegated .chart-details .others{
+            width: 100%;
+        }
+    }
+
+      /* Validator Details - Validator Tabs Styles */
+      .validator_tabs .card {
+           padding: 30px;
+      }
+  
+      .validator_tabs .nav-item{
+        margin: 0 0 25px;
+        }
+      .validator_tabs .nav-pills .nav-link {
+        border-radius: 1.25rem !important;
+        border: 1px solid #ddd;
+        margin: 0 10px 0 0;
+        color: #848688; 
+        }
+      .validator_tabs .nav-pills .nav-link.active,
+      .validator_tabs .nav-pills .show>.nav-link {
+        color: #fff !important;
+        background-color: #660099 !important;
+        border: 1px solid #660099 !important;
+    }
+    @media(max-width:1236px){
+        .validator_tabs .nav-pills{
+            display: flex;
+            justify-content: center;
+            }
+    }
+
+    .power-history .card-body{
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin: 0 0 15px;
+    }
+    .power-history .material-icons{
+        font-weight: 600;
+        color: #660099;
+        font-size: 30px;
+    }
+    .power-history .time .fas{
+        color: #323232;
+        margin: 0 10px 0 0;
+    }
+    .power-history .col-md-1,
+    .power-history .col-lg-1{
+        padding: 0 7px 0 15px;
+    }
+    .power-history .col-md-7,
+    .power-history .col-lg-7{
+        padding: 0 7px;
+    }
+    .power-history .ta,
+    .power-history .changevalues{
+        display: flex;
+        align-items: center;
+    }
+    @media(min-width:768px) and (max-width:991px){
+        .power-history .changevalues{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .power-history .material-icons{
+            transform: rotate(90deg);
+            text-align: center;
+        }
+        .power-history .ta,
+        .power-history .voting-power{
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+        .power-history .col-md-1,
+        .power-history .col-lg-1{
+            padding: 0 15px;
+        }
+        .power-history .col-md-7,
+        .power-history .col-lg-7{
+            padding: 0 15px;
+        }
+    }
+    @media(max-width:575px){
+        .power-history .changevalues{
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .power-history .material-icons{
+            transform: rotate(90deg);
+            text-align: center;
+        }
+        .power-history .ta,
+        .power-history .voting-power{
+            width: 100%;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+        .power-history .col-md-1,
+        .power-history .col-lg-1{
+            padding: 0 15px;
+        }
+        .power-history .col-md-7,
+        .power-history .col-lg-7{
+            padding: 0 15px;
+        }
+    }
+
+ /* Validator Details - Delagations Styles */
+
+    .delegation .card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        padding: 0;
+        border-bottom: 1px solid #ddd;
+    }
+    .delegation .card-body{
+        padding: 1.25rem 0;
+    }
+    .delegation h4{
+        font-size: 30px;
+        color: #848688;
+        padding: 15px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .delegation .userdelegate{
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        padding: 5px 10px;
+    }
+    .delegation .textAlign{
+        text-align: right;
+    }
+@media(min-width:768px) and (max-width:1200px){
+    .delegation .card-header{
+        flex-wrap: wrap;
+    }
+    .delegation h4{
+        width: 100%;
+        margin: 0 0 10px;
+        padding: 15px 0;
+    }
+    .delegation .userdelegate{
+        margin: 0 0 20px;
+    }
+}
+@media(max-width:640px){
+    .delegation .card-header{
+        flex-wrap: wrap;
+    }
+    .delegation h4{
+        width: 100%;
+        margin: 0 0 10px;
+        padding: 15px 0;
+    }
+    .delegation .userdelegate{
+        margin: 0 0 20px;
+    }
+}
+
+ /* Validator Details - Transaction Tabs Styles */
+    .delegate-trans .card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        padding: 0 0 30px;
+        border-bottom: 1px solid #ddd;
+    }
+    .delegate-trans h4{
+        font-size: 30px;
+        color: #848688;
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+    }
+    .delegate-trans .row{
+        margin: 10px auto;
+    }
+    .delegate-trans .nav-link{
+        font-size: 14px;
+        padding: 0.5rem 0.3rem;
+        color: #848688 !important;
+        font-weight: 400 !important;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: none !important;
+    }
+    .delegate-trans .nav-tabs .nav-link:hover, 
+    .delegate-trans .nav-tabs .nav-link.active, 
+    .delegate-trans .nav-tabs .nav-link.active:hover, 
+    .delegate-trans .nav-tabs .nav-link.active:focus{
+        color: #660099 !important;
+        box-shadow: inset 0 -2px 0 #660099 !important;
+    }
+@media(max-width:1250px){
+    .delegate-trans .card-header{
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .delegate-trans h4{
+        width: 100%;
+    }
+    .delegate-trans .nav{
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin: 15px 0 0;
+    }
+    .delegate-trans .nav-item{
+        width: 20%;
+    }
+
+}
+@media (min-width:992px) and (max-width:1236px){
+
+    .delegate-trans .nav-item{
+        width: 33.33%;
+    }
+}
+@media (min-width:768px) and (max-width:991px){
+
+    .delegate-trans .nav-item{
+        width: 50%;
+    }
+}
+@media (min-width:575px) and (max-width:640px){
+
+    .delegate-trans .nav-item{
+        width: 33.33%;
+    }
+}
+@media (min-width:426px) and (max-width:574px){
+
+    .delegate-trans .nav-item{
+        width: 50%;
+    }
+}
+@media (max-width:425px){
+
+    .delegate-trans .nav-item{
+        width: 100%;
+    }
+}
+ /* Validator Details - Transaction Tabs - Transfer tab Styles */
+    .transfer-item{
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px 2px;
+    }
+    .transfer-item .btn {
+        border-radius: 3.25rem !important;
+        text-transform: capitalize;
+        padding: 0 1rem !important;
+        height: 20px;
+        background: #23b861 !important;
+        margin: 0 0 5px;
+    }
+    .transfer-item a {
+        color: #004bff;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+    }
+    .transfer-item .al{
+        font-weight: 400;
+    }
+    .transfer-item p {
+        color: #848688;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        margin: 0;
+    }
+    /* .transfer-item .resultpaddingleft{
+       
+    } */
+    .transfer-item .status{
+        color: #fff !important;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        border-radius: 3.25rem !important;
+        text-transform: capitalize;
+        padding: 3px 7px !important;
+        background: #23b861 !important;
+        margin: 0 0 5px;
+        text-align: center;
+        width: 150px;
+    }
+    /* .tx-info{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 50%;
+    } */
+    .tx-info .nodname{
+        width: 40%;
+    }
+    .tx-info .nodname p{
+        font-size: 14px;
+        color: #004bff;
+        font-weight: 400;
+    }
+    .tx-info .sendbtn{
+        width: 10%;
+    }
+    .tx-info .amount{
+        width: 50%;
+    }
+    .tx-info .amount p{
+        font-size: 14px;
+        color: #848688;
+        font-weight: 400;
+       
+    }
+    .tx-info .address{
+        width: 100%;
+        display: flex;
+    }
+
+
+    .respart {
+        display: none;
+    }
+   
+    @media(max-width:1236px){
+    .deskpart{
+        display: none;
+    }
+    .respart{
+        display: block;
+    }
+    }
+  
+    

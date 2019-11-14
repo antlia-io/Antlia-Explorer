@@ -28,7 +28,12 @@ MultiSend = (props) => {
                 })}
             </ul>
         </p>
+        
+
+           
+  
     </div>
+  
 }
 
 export default class TransactionActivities extends Component {

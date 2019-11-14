@@ -6,17 +6,19 @@ import { TransactionRow } from './TransactionRow.jsx';
 import { IndividualTransaction } from './IndividualTransaction.jsx'
 import i18n from 'meteor/universe:i18n';
 
+
 const T = i18n.createComponent();
-export default class TransactionTabs extends Component{
-    constructor(props){
+export default class TransactionTabs extends Component {
+    constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             activeTab: 'tx-transfer',
             transferTxs: {},
             stakingTxs: {},
             distributionTxs: {},
             governanceTxs: {},
-            slashingTxs: {}
+            slashingTxs: {},
+          
         }
     }
 
@@ -27,23 +29,25 @@ export default class TransactionTabs extends Component{
             });
         }
     }
-
-    componentDidUpdate(prevProps){
-        if (this.props != prevProps){
+  
+    componentDidUpdate(prevProps) {
+        if (this.props != prevProps) {
             this.setState({
                 transferTxs: this.props.transferTxs,
                 stakingTxs: this.props.stakingTxs,
                 distributionTxs: this.props.distributionTxs,
                 governanceTxs: this.props.governanceTxs,
                 slashingTxs: this.props.slashingTxs
-            })    
+            })
         }
     }
 
-    render(){
-        return <Card>
-            <CardHeader className="backgroundcolor"><T>transactions.transactions</T> <small>(<T>common.last</T> 100)</small></CardHeader>
-            <CardBody>
+    render() {
+       
+        return <div className="delegate-trans">
+            {/* <T>transactions.transactions</T> */}
+            <CardHeader> <h4>Total: 100</h4>
+
                 <Nav tabs className="tx-types">
                     <NavItem>
                         <NavLink
@@ -86,130 +90,135 @@ export default class TransactionTabs extends Component{
                         </NavLink>
                     </NavItem>
                 </Nav>
+            </CardHeader>
+            {/* <CardBody> */}
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="tx-transfer">
-                        <Row>
-                            <Col>
-                                {(this.state.transferTxs.length > 0)?this.state.transferTxs.map((tx, i) => {
+                     
+                                {(this.state.transferTxs.length > 0) ? this.state.transferTxs.map((tx, i) => {
                                     return (
-                                        <div>
-                                            <IndividualTransaction 
-                                            key={i} 
-                                            index={i} 
-                                            tx={tx}
-                                            blockList 
-                                            />
-                                            <TransactionRow 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx}
-                                                blockList 
-                                            />
-                                        </div>
+                                     
+                                        <Row className="transfer-item">
+                                            <Col lg={6} md={12}>
+                                                <IndividualTransaction
+                                                    key={i}
+                                                    index={i}
+                                                    tx={tx}
+                                                    blockList
+                                                />
+                                            </Col>
+                                            <Col lg={6} md={12}>
+                                                <TransactionRow
+                                                    key={i}
+                                                    index={i}
+                                                    tx={tx}
+                                                    blockList
+                                                />
+                                            </Col>
+                                        </Row>
+                                  
                                     )
-                                }):''}
-                            </Col>
-                        </Row>
+                                }) : ''}
+
                     </TabPane>
                     <TabPane tabId="tx-staking">
                         <Row>
                             <Col>
-                                {(this.state.stakingTxs.length > 0)?this.state.stakingTxs.map((tx, i) => {
+                                {(this.state.stakingTxs.length > 0) ? this.state.stakingTxs.map((tx, i) => {
                                     return (
                                         <div>
-                                            <IndividualTransaction 
-                                            key={i} 
-                                            index={i} 
-                                            tx={tx} 
-                                            blockList
-                                        />
-                                        <TransactionRow 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <IndividualTransaction
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
+                                                blockList
+                                            />
+                                            <TransactionRow
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
                                         </div>
                                     )
-                                }):''}
+                                }) : ''}
                             </Col>
                         </Row>
                     </TabPane>
                     <TabPane tabId="tx-distr">
                         <Row>
                             <Col>
-                                {(this.state.distributionTxs.length > 0)?this.state.distributionTxs.map((tx, i) => {
+                                {(this.state.distributionTxs.length > 0) ? this.state.distributionTxs.map((tx, i) => {
                                     return (
                                         <div>
-                                            <IndividualTransaction 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <IndividualTransaction
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
-                                            <TransactionRow 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <TransactionRow
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
                                         </div>
                                     )
-                                }):''}
+                                }) : ''}
                             </Col>
                         </Row>
                     </TabPane>
                     <TabPane tabId="tx-gov">
                         <Row>
                             <Col>
-                                {(this.state.governanceTxs.length > 0)?this.state.governanceTxs.map((tx, i) => {
+                                {(this.state.governanceTxs.length > 0) ? this.state.governanceTxs.map((tx, i) => {
                                     return (
                                         <div>
-                                            <IndividualTransaction 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <IndividualTransaction
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
-                                            <TransactionRow 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <TransactionRow
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
                                         </div>
                                     )
-                                }):''}
+                                }) : ''}
                             </Col>
                         </Row>
                     </TabPane>
                     <TabPane tabId="tx-slashing">
                         <Row>
                             <Col>
-                                {(this.state.slashingTxs.length > 0)?this.state.slashingTxs.map((tx, i) => {
+                                {(this.state.slashingTxs.length > 0) ? this.state.slashingTxs.map((tx, i) => {
                                     return (
                                         <div>
-                                            <IndividualTransaction 
-                                            key={i} 
-                                            index={i} 
-                                            tx={tx} 
-                                            blockList
+                                            <IndividualTransaction
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
+                                                blockList
                                             />
-                                            <TransactionRow 
-                                                key={i} 
-                                                index={i} 
-                                                tx={tx} 
+                                            <TransactionRow
+                                                key={i}
+                                                index={i}
+                                                tx={tx}
                                                 blockList
                                             />
                                         </div>
                                     )
-                                }):''}
+                                }) : ''}
                             </Col>
                         </Row>
                     </TabPane>
                 </TabContent>
-            </CardBody>
-        </Card>
+            {/* </CardBody> */}
+        </div>
     }
 }
-                    

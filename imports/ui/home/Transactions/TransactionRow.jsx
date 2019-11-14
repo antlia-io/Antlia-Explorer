@@ -69,7 +69,7 @@ export const TransactionRow = props => {
             {" "}
             <Link to={"/transactions/" + tx.txhash} className="txlink">
               {tx.txhash}
-            </Link>
+            </Link>...
           </div>
           {/* <p className="tc">cosmosdjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p> */}
           <div className="from-to">
