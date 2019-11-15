@@ -104,8 +104,8 @@ export default class TransactionActivities extends Component {
     
         default:
             return <div>
-                testing
-                {/* {JSON.stringify(msg.value)} */}
+               
+                {JSON.stringify(msg.value)}
                 </div>
         }
     }

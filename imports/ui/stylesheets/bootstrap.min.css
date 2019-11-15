@@ -510,9 +510,9 @@
  }
 
 
- .resultpaddingleft {
+ /* .resultpaddingleft {
      padding-left: 0px !important
- }
+ } */
  
  .list-inline {
      padding-left: 0;
@@ -5250,7 +5250,7 @@
      border-top: 0
  }
  
- .card-footer {
+ /* .card-footer {
      padding: 0.75rem 1.25rem;
      background-color: rgba(0, 0, 0, 0.03);
      border-top: 0 solid transparent
@@ -5258,7 +5258,7 @@
  
  .card-footer:last-child {
      border-radius: 0 0 calc(0.25rem - 0) calc(0.25rem - 0)
- }
+ } */
  
  .card-header-tabs {
      margin-right: -0.625rem;

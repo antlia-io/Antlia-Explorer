@@ -2,22 +2,22 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Alert, Spinner, Button } from "reactstrap";
 import { TxIcon } from "../../components/Icons.jsx";
-import Activities from "../../components/Activities.jsx";
-import ColorErrors from "../../components/ColorErrors.jsx";
+// import Activities from "../../components/Activities.jsx";
+// import ColorErrors from "../../components/ColorErrors.jsx";
 import ButtonActivities from "../../components/ButtonActivities.jsx";
 import TimeAgo from "../../components/TimeAgo.jsx";
-import numbro from "numbro";
-import moment from "moment";
-import ScrollArea from "react-scrollbar";
-import Coin from "/both/utils/coins.js";
+// import numbro from "numbro";
+// import moment from "moment";
+// import ScrollArea from "react-scrollbar";
+// import Coin from "/both/utils/coins.js";
 // import TransactionActivities from './TransactionActivities.jsx';
 
 export const TransactionRow = props => {
   let tx = props.tx;
   let txTags = props.tx.tags;
   console.log(tx.tx.value.msg[0].type);
-  let from = txTags[1].value;
-  let to = txTags[2].value;
+  // let from = txTags[1].value;
+  // let to = txTags[2].value;
   //    console.log(from)
   //    console.log(to)
   // console.log(tx);
@@ -75,14 +75,14 @@ export const TransactionRow = props => {
           <div className="from-to">
             {/* <TransactionActivities/> */}
             <p className="from">
-              From: <Link to="#">{from}</Link>...
+              {/* From: <Link to="#">{from}</Link>... */}
             </p>
             <p>
               {tx.tx.value.msg[0].type === "cosmos-sdk/MsgSubmitProposal" ? (
                 <React.Fragment></React.Fragment>
               ) : (
                 <React.Fragment>
-                  To: <Link to="#">{to}</Link>...
+                  {/* To: <Link to="#">{to}</Link>... */}
                 </React.Fragment>
               )}
             </p>
@@ -102,7 +102,7 @@ export const TransactionRow = props => {
           )}
           <TimeAgo time={tx.block().time} />
         </div>
-        <div className="status">
+        <div className="statushow">
           <Button>{!tx.code ? <TxIcon valid /> : <TxIcon />}</Button>
         </div>
       </div>

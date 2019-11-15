@@ -25,7 +25,7 @@ export default class PowerHistory extends React.Component {
                 this.setState({
                     tx: result.map((msg, i) => <CardFooter key={i} className="text-secondary">
                         <Row>
-                            <Col xs={12} sm={8}>
+                            <Col md={12} lg={8}>
                                 {(msg.tx.value.msg && msg.tx.value.msg.length > 0) ? msg.tx.value.msg.map((m, j) => {
                                     switch (m.type) {
                                         case "cosmos-sdk/MsgBeginRedelegate":
@@ -61,7 +61,7 @@ export default class PowerHistory extends React.Component {
                                                     <Col xs={12}>
                                                         <Row>
                                                             <Col xs={4}><T>validators.amount</T></Col>
-                                                            <Col xs={8}>{numbro(m.value.amount.amount).format('0,0')} {m.value.amount.denom}</Col>
+                                                            <Col xs={8}><span>{numbro(m.value.amount.amount).format('0,0')} {m.value.amount.denom}</span></Col>
                                                         </Row>
                                                     </Col>
                                                 </Row>
@@ -95,14 +95,14 @@ export default class PowerHistory extends React.Component {
                                                 <Col xs={12}>
                                                     <Row>
                                                         <Col xs={4}><T>validators.amount</T></Col>
-                                                        <Col xs={8}>{numbro(m.value.amount.amount).format('0,0')} {m.value.amount.denom}</Col>
+                                                        <Col xs={8}><span>{numbro(m.value.amount.amount).format('0,0')} {m.value.amount.denom}</span></Col>
                                                     </Row>
                                                 </Col>
                                             </Row>
 
                                     }
                                 }) : ''}</Col>
-                            <Col xs={12} sm={4}>
+                            <Col md={12} lg={4}>
                                 <Row>
                                     <Col xs={12}>
                                         <Row>
@@ -126,7 +126,7 @@ export default class PowerHistory extends React.Component {
                                             }) : ''}
                                         </Row>
                                         <Row>
-                                            <Col xs={4} sm={6}><T>transactions.fee</T></Col>
+                                            <Col xs={4} sm={6} className="fee"><T>transactions.fee</T></Col>
                                             <Col xs={8} sm={6}>{(msg.tx.value.fee.amount && msg.tx.value.fee.amount.length > 0) ? msg.tx.value.fee.amount.map((amount, i) => {
                                                 if (i > 0) {
                                                     return <span key={i}> ,{numbro(amount.amount).format('0,0')} {amount.denom}</span>
@@ -163,7 +163,9 @@ export default class PowerHistory extends React.Component {
         }
         return (
             <div className={this.props.type}>
-                     
+                   
+
+                    
                 <CardBody>
                     <div className="deskpart">
                         <Row>
@@ -171,6 +173,7 @@ export default class PowerHistory extends React.Component {
                             <Col lg={7} md={12} className="changevalues"><span className="voting-power">{numbro(this.props.prevVotingPower).format('0,0')}</span> <i className="material-icons">arrow_forward</i> <span className="voting-power">{numbro(this.props.votingPower).format('0,0')}</span> {this.state.diff}</Col>
                             <Col lg={4} md={12} className="time"><i className="fas fa-cube"></i> {numbro(this.props.height).format('0,0')}<br /><i className="fas fa-clock"></i> {momemt.utc(this.props.time).format("D MMM YYYY, h:mm:ssa z")}</Col>
                         </Row>
+                        {this.state.tx}
                     </div>
                     <div className="respart">
                         <Row>
@@ -178,10 +181,11 @@ export default class PowerHistory extends React.Component {
                             <Col lg={11} sm={11} xs={12} className="changevalues"><span className="voting-power">{numbro(this.props.prevVotingPower).format('0,0')}</span> <i className="material-icons">arrow_forward</i> <span className="voting-power">{numbro(this.props.votingPower).format('0,0')}</span> {this.state.diff}</Col>
                             <Col lg={12} sm={12} xs={12} className="time"><i className="fas fa-cube"></i> {numbro(this.props.height).format('0,0')}<br /><i className="fas fa-clock"></i> {momemt.utc(this.props.time).format("D MMM YYYY, h:mm:ssa z")}</Col>
                         </Row>
+                        {this.state.tx}
                     </div>
                 </CardBody>
-        
-                {this.state.tx}
+               
+             
             </div>
         );
     }

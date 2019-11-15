@@ -785,6 +785,32 @@ div.transactions-list div.header{
 .power-history .card .card-footer{
     font-size: 85%;
 }
+.power-history .card-footer {
+    padding: 15px 0 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0 0;
+}
+.power-history .card-footer span {
+    color: #323232;
+    font-family: 'Roboto', sans-serif;
+}
+.power-history .card-footer .fee {
+    color: #323232;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+.power-history .card-footer .al{
+    color: #004bff;
+    font-family: 'Roboto', sans-serif;
+}
+.power-history .badge{
+    border-radius: 3.25rem;
+    padding: 0.45em 1em;
+}
+.power-history .badge span{
+   color: #fff;
+   font-family: 'Roboto', sans-serif;
+}
 
 .label {
     font-weight: bold;
@@ -1757,7 +1783,7 @@ div#voting-power-dist .card{
     .transactions .transaction-item .tc{
         width: 90%;
         overflow: hidden;
-        display: grid;
+        display: contents;
         margin: 0 0 5px;
     }
     .transactions .transaction-item .txlink{
@@ -1808,20 +1834,21 @@ width: 100% !important;
         color: #444;
         text-transform: lowercase;
     }
-    .transactions .status {
+    .transactions .statushow {
         display: flex;
         justify-content: center;
         width: 14%;
     }
-    .transactions .status .btn {
+    .transactions .statushow .btn {
         border-radius: 3.25rem !important;
         text-transform: capitalize;
-        padding: 0 1rem !important;
+        padding: 0 0.3rem !important;
         height: 20px;
         background: #80b180 !important;
         margin: 0 0 5px;
+        color: #fff;
     }
-    .transactions .status .text-nowrap{
+    .transactions .statushow .text-nowrap{
         color: #fff !important;
     }
 
@@ -1842,7 +1869,7 @@ width: 100% !important;
             width: 50%;
             margin: 15px 0 0;
         }
-        .transactions .status{
+        .transactions .statushow{
             width: 50%;
             margin: 15px 0 0;
         }
@@ -2095,6 +2122,9 @@ width: 100% !important;
         .validator_tabs .nav-pills{
             display: flex;
             justify-content: center;
+        }
+       .validator_tabs .activity{
+                margin: 0 0 10px;
             }
     }
 
@@ -2177,7 +2207,18 @@ width: 100% !important;
     }
 
  /* Validator Details - Delagations Styles */
-
+    .pcscroll-list{
+        min-height: 300px;
+        height: 638px;
+    }
+    .delegatescroll-list{
+        min-height: 300px;
+        height: 498px;
+    }
+    .transcroll-list{
+        min-height: 300px;
+        height: 570px;
+    }
     .delegation .card-header{
         display: flex;
         justify-content: space-between;
@@ -2245,7 +2286,7 @@ width: 100% !important;
         margin: 0;
         font-family: 'Roboto', sans-serif;
     }
-    .delegate-trans .row{
+    .delegate-trans .transfer-item{
         margin: 10px auto;
     }
     .delegate-trans .nav-link{
@@ -2386,7 +2427,12 @@ width: 100% !important;
         width: 100%;
         display: flex;
     }
-
+    @media(max-width:575px){
+        .transfer-item .al{
+            width: 100%;
+            display: block;
+        }
+    }
 
     .respart {
         display: none;
@@ -2401,4 +2447,16 @@ width: 100% !important;
     }
     }
   
-    
+
+    /* No Data Styels */
+    .nodata{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+    }
+
+    .nodata h2{
+        font-size: 30px;
+        text-align: center;
+    }

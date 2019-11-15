@@ -17,10 +17,10 @@
         "stakingFraction": 1000000,
         "coingeckoId": "colorplatform"
     },
-    "genesisFile": "https://rpc.testnet.color-platform.org/genesis",
+    "genesisFile": "http://localhost:26657/genesis",
     "remote":{
-        "rpc":"https://rpc.testnet.color-platform.org",
-        "lcd":"https://lcd.testnet.color-platform.org"
+        "rpc":"http://localhost:26657",
+        "lcd":"http://localhost:1317"
     },
     "debug": {
         "startTimer": true,

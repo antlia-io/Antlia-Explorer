@@ -104,15 +104,23 @@ export default class Validator extends Component {
                 if (this.props.validator.history().length > 0) {
                     this.setState({
                         history: this.props.validator.history().map((history, i) => {
-                            return <PowerHistory
-                                key={i}
-                                type={history.type}
-                                prevVotingPower={history.prev_voting_power}
-                                votingPower={history.voting_power}
-                                time={history.block_time}
-                                height={history.height}
-                                address={this.props.validator.operator_address}
-                            />
+                            return (
+                                <div>
+                                    <ScrollArea className="pcscroll-list">
+                                        <PowerHistory
+                                            key={i}
+                                            type={history.type}
+                                            prevVotingPower={history.prev_voting_power}
+                                            votingPower={history.voting_power}
+                                            time={history.block_time}
+                                            height={history.height}
+                                            address={this.props.validator.operator_address}
+                                        />
+                                    </ScrollArea>
+                                </div>
+                            )
+
+
                         })
                     })
                 }
@@ -369,10 +377,10 @@ export default class Validator extends Component {
                                     </Nav>
                                     <Switch>
                                         <Route exact path="/(validator|validators)/:address" render={() =>
-                                            <div>
-                                                <ScrollArea>
-                                                                                                     {/* <div className="power-history">test{this.state.history}</div> */}
-                                                </ScrollArea>
+                                            <div className="power-history">
+
+                                                {this.state.history}
+
                                             </div>
                                         } />
                                         <Route path="/(validator|validators)/:address/delegations" render={() => <ValidatorDelegations address={this.props.validator.operator_address} tokens={this.props.validator.tokens} shares={this.props.validator.delegator_shares} />} />
