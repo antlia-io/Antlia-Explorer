@@ -7,8 +7,8 @@ import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
 
-export default class AccountDelegations extends Component{
-    constructor(props){
+export default class AccountDelegations extends Component {
+    constructor(props) {
         super(props);
         this.state = {
             loading: true,
@@ -17,28 +17,28 @@ export default class AccountDelegations extends Component{
         }
     }
 
-    updateDelegations = () =>{
+    updateDelegations = () => {
         Meteor.call('accounts.getAllDelegations', this.props.address, (error, result) => {
-            if (error){
+            if (error) {
                 console.warn(error);
             }
-            else{
+            else {
                 this.setState({
-                    loading:false
+                    loading: false
                 });
-                if (result){
+                if (result) {
 
                     let Delegations = new Mongo.Collection(null);
-                    result.forEach((delegation,i) => {
+                    result.forEach((delegation, i) => {
                         Delegations.insert(delegation);
                     })
-                    let delegations = Delegations.find({},{sort:{shares:-1}}).fetch();
+                    let delegations = Delegations.find({}, { sort: { shares: -1 } }).fetch();
                     this.setState({
-                        numDelegations:delegations.length,
+                        numDelegations: delegations.length,
                         delegations: delegations.map((d, i) => {
                             return <Row key={i} className="delegation-info">
-                                <Col xs={6} md={8} className="text-nowrap overflow-auto"><Account address={d.validator_address} /></Col>
-                                <Col xs={6} md={4}>{numbro(d.shares/Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</Col>
+                                <Col xs={12} sm={6} md={6} lg={6} className="text-nowrap overflow-auto"><i className="fas fa-at d-lg-none"></i><Account address={d.validator_address} /></Col>
+                                <Col xs={12} sm={6} md={6} lg={6}><i className="fas piggy-bank d-lg-none"></i>{numbro(d.shares / Meteor.settings.public.stakingFraction).format("0,0")} {Meteor.settings.public.stakingDenom}</Col>
                             </Row>
                         })
                     })
@@ -47,33 +47,38 @@ export default class AccountDelegations extends Component{
         })
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.updateDelegations();
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props != prevProps){
+    componentDidUpdate(prevProps) {
+        if (this.props != prevProps) {
             this.updateDelegations();
         }
     }
 
-    render(){
-        if (this.state.loading){
-            return <div><Spinner type="grow" color="primary"/></div>
+    render() {
+        if (this.state.loading) {
+            return <div><Spinner type="grow" color="primary" /></div>
         }
-        else{
-            return <Card>
-                <CardHeader className="backgroundcolor">{(this.state.numDelegations > 0)?this.state.numDelegations:<T>accounts.no</T>} <T>accounts.delegation</T>{(this.state.numDelegations>1)?<T>accounts.plural</T>:''}</CardHeader>
-                {(this.state.numDelegations > 0)?<CardBody className="list overflow-auto">
-                    <Container fluid>
-                        <Row className="header text-nowrap d-none d-lg-flex">
-                            <Col md={8}><i className="fas fa-at"></i> <span><T>accounts.validators</T></span></Col>
-                            <Col md={4}><i className="fas fa-piggy-bank"></i> <span><T>accounts.shares</T></span></Col>
-                        </Row>
-                        {this.state.delegations}
-                    </Container>
-                </CardBody>:''}
-            </Card>
+        else if (this.state.numDelegations > 0) {
+            return <div>
+                <Container fluid className="list overflow-auto acc-delegation">
+                    <Row className="header text-nowrap d-lg-flex">
+                        <Col xs={12} sm={6} md={6} lg={6}><i className="fas fa-at"></i> <span><T>accounts.validators</T></span></Col>
+                        <Col xs={12} sm={6} md={6} lg={6}><i className="fas fa-piggy-bank"></i> <span><T>accounts.shares</T></span></Col>
+                    </Row>
+                    {this.state.delegations}
+                </Container>
+            </div>
+        }
+        else {
+            return <div className="nodata">
+                <div>
+                    <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                    <h2>No Data</h2>
+                </div>
+            </div>
         }
     }
 }

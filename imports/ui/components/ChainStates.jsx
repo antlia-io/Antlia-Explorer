@@ -7,27 +7,27 @@ import i18n from 'meteor/universe:i18n';
 
 const T = i18n.createComponent();
 
-export default class ChainStates extends Component{
-    constructor(props){
+export default class ChainStates extends Component {
+    constructor(props) {
         super(props);
-        
-        if (Meteor.isServer){
+
+        if (Meteor.isServer) {
             let data = {}
-            if (this.props.chainStates.communityPool){
-                data.communityPool = this.props.chainStates.communityPool.map((pool,i) => {
-                    return <span key={i}>{numbro(pool.amount/Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</span>
+            if (this.props.chainStates.communityPool) {
+                data.communityPool = this.props.chainStates.communityPool.map((pool, i) => {
+                    return <span key={i}>{numbro(pool.amount / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</span>
                 })
                 data.inflation = numbro(this.props.chainStates.inflation).format("0.00%")
             }
-    
-            if (this.props.coinStats.usd){
+
+            if (this.props.coinStats.usd) {
                 data.price = numbro(this.props.coinStats.usd).format("$0,0.00"),
-                data.marketCap = numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
-            }    
+                    data.marketCap = numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
+            }
 
             this.state = data;
         }
-        else{
+        else {
             this.state = {
                 price: "$-",
                 marketCap: "$-",
@@ -37,20 +37,20 @@ export default class ChainStates extends Component{
         }
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.chainStates != prevProps.chainStates){
-            if (this.props.chainStates.communityPool){
+    componentDidUpdate(prevProps) {
+        if (this.props.chainStates != prevProps.chainStates) {
+            if (this.props.chainStates.communityPool) {
                 this.setState({
-                    communityPool: this.props.chainStates.communityPool.map((pool,i) => {
-                        return <span key={i}>{numbro(pool.amount/Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</span>
+                    communityPool: this.props.chainStates.communityPool.map((pool, i) => {
+                        return <span key={i}>{numbro(pool.amount / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</span>
                     }),
                     inflation: numbro(this.props.chainStates.inflation).format("0.00%")
                 })
             }
         }
 
-        if (this.props.coinStats != prevProps.coinStats){
-            if (this.props.coinStats.usd){
+        if (this.props.coinStats != prevProps.coinStats) {
+            if (this.props.coinStats.usd) {
                 this.setState({
                     price: numbro(this.props.coinStats.usd).format("$0,0.00"),
                     marketCap: numbro(this.props.coinStats.usd_market_cap).format("$0,0.00")
@@ -58,16 +58,14 @@ export default class ChainStates extends Component{
             }
         }
     }
-    render(){
-        return <Card className="d-lg-inline-block color">
-            <CardHeader>
-                <Row className="white">
-                    <Col xs={4} md="auto"><small><span><T>chainStates.price</T>:</span> <strong>{this.state.price}</strong></small></Col>
-                    <Col xs={8} md="auto"><small><span><T>chainStates.marketCap</T>:</span> <strong>{this.state.marketCap}</strong></small></Col>
-                    <Col xs={4} md="auto"><small><span><T>chainStates.inflation</T>:</span> <strong>{this.state.inflation}</strong></small></Col>
-                    <Col xs={8} md="auto"><small><span><T>chainStates.communityPool</T>:</span> <strong>{this.state.communityPool}</strong></small></Col>
-                </Row>
-            </CardHeader>
+    render() {
+        return <Card>
+            <Row>
+                <Col xs={12} sm={6} md={6} lg={2}><small><span><T>chainStates.price</T>:</span> <strong>{this.state.price}</strong></small></Col>
+                <Col xs={12} sm={6} md={6} lg={4}><small><span><T>chainStates.marketCap</T>:</span> <strong>{this.state.marketCap}</strong></small></Col>
+                <Col xs={12} sm={6} md={6} lg={2}><small><span><T>chainStates.inflation</T>:</span> <strong>{this.state.inflation}</strong></small></Col>
+                <Col xs={12} sm={6} md={6} lg={4}><small><span><T>chainStates.communityPool</T>:</span> <strong>{this.state.communityPool}</strong></small></Col>
+            </Row>
         </Card>
     }
 }

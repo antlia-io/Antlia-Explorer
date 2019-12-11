@@ -106,12 +106,14 @@ export default class Transactions extends Component {
                 }}>
                     <Helmet>
                         <title>Latest Transactions on Antlia Explorer | Antlia</title>
-                        <meta name="description" content="See what is happening Color" />
+                        <meta name="description" content="See what is happening Antlia" />
                     </Helmet>
-                    <Row>
-                        <Col md={12} xs={12}><h1 className="d-none d-lg-block"><T>transactions.transactions</T></h1></Col>
-                        {/* <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> */}
-                    </Row>
+                    <div className="topbar">
+                            <h1><T>transactions.transactions</T></h1>
+                            <div className="chainstate">
+                                <ChainStates />
+                            </div>
+                        </div>
                     <Switch>
                         <Route path="/transactions/:txId" render={(props) => <Sidebar
                             sidebar={<Transaction {...props} />}

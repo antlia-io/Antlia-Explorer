@@ -5,9 +5,9 @@ import { Validators } from '../../validators/validators.js';
 // import { Promise } from 'meteor/promise';
 
 Meteor.methods({
-    'proposals.getProposals': function(){
+    'proposals.getProposals': function () {
         this.unblock();
-        try{
+        try {
             let url = LCD + '/gov/proposals';
             let response = HTTP.get(url);
             let proposals = JSON.parse(response.content);
@@ -15,76 +15,73 @@ Meteor.methods({
             // console.log(proposals);
 
             let proposalIds = [];
-            if (proposals.length > 0){
+            if (proposals.length > 0) {
                 // Proposals.upsert()
                 const bulkProposals = Proposals.rawCollection().initializeUnorderedBulkOp();
-                for (let i in proposals){
+                for (let i in proposals) {
                     let proposal = proposals[i];
                     proposal.proposalId = parseInt(proposal.proposal_id);
-                    if (proposal.proposalId > 0){
-                        try{
-                            let url = LCD + '/gov/proposals/'+proposal.proposalId+'/proposer';
+                    if (proposal.proposalId > 0) {
+                        try {
+                            let url = LCD + '/gov/proposals/' + proposal.proposalId + '/proposer';
                             let response = HTTP.get(url);
-                            if (response.statusCode == 200){
+                            if (response.statusCode == 200) {
                                 let proposer = JSON.parse(response.content);
-                                if (proposer.proposal_id && (proposer.proposal_id == proposal.proposal_id)){
+                                if (proposer.proposal_id && (proposer.proposal_id == proposal.proposal_id)) {
                                     proposal.proposer = proposer.proposer;
                                 }
                             }
-                            bulkProposals.find({proposalId: proposal.proposalId}).upsert().updateOne({$set:proposal});
+                            bulkProposals.find({ proposalId: proposal.proposalId }).upsert().updateOne({ $set: proposal });
                             proposalIds.push(proposal.proposalId);
                         }
-                        catch(e){
-                            bulkProposals.find({proposalId: proposal.proposalId}).upsert().updateOne({$set:proposal});
+                        catch (e) {
+                            bulkProposals.find({ proposalId: proposal.proposalId }).upsert().updateOne({ $set: proposal });
                             proposalIds.push(proposal.proposalId);
                             console.log(e.response.content);
                         }
                     }
                 }
-                bulkProposals.find({proposalId:{$nin:proposalIds}}).update({$set:{"value.proposal_status":"Removed"}});
+                bulkProposals.find({ proposalId: { $nin: proposalIds } }).update({ $set: { "value.proposal_status": "Removed" } });
                 bulkProposals.execute();
             }
         }
-        catch (e){
+        catch (e) {
             console.log(e);
         }
     },
-    'proposals.getProposalResults': function(){
+    'proposals.getProposalResults': function () {
         this.unblock();
-        let proposals = Proposals.find({"proposal_status":{$nin:["Passed", "Rejected", "Removed"]}}).fetch();
+        // let proposals = Proposals.find({"proposal_status":{$nin:["Passed", "Rejected", "Removed"]}}).fetch();
+        let proposals = Proposals.find({ "proposal_status": { $in: ["Passed", "Rejected", "Removed", "VotingPeriod"] } }).fetch();
 
-        if (proposals && (proposals.length > 0)){
-            for (let i in proposals){
-                if (parseInt(proposals[i].proposalId) > 0){
-                    try{
+        if (proposals && (proposals.length > 0)) {
+            for (let i in proposals) {
+                if (parseInt(proposals[i].proposalId) > 0) {
+                    try {
                         // get proposal deposits
-                        let url = LCD + '/gov/proposals/'+proposals[i].proposalId+'/deposits';
+                        let url = LCD + '/gov/proposals/' + proposals[i].proposalId + '/deposits';
                         let response = HTTP.get(url);
-                        let proposal = {proposalId: proposals[i].proposalId};
-                        if (response.statusCode == 200){
+                        let proposal = { proposalId: proposals[i].proposalId };
+                        if (response.statusCode == 200) {
                             let deposits = JSON.parse(response.content);
                             proposal.deposits = deposits;
                         }
-
-                        url = LCD + '/gov/proposals/'+proposals[i].proposalId+'/votes';
+                        url = LCD + '/gov/proposals/' + proposals[i].proposalId + '/votes';
                         response = HTTP.get(url);
-                        if (response.statusCode == 200){
+                        if (response.statusCode == 200) {
                             let votes = JSON.parse(response.content);
                             proposal.votes = getVoteDetail(votes);
                         }
-
-                        url = LCD + '/gov/proposals/'+proposals[i].proposalId+'/tally';
+                        url = LCD + '/gov/proposals/' + proposals[i].proposalId + '/tally';
                         response = HTTP.get(url);
-                        if (response.statusCode == 200){
+                        if (response.statusCode == 200) {
                             let tally = JSON.parse(response.content);
                             proposal.tally = tally;
                         }
-
                         proposal.updatedAt = new Date();
-                        Proposals.update({proposalId: proposals[i].proposalId}, {$set:proposal});
+                        Proposals.update({ proposalId: proposals[i].proposalId }, { $set: proposal });
                     }
-                    catch(e){
-
+                    catch (e) {
                     }
                 }
             }
@@ -100,7 +97,7 @@ const getVoteDetail = (votes) => {
     let voters = votes.map((vote) => vote.voter);
     let votingPowerMap = {};
     let validatorAddressMap = {};
-    Validators.find({delegator_address: {$in: voters}}).forEach((validator) => {
+    Validators.find({ delegator_address: { $in: voters } }).forEach((validator) => {
         votingPowerMap[validator.delegator_address] = {
             moniker: validator.description.moniker,
             address: validator.address,
@@ -116,9 +113,9 @@ const getVoteDetail = (votes) => {
             let url = `${LCD}/staking/delegators/${voter}/delegations`;
             let delegations;
             let votingPower = 0;
-            try{
+            try {
                 let response = HTTP.get(url);
-                if (response.statusCode == 200){
+                if (response.statusCode == 200) {
                     delegations = JSON.parse(response.content);
                     if (delegations) {
                         delegations.forEach((delegation) => {
@@ -127,24 +124,24 @@ const getVoteDetail = (votes) => {
                                 // deduct delegated shareds from validator if a delegator votes
                                 let validator = votingPowerMap[validatorAddressMap[delegation.validator_address]];
                                 validator.deductedShares -= shares;
-                                if (validator.delegator_shares != 0){ // avoiding division by zero
-                                    votingPower += (shares/validator.delegatorShares) * validator.tokens;
+                                if (validator.delegator_shares != 0) { // avoiding division by zero
+                                    votingPower += (shares / validator.delegatorShares) * validator.tokens;
                                 }
 
                             } else {
-                                let validator = Validators.findOne({operator_address: delegation.validator_address});
-                                if (validator && validator.delegator_shares != 0){ // avoiding division by zero
-                                    votingPower += (shares/parseFloat(validator.delegator_shares)) * parseFloat(validator.tokens);
+                                let validator = Validators.findOne({ operator_address: delegation.validator_address });
+                                if (validator && validator.delegator_shares != 0) { // avoiding division by zero
+                                    votingPower += (shares / parseFloat(validator.delegator_shares)) * parseFloat(validator.tokens);
                                 }
                             }
                         });
                     }
                 }
             }
-            catch (e){
+            catch (e) {
                 console.log(e);
             }
-            votingPowerMap[voter] = {votingPower: votingPower};
+            votingPowerMap[voter] = { votingPower: votingPower };
         }
     });
     return votes.map((vote) => {
@@ -152,8 +149,8 @@ const getVoteDetail = (votes) => {
         let votingPower = voter.votingPower;
         if (votingPower == undefined) {
             // voter is a validator
-            votingPower = voter.delegatorShares?((voter.deductedShares/voter.delegatorShares) * voter.tokens):0;
+            votingPower = voter.delegatorShares ? ((voter.deductedShares / voter.delegatorShares) * voter.tokens) : 0;
         }
-        return {...vote, votingPower};
+        return { ...vote, votingPower };
     });
 }

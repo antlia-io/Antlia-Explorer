@@ -71,7 +71,13 @@ export default class Transaction extends Component {
                 </Container>
             }
             else {
-                return <Container id="transaction" className="paddingleft"><div><T>transactions.noTxFound</T></div></Container>
+                return <div className="nodata">
+                    <div>
+                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                        <h2>No Data</h2>
+                    </div>
+                </div>
+                // <Container id="transaction" className="paddingleft"><div><T>transactions.noTxFound</T></div></Container>
             }
         }
     }

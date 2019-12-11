@@ -9,69 +9,115 @@ import numbro from 'numbro';
 import moment from 'moment';
 import { Helmet } from 'react-helmet';
 import i18n from 'meteor/universe:i18n';
+// import TimeAgo from "../components/TimeAgo.jsx";
 
 const T = i18n.createComponent();
-export default class Transaction extends Component{
-    constructor(props){
+export default class Transaction extends Component {
+    constructor(props) {
         super(props);
-        let showdown  = require('showdown');
+        let showdown = require('showdown');
         showdown.setFlavor('github');
     }
-  
-    render(){
-        if (this.props.loading){
+
+    render() {
+        if (this.props.loading) {
             return <Container id="transaction">
                 <Spinner type="grow" color="primary" />
             </Container>
         }
-        else{
-            if (this.props.transactionExist){
+        else {
+            if (this.props.transactionExist) {
                 let tx = this.props.transaction;
                 return <Container id="transaction" className="paddingleft">
                     <Helmet>
-                        <title>Transaction {tx.txhash} on Color Explorer | Color</title>
-                        <meta name="description" content={"Details of transaction "+tx.txhash} />
+                        <title>Transaction {tx.txhash} on Antlia Explorer | Antlia</title>
+                        <meta name="description" content={"Details of transaction " + tx.txhash} />
                     </Helmet>
-                    <h4><T>transactions.transaction</T> {(!tx.code)?<TxIcon valid />:<TxIcon />}</h4>
-                    {(tx.code)?<Row><Col xs={{size:12, order:"last"}} className="error">
+                    <h2><T>transactions.transaction</T></h2>
+                    {/* {(tx.code) ? <Row><Col xs={{ size: 12, order: "last" }} className="error">
                         <Alert color="danger">
-                            <ColorErrors 
+                            <ColorErrors
                                 code={tx.code}
                                 logs={tx.logs}
                                 gasWanted={tx.gas_wanted}
                                 gasUses={tx.gas_used}
                             />
                         </Alert>
-                    </Col></Row>:''}
+                    </Col></Row> : ''} */}
                     <Card>
-                        <div className="card-header backgroundcolor"><T>common.information</T></div>
+                        {/* <div className="card-header backgroundcolor"><T>common.information</T></div> */}
                         <CardBody>
-                            <Row>
+                            <Row><Col md={12} lg={6}>
+                                <div className="error">
+                                    <Alert color="danger">
+                                        <ColorErrors
+                                            code={tx.code}
+                                            logs={tx.logs}
+                                            gasWanted={tx.gas_wanted}
+                                            gasUses={tx.gas_used}
+                                        />
+                                    </Alert>
+                                </div>
+                            </Col>
+                                <Col md={12} lg={6}></Col>
+                            </Row>
+                            <hr />
+                            <Row className="mb">
                                 <Col md={4} className="label"><T>common.hash</T></Col>
                                 <Col md={8} className="value address">{tx.txhash}</Col>
+                            </Row>
+                            <Row className="mb">
+                                <Col md={4} className="label">Status</Col>
+                                <Col md={8} className="value"> {(!tx.code) ? <TxIcon valid /> : <TxIcon />}</Col>
+                            </Row>
+                            <Row className="mb">
                                 <Col md={4} className="label"><T>common.height</T></Col>
-                                <Col md={8} className="value"><Link to={"/blocks/"+tx.height}>{numbro(tx.height).format("0,0")}</Link> ({moment.utc(tx.block().time).format("D MMM YYYY, h:mm:ssa z")})</Col>
+                                <Col md={8} className="value"><Link to={"/blocks/" + tx.height}>{numbro(tx.height).format("0,0")}</Link></Col>
+                            </Row>
+                            <Row className="mb">
+                                <Col md={4} className="label">Time</Col>
+                                <Col md={8} className="value">
+                                    {moment.utc(tx.block().time).format("D MMM YYYY, h:mm:ssa z")}</Col>
+                            </Row>
+                            <Row className="mb">
                                 <Col md={4} className="label"><T>transactions.fee</T></Col>
-                                <Col md={8} className="value">{tx.tx.value.fee.amount?tx.tx.value.fee.amount.map((fee,i) => {
-                                    return <span className="text-nowrap" key={i}>{numbro(fee.amount).format(0,0)} {fee.denom}</span>
-                                }):<span>No fee</span>}</Col>
+                                <Col md={8} className="value">{tx.tx.value.fee.amount ? tx.tx.value.fee.amount.map((fee, i) => {
+                                    return <span className="text-nowrap" key={i}>{numbro(fee.amount).format(0, 0)} {fee.denom}</span>
+                                }) : <span>No fee</span>}</Col>
+                            </Row>
+                            <Row className="mb">
                                 <Col md={4} className="label"><T>transactions.gasUsedWanted</T></Col>
                                 <Col md={8} className="value">{numbro(tx.gas_used).format("0,0")} / {numbro(tx.gas_wanted).format("0,0")}</Col>
+                            </Row>
+                            <Row className="mb">
                                 <Col md={4} className="label"><T>transactions.memo</T></Col>
-                                <Col md={8} className="value"><Markdown markup={ tx.tx.value.memo } /></Col>
+                                <Col md={8} className="value"><Markdown markup={tx.tx.value.memo} /></Col>
                             </Row>
                         </CardBody>
                     </Card>
-                    <Card>
+                    {/* <Card>
                         <div className="card-header backgroundcolor"><T>transactions.activities</T></div>
-                    </Card>
-                    {(tx.tx.value.msg && tx.tx.value.msg.length >0)?tx.tx.value.msg.map((msg,i) => {
-                        return <Card body key={i}><TransactionActivities msg={msg} invalid={(!!tx.code)} tags={tx.tags} /></Card>
-                    }):''}
+                    </Card> */}
+                    {(tx.tx.value.msg && tx.tx.value.msg.length > 0) ? tx.tx.value.msg.map((msg, i) => {
+                        return <Card>
+                            <h2 className="sendh">Send</h2>
+                            <hr />
+                            <CardBody key={i}>
+                                <TransactionActivities msg={msg} invalid={(!!tx.code)} tags={tx.tags} />
+                            </CardBody>
+
+                        </Card>
+                    }) : ''}
                 </Container>
             }
-            else{
-                return <Container id="transaction" className="paddingleft"><div><T>transactions.noTxFound</T></div></Container>
+            else {
+                return <div className="nodata">
+                    <div>
+                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                        <h2>No Data</h2>
+                    </div>
+                </div>
+                // <Container id="transaction" className="paddingleft"><div><T>transactions.noTxFound</T></div></Container>
             }
         }
     }

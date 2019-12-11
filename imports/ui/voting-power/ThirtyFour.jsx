@@ -36,12 +36,12 @@ export default class ThirtyFour extends Component{
                                 this.props.stats.numBottomSixtySix
                             ],
                             backgroundColor: [
-                                '#b43db7',
-                                '#59ccc8'
+                                '#ffb901',
+                                '#ddd'
                             ],
                             hoverBackgroundColor: [
-                                '#b43db7',
-                                '#59ccc8'
+                                '#ffb901',
+                                '#ddd'
                             ]
                         }
                     ]
@@ -72,8 +72,10 @@ export default class ThirtyFour extends Component{
             if (this.props.statsExist && this.props.stats){
                 return (                    
                     <Card>
-                        <div className="card-header backgroundcolor"><T>votingPower.minValidators34</T></div>
+                        {/* <div className="card-header backgroundcolor"><T>votingPower.minValidators34</T></div> */}
+                          <div className="header"><h4><T>votingPower.minValidators34</T></h4></div>
                         <CardBody>
+           
                             <Doughnut data={this.state.data} options={this.state.options} />
                         </CardBody>
                     </Card>

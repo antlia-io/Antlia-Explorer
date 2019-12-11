@@ -11,17 +11,7 @@ export default class Blocks extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
-            BlocksDetails:[
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-                {blockHeight:"12132321323", time: "12 sec ago", Txns:"1232", Fees:"321321",nodeName:"Carrauntoohil"},
-            ]
+
         }
     }
 
@@ -36,13 +26,13 @@ export default class Blocks extends React.Component {
                     <div className="blocks">
                         <div className="header">
                             <h4>Blocks</h4>
-                            <Link to="#">View All Blocks</Link>
+                            <Link to="/blocks">View All Blocks</Link>
                         </div>
 
                         <Row>
                             <Col lg={12}>
                                 <ScrollArea className="block-list">
-                                    {this.state.BlocksDetails.map((items,index)=>
+                                    {/* {this.state.BlocksDetails.map((items,index)=>
                                     <div className="block-item" key={index}>
                                         <div className="block-content">
 
@@ -54,20 +44,7 @@ export default class Blocks extends React.Component {
                                             <p>Node: {items.nodeName}</p>
                                         </div>
                                     </div>
-                                  )}
-                                
-                                    {/* <div className="block-item">
-                                        <div className="block-content">
-
-                                            <p>Blocks <span>1223213</span></p>
-                                            <p>1 hours ago</p>
-                                        </div>
-                                        <div className="block-content">
-                                            <p>includes Txns 23234, Fees 2323 uclr</p>
-                                            <p>Node: Node name</p>
-                                        </div>
-                                    </div> */}
-                                  
+                                  )}   */}
                                 </ScrollArea>
                             </Col>
                         </Row>

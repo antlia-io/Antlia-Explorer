@@ -40,16 +40,22 @@ export default class Distribution extends Component {
                         <title>Voting Power Distribution on Color Explorer | Color</title>
                         <meta name="description" content="We would like to keep track how voting power are distributed over time among validators." />
                     </Helmet>
+                    <div className="topbar">
+                        <h1><T>votingPower.distribution</T></h1>
+                        <div className="chainstate">
+                            <ChainStates />
+                        </div>
+                    </div>
                     <Row>
-                        <Col md={12} xs={12}><h1 className="d-none d-lg-block"><T>votingPower.distribution</T></h1></Col>
-                        {/* <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> */}
+                        <Col lg={6} md={6} sm={12}>
+                            <TwentyEighty />
+                        </Col>
+                        <Col lg={6} md={6} sm={12}>
+                            <ThirtyFour />
+                        </Col>
                     </Row>
                     <Row>
-                        <Col md={6}><TwentyEighty /></Col>
-                        <Col md={6}><ThirtyFour /></Col>
-                    </Row>
-                    <Row>
-                        <Col>
+                        <Col lg={12} md={12} sm={12}>
                             <VotingPower />
                         </Col>
                     </Row>

@@ -12,14 +12,15 @@ import { CircularProgressbar, CircularProgressbarWithChildren, buildStyles } fro
 import ChangingProgressProvider from "./ChangingProgressProvider";
 import RadialSeparators from "./RadialSeparators";
 import "react-circular-progressbar/dist/styles.css";
+//semi circle progress bar
+import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 const T = i18n.createComponent();
-
 export default class ChainStatus extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Precommit:"Precommit",
+            Precommit: "Precommit",
             blockHeight: 0,
             blockTime: 0,
             averageBlockTime: 0,
@@ -29,21 +30,36 @@ export default class ChainStatus extends React.Component {
             avgBlockTimeType: "",
             avgVotingPowerType: "",
             blockTimeText: <T>chainStatus.all</T>,
-            votingPowerText: <T>chainStatus.now</T>
+            votingPowerText: <T>chainStatus.now</T>,
+            activeValidatorsUpTime: 0,
+            activeValidatorsVotingPower: 0
         }
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps != this.props) {
-            this.setState({
-                blockHeight: numbro(this.props.status.latestBlockHeight).format({ thousandSeparated: true }),
-                blockTime: moment.utc(this.props.status.latestBlockTime).format("D MMM YYYY hh:mm:ssa z"),
-                delegatedTokens: numbro(this.props.status.totalVotingPower).format('0,0.00a'),
-                numValidators: this.props.status.validators,
-                totalNumValidators: this.props.status.totalValidators,
-                bondedTokens: this.props.states.bondedTokens,
-                notBondedTokens: this.props.states.notBondedTokens
-            })
+           
+            // if (this.props.validators.length > 0 && this.props.chainStatus) {
+                this.setState({
+                    blockHeight: numbro(this.props.status.latestBlockHeight).format({ thousandSeparated: true }),
+                    blockTime: moment.utc(this.props.status.latestBlockTime).format("D MMM YYYY hh:mm:ssa z"),
+                    delegatedTokens: numbro(this.props.status.totalVotingPower).format('0,0.00a'),
+                    numValidators: this.props.status.validators,
+                    totalNumValidators: this.props.status.totalValidators,
+                    bondedTokens: this.props.states.bondedTokens,
+                    notBondedTokens: this.props.states.notBondedTokens,
+                    validators: this.props.validators.map((validator, i) => {
+                        if (validator.jailed == false) {
+                            return this.state.activeValidatorsUpTime = this.state.activeValidatorsUpTime + validator.uptime
+                        }
+                    })
+                })
+            // }
+            // else {
+            //     this.setState({
+            //         validators: ""
+            //     });
+            // }
 
             switch (this.state.avgBlockTimeType) {
                 case "":
@@ -161,81 +177,120 @@ export default class ChainStatus extends React.Component {
             if (this.props.statusExist && this.props.status.prevotes) {
                 return (
                     <div>
-                        <Card>
-                            <div className="activestatus">
-                                <h4>Active Status</h4>
-                                {/* <Row>
+                        <Row>
+                            <Col lg={6} md={12}>
+                                <Card>
+                                    <div className="activestatus">
+                                        <h4>Active Status</h4>
+                                        {/* <Row>
                                     <Col lg={6} md={6}> */}
-                                    <div className="content">
-                                        <div className="validator-height">
-                                        <ChangingProgressProvider values={[0, 20, 40, 60, 80, 100]}>
-                                            {value => (
-                                                <CircularProgressbar
-                                                    value={value}
-                                                    text={this.state.Precommit}
-                                                    text={`${this.state.blockHeight}`}
-                                                    circleRatio={0.999}
-                                                    styles={buildStyles({
-                                                        rotation: 1 / 2 + 1 / 8,
-                                                        strokeLinecap: "butt",
-                                                        trailColor: "#eee"
-                                                    })}
+                                        <div className="content">
+                                            <div className="validator-height">
+                                                <ChangingProgressProvider values={[0, 20, 40, 60, 80, 100]}>
+                                                    {value => (
+                                                        <CircularProgressbar
+                                                            value={value}
+                                                            // text={this.state.Precommit}
+                                                            text={`${this.state.blockHeight}`}
+                                                            circleRatio={0.999}
+                                                            styles={buildStyles({
+                                                                rotation: 1 / 2 + 1 / 8,
+                                                                strokeLinecap: "butt",
+                                                                trailColor: "#eee"
+                                                            })}
+                                                        />
+                                                    )} 
+                                                </ChangingProgressProvider>
+                                            </div>
+                                            <div className="statusdetail">
+                                                <div className="activevalidator">
+                                                    <CardTitle><T>chainStatus.activeValidators</T></CardTitle>
+                                                    <CardText><span className="value">{this.state.numValidators}</span></CardText>
+                                                    <CardText><T totalValidators={this.state.totalNumValidators}>chainStatus.outOfValidators</T></CardText>
+                                                </div>
+                                                <div className="line"></div>
+                                                <div className="averagetime">
+                                                    <UncontrolledDropdown size="sm" className="more">
+                                                        <DropdownToggle>
+                                                            <i className="material-icons">more_vert</i>
+                                                        </DropdownToggle>
+                                                        <DropdownMenu>
+                                                            <DropdownItem onClick={(e) => this.handleSwitchBlockTime("", e)}><T>chainStatus.allTime</T></DropdownItem>
+                                                            {this.props.status.lastMinuteBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("m", e)}><T>chainStatus.lastMinute</T></DropdownItem> : ''}
+                                                            {this.props.status.lastHourBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("h", e)}><T>chainStatus.lastHour</T></DropdownItem> : ''}
+                                                            {this.props.status.lastDayBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("d", e)}><T>chainStatus.lastDay</T> </DropdownItem> : ''}
+                                                        </DropdownMenu>
+                                                    </UncontrolledDropdown>
+                                                    <CardTitle><T>chainStatus.averageBlockTime</T> ({this.state.blockTimeText})</CardTitle>
+                                                    <CardText>
+                                                        <span className="value">{this.state.averageBlockTime}</span></CardText>
+                                                    <CardText>
+                                                        <T>chainStatus.seconds</T>
+                                                    </CardText>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Card>
+                            </Col>
+                            <Col lg={6} md={12}>
+                                <Card>
+                                    <div className="randomstatus">
+                                        <h4>Random Status</h4>
+                                        <div className="content">
+                                            <div className="bonded">
+                                                <CardTitle>Bonded</CardTitle>
+                                                <CardText><span className="value">{numbro(this.state.bondedTokens / (this.state.bondedTokens + this.state.notBondedTokens)).format("0.00%")}</span></CardText>
+                                                <CardText>{this.state.votingPower} / {numbro((this.state.bondedTokens + this.state.notBondedTokens) / Meteor.settings.public.stakingFraction).format("0.00a")}</CardText>
+                                                <SemiCircleProgressBar
+                                                    percentage={(this.state.bondedTokens / (this.state.bondedTokens + this.state.notBondedTokens)) * 100}
+                                                    diameter={130}
+                                                    animationSpeed={4}
+                                                    className="table-semi-circle"
+                                                    stroke="#660099"
+                                                    strokeWidth={20}
                                                 />
-                                            )}
-                                        </ChangingProgressProvider>
+                                                <div className="color-values">
+                                                    <div className="item">
+                                                        <span></span>
+                                                        <p>{numbro(this.state.bondedTokens / (this.state.bondedTokens + this.state.notBondedTokens)).format("0.00%")}</p>
+                                                    </div>
+                                                    <div className="item">
+                                                        <span></span>
+                                                        <p>100%</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="validators">
+                                                <CardTitle>Validators</CardTitle>
+                                                <CardText><span className="value">{numbro((this.state.activeValidatorsUpTime / this.props.validators.length) * 100).format('0.00%')}</span></CardText>
+                                                <CardText>Active</CardText>
+                                                <SemiCircleProgressBar
+                                                    percentage={(this.state.activeValidatorsUpTime / this.props.validators.length) * 100}
+                                                    diameter={130}
+                                                    animationSpeed={4}
+                                                    className="table-semi-circle"
+                                                    stroke="#ffb901"
+                                                    strokeWidth={20}
+                                                />
+                                                <div className="color-values">
+                                                    <div className="item">
+                                                        <span></span>
+                                                        <p>UpTime</p>
+                                                    </div>
+                                                    <div className="item">
+                                                        <span></span>
+                                                        <p>Voting Power</p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        {/* <CircularProgressbarWithChildren
-                                            value={40}
-                                            text={`${this.state.blockHeight}`}
-                                            strokeWidth={10}
-                                            styles={buildStyles({
-                                                strokeLinecap: "butt"
-                                            })}
-                                        >
-                                            <RadialSeparators
-                                                count={5}
-                                                style={{
-                                                    background: "#fff",
-                                                    width: "2px",
+                                    </div>
+                                </Card>
+                            </Col>
+                        </Row>
 
-                                                    height: `${10}%`
-                                                }}
-                                            />
-                                        </CircularProgressbarWithChildren> */}
-                                    {/* </Col>
-                                    <Col lg={6} md={6}> */}
-                                        <div className="statusdetail">
-                                            <div className="activevalidator">
-                                                <CardTitle><T>chainStatus.activeValidators</T></CardTitle>
-                                                <CardText><span className="value">{this.state.numValidators}</span></CardText>
-                                                <CardText><T totalValidators={this.state.totalNumValidators}>chainStatus.outOfValidators</T></CardText>
-                                            </div>
-                                            <div className="line"></div>
-                                            <div className="averagetime">
-                                                <UncontrolledDropdown size="sm" className="more">
-                                                    <DropdownToggle>
-                                                        <i className="material-icons">more_vert</i>
-                                                    </DropdownToggle>
-                                                    <DropdownMenu>
-                                                        <DropdownItem onClick={(e) => this.handleSwitchBlockTime("", e)}><T>chainStatus.allTime</T></DropdownItem>
-                                                        {this.props.status.lastMinuteBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("m", e)}><T>chainStatus.lastMinute</T></DropdownItem> : ''}
-                                                        {this.props.status.lastHourBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("h", e)}><T>chainStatus.lastHour</T></DropdownItem> : ''}
-                                                        {this.props.status.lastDayBlockTime ? <DropdownItem onClick={(e) => this.handleSwitchBlockTime("d", e)}><T>chainStatus.lastDay</T> </DropdownItem> : ''}
-                                                    </DropdownMenu>
-                                                </UncontrolledDropdown>
-                                                <CardTitle><T>chainStatus.averageBlockTime</T> ({this.state.blockTimeText})</CardTitle>
-                                                <CardText>
-                                                    <span className="value">{this.state.averageBlockTime}</span></CardText>
-                                                <CardText>
-                                                    <T>chainStatus.seconds</T>
-                                                </CardText>
-                                            </div>
-                                        </div>
-                                    {/* </Col>
-                                </Row> */}
-                                </div>
-                            </div>
-                        </Card>
+
                         {/* <Row className="status text-center">
                             <Col lg={6}>
                                 <Card body className="shade">
@@ -262,8 +317,8 @@ export default class ChainStatus extends React.Component {
                                     <CardText><span className="display-4 value text-primary">{this.state.votingPower}</span><T percent={numbro(this.state.bondedTokens / (this.state.bondedTokens + this.state.notBondedTokens)).format("0.00%")} totalStakes={numbro((this.state.bondedTokens + this.state.notBondedTokens) / Meteor.settings.public.stakingFraction).format("0.00a")} denom={Meteor.settings.public.stakingDenom}>chainStatus.fromTotalStakes</T></CardText>
                                 </Card>
                             </Col>
-                        </Row>
-                        <Row className="status text-center">
+                        </Row> */}
+                        {/* <Row className="status text-center">
                             <Col lg={6}>
                                 <Card body className="shade">
                                     <CardTitle><T>chainStatus.activeValidators</T></CardTitle>

@@ -39,7 +39,7 @@ export default class ValidatorDelegations extends Component {
                         return (
                             <ScrollArea className="delegatescroll-list">
                                 <Row key={i} className="delegation-info">
-                                    <Col lg={5} md={12} className="text-nowrap overflow-auto"><Account address={d.delegator_address} /></Col>
+                                    <Col lg={5} md={12} className="text-nowrap text-truncate"><Account address={d.delegator_address} /></Col>
                                     <Col lg={4} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
                                     <Col lg={3} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
                                 </Row>

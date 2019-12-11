@@ -141,13 +141,15 @@ export default class TransactionTabs extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : 
-                        (
-                            <div className="nodata">
-                                <div><h2>No data</h2></div>
-                                
-                            </div>
-                        )
+                        }) :
+                            (
+                                <div className="nodata">
+                                    <div>
+                                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                        <h2>No Data</h2>
+                                    </div>
+                                </div>
+                            )
                         }
                     </ScrollArea>
                 </TabPane>
@@ -199,13 +201,15 @@ export default class TransactionTabs extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : 
-                        (
-                            <div className="nodata">
-                                <div><h2>No data</h2></div>
-                                
-                            </div>
-                        )
+                        }) :
+                            (
+                                <div className="nodata">
+                                    <div>
+                                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                        <h2>No Data</h2>
+                                    </div>
+                                </div>
+                            )
                         }
                     </ScrollArea>
                 </TabPane>
@@ -257,12 +261,14 @@ export default class TransactionTabs extends Component {
                                 </div>
                             )
                         }) :
-                        (
-                            <div className="nodata">
-                                <div><h2>No data</h2></div>
-                                
-                            </div>
-                        )
+                            (
+                                <div className="nodata">
+                                    <div>
+                                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                        <h2>No Data</h2>
+                                    </div>
+                                </div>
+                            )
                         }
                     </ScrollArea>
                 </TabPane>
@@ -314,13 +320,15 @@ export default class TransactionTabs extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : 
-                        (
-                            <div className="nodata">
-                                <div><h2>No data</h2></div>
-                                
-                            </div>
-                        )
+                        }) :
+                            (
+                                <div className="nodata">
+                                    <div>
+                                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                        <h2>No Data</h2>
+                                    </div>
+                                </div>
+                            )
                         }
                     </ScrollArea>
                 </TabPane>
@@ -371,13 +379,15 @@ export default class TransactionTabs extends Component {
                                     </div>
                                 </div>
                             )
-                        }) : 
-                        (
-                            <div className="nodata">
-                                <div><h2>No data</h2></div>
-                                
-                            </div>
-                        )
+                        }) :
+                            (
+                                <div className="nodata">
+                                    <div>
+                                        <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                        <h2>No Data</h2>
+                                    </div>
+                                </div>
+                            )
                         }
                     </ScrollArea>
                 </TabPane>

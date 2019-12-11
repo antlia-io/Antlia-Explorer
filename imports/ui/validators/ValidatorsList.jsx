@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Nav, NavLink, Card, Input, InputGroup } from "reactstrap";
 import List from "./ListContainer.js";
-import Consensus from "../home/ConsensusContainer";
 import { Helmet } from "react-helmet";
 import i18n from "meteor/universe:i18n";
 import qs from "querystring";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import ChainStates from '../components/ChainStatesContainer.js'
 
 const T = i18n.createComponent();
 
@@ -120,16 +120,12 @@ export default class Validators extends Component {
               content="Here is a list of Antlia Validators"
             />
           </Helmet>
-          <Row>
-            <Col md={4} xs={12} className="topbar">
-              <h1 className="d-none d-lg-block">{title}</h1>
-            </Col>
-            <Col md={8}>
-              <div className="vnav-validatordetails">
-                <Consensus />
-              </div>
-            </Col>
-          </Row>
+          <div className="topbar">
+            <h1>{title}</h1>
+            <div className="chainstate">
+              <ChainStates />
+            </div>
+          </div>
           <Card>
             <Nav pills={true} className="status-switch">
               <NavItem>
@@ -160,8 +156,8 @@ export default class Validators extends Component {
                     className="vnav-search"
                     value={this.state.search}
                     onChange={this.handleInput}
-                    // placeholder={i18n.__('common.searchPlaceholder')}
-                    // onKeyDown={this.handleSearch}
+                  // placeholder={i18n.__('common.searchPlaceholder')}
+                  // onKeyDown={this.handleSearch}
                   />
                   <img src="/img/searchicon.png" className="searchicon" />
                 </InputGroup>
@@ -175,62 +171,70 @@ export default class Validators extends Component {
                 <Card body>
                   <Row className="text-nowrap validator-tablehead-border">
                     <Col
-                      className="d-none d-md-block counter data"
-                      xs={2}
-                      md={1}
+                      className="counter data mb"
+                      xs={12}
+                      sm={6}
+                      md={2}
+                      lg={1}
                     >
+                       <i className="fas fa-hashtag">
+                      </i>
                       <p className="text-justify">List</p>
                     </Col>
                     <Col
-                      className="moniker"
+                      className="moniker mb"
                       xs={12}
-                      md={1}
-                      // lg={2}
+                      sm={6}
+                      md={4}
+                      lg={1}
                       onClick={e => this.toggleDir("moniker", e)}
                     >
-                      <i className="d-md-none material-icons">
+                      <i className="material-icons">
                         perm_contact_calendar
                       </i>
-                      <span className="d-inline-block d-md-none d-lg-inline-block ">
+                      <span className=" d-lg-inline-block ">
                         {/* <T>validators.moniker</T> */}Validators
                       </span>
                       {renderToggleIcon(this.state.monikerDir)}
                     </Col>
                     <Col
-                      className="voting-power"
+                      className="voting-power mb"
                       xs={12}
-                      md={2}
-                      // md={2}
-                      // lg={2}
+                      sm={6}
+                      md={3}
+                      lg={2}
                       onClick={e => this.toggleDir("expectedSlashing", e)}
                     >
-                      <i className="material-icons">{/*power*/}</i>
-                      <span className="d-inline-block d-md-none d-lg-inline-block">
+                      <i className="material-icons">power</i>
+                      <span className="d-inline-block d-lg-inline-block">
                         {/* <T>common.votingPower</T> */}Expected Slashing
                       </span>
                       {renderToggleIcon(this.state.expectedSlashingDir)}
                     </Col>
                     <Col
-                      className="voting-power"
-                      // md={2}
-                      // lg={2}
+                      className="voting-power mb"
                       xs={12}
-                      md={2}
+                      sm={6}
+                      md={3}
+                      lg={2}
                       onClick={e => this.toggleDir("votingPower", e)}
                     >
-                      <i className="material-icons">{/* power */}</i>
-                      <span className="d-inline-block d-md-none d-lg-inline-block">
+                      <i className="material-icons">power</i>
+                      <span className=" d-lg-inline-block">
                         <T>common.votingPower</T>
                       </span>
                       {renderToggleIcon(this.state.votingPowerDir)}
                     </Col>
                     <Col
-                      className="self-delegation"
-                      md={2}
+                      className="self-delegation mb"
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      lg={2}
                       onClick={e => this.toggleDir("selfDel", e)}
                     >
                       <i className="material-icons">equalizer</i>
-                      <span className="d-md-none d-lg-inline-block">
+                      <span className=" d-lg-inline-block">
                         {/* <T>validators.selfPercentage</T> */}Commulative
                         Share
                       </span>
@@ -238,29 +242,33 @@ export default class Validators extends Component {
                     </Col>
                     {!this.props.inactive ? (
                       <Col
-                        className="commission"
-                        md={2}
-                        // lg={2}
+                        className="commission mb"
+                        xs={12}
+                        sm={6}
+                        md={4}
+                        lg={2}
                         onClick={e => this.toggleDir("commission", e)}
                       >
                         <i className="material-icons">call_split</i>
-                        <span className="d-inline-block d-md-none d-lg-inline-block">
+                        <span className=" d-lg-inline-block">
                           <T>validators.commission</T>
                         </span>
                         {renderToggleIcon(this.state.commissionDir == 1)}
                       </Col>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                     {!this.props.inactive ? (
                       <Col
-                        className="uptime"
-                        md={2}
-                        // lg={1}
+                        className="uptime mb"
+                        xs={12}
+                        sm={6}
+                        md={4}
+                        lg={2}
                         onClick={e => this.toggleDir("uptime", e)}
                       >
                         <i className="material-icons">flash_on</i>
-                        <span className="d-inline-block d-md-none d-lg-inline-block">
+                        <span className=" d-lg-inline-block">
                           <T>validators.uptime</T> (
                           {Meteor.settings.public.uptimeWindow}
                           <i className="fas fa-cube"></i>)
@@ -268,8 +276,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.uptimeDir == 1)}
                       </Col>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                     {this.props.inactive ? (
                       <Col className="last-seen" md={2}>
                         <i className="far fa-clock"></i>{" "}
@@ -278,8 +286,8 @@ export default class Validators extends Component {
                         </span>
                       </Col>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                     {this.props.inactive ? (
                       <Col
                         className="bond-status d-none d-md-block"
@@ -293,8 +301,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.statusDir)}{" "}
                       </Col>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                     {this.props.inactive ? (
                       <Col
                         className="jail-status d-none d-md-block"
@@ -308,8 +316,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.jailedDir)}{" "}
                       </Col>
                     ) : (
-                      ""
-                    )}
+                        ""
+                      )}
                   </Row>
                 </Card>
                 {this.props.inactive ? (
@@ -328,17 +336,17 @@ export default class Validators extends Component {
                     searchValid={this.state.search}
                   />
                 ) : (
-                  <List
-                    monikerDir={this.state.monikerDir}
-                    expectedSlashingDir={this.state.expectedSlashingDir}
-                    votingPowerDir={this.state.votingPowerDir}
-                    uptimeDir={this.state.uptimeDir}
-                    commissionDir={this.state.commissionDir}
-                    selfDelDir={this.state.selfDelDir}
-                    priority={this.state.priority}
-                    searchValid={this.state.search}
-                  />
-                )}
+                    <List
+                      monikerDir={this.state.monikerDir}
+                      expectedSlashingDir={this.state.expectedSlashingDir}
+                      votingPowerDir={this.state.votingPowerDir}
+                      uptimeDir={this.state.uptimeDir}
+                      commissionDir={this.state.commissionDir}
+                      selfDelDir={this.state.selfDelDir}
+                      priority={this.state.priority}
+                      searchValid={this.state.search}
+                    />
+                  )}
               </Col>
             </Row>
           </Card>

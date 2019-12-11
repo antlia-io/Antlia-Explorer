@@ -102,7 +102,7 @@ export default class Transactions extends Component{
         <div>
         <div id="transactions">
             <Helmet>
-                <title>Latest Transactions on Color Explorer | Color</title>
+                <title>Latest Transactions on Antlia Explorer | Antlia</title>
                 <meta name="description" content="See what is happening Antlia" />
             </Helmet>
             {/* <Row>

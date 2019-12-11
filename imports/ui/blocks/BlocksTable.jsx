@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Row, Col } from 'reactstrap';
+import { Card, Container, Row, Col } from 'reactstrap';
 import HeaderRecord from './HeaderRecord.jsx';
 import Blocks from '/imports/ui/blocks/ListContainer.js'
 import { LoadMore } from '../components/LoadMore.jsx';
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from "react-sidebar";
+import Block from './BlockContainer.js'
 import ChainStates from '../components/ChainStatesContainer.js'
 import { Helmet } from 'react-helmet';
 import i18n from 'meteor/universe:i18n';
@@ -99,10 +100,12 @@ export default class BlocksTable extends Component {
                 <title>Latest Blocks on Color Explorer | Color</title>
                 <meta name="description" content="Latest blocks committed by validators on Color Explorer" />
             </Helmet>
-            <Row>
-                <Col md={12} xs={12}><h1 className="d-none d-lg-block"><T>blocks.latestBlocks</T></h1></Col>
-                {/* <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> */}
-            </Row>
+            <div className="topbar">
+                            <h1><T>blocks.block</T></h1>
+                            <div className="chainstate">
+                                <ChainStates />
+                            </div>
+                        </div>
             <Switch>
                 <Route path="/blocks/:blockId" render={(props)=> <Sidebar 
                     sidebar={<Block {...props} />}
@@ -119,18 +122,20 @@ export default class BlocksTable extends Component {
                 >
                 </Sidebar>} />
             </Switch>
+            <Card>
             <Container fluid id="block-table">
                 <HeaderRecord />
                 <Blocks limit={this.state.limit} />
             </Container>
             <LoadMore show={this.state.loadmore} />
+            </Card>
             </div>
             <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="blocks">
                         <NavItem title="Explorer">
                             <NavIcon>
-                            <i className="fa fa-fw fa-angle-right" />
+                            <i className="fa fa-fw fa-tv" />
                             </NavIcon>
                             <NavText>
                             Explorer

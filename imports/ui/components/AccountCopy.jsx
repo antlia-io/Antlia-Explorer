@@ -24,6 +24,6 @@ export default class AccountCopy extends Component{
     }
 
     render(){
-        return <span className="text-nowrap" ><Account address={this.props.address} copy/> <i className="material-icons copy-button" data-address={this.props.address} onClick={this.handleCopy}>file_copy</i></span>
+        return <div className="text-nowrap" ><Account address={this.props.address} copy/><br/> <span className="copylink"><i className="material-icons copy-button" data-address={this.props.address} onClick={this.handleCopy}>file_copy</i><p>Copy link</p></span></div>
     }
 }

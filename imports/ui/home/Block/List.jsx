@@ -13,12 +13,12 @@ export default class Blocks extends Component {
         }
     }
 
-    componentDidUpdate(prevProps){
-        if (this.props.blocks != prevProps.blocks){
-            if (this.props.blocks.length > 0){
-                let blocks = this.props.blocks.map((block) => (<Block key={block.height} hash={block.hash} block={block}/>));
+    componentDidUpdate(prevProps) {
+        if (this.props.blocks != prevProps.blocks) {
+            if (this.props.blocks.length > 0) {
+                let blocks = this.props.blocks.map((block) => (<Block key={block.height} hash={block.hash} block={block} />));
                 this.setState(
-                    {blocks: blocks}
+                    { blocks: blocks }
                 )
             }
         }
@@ -28,15 +28,21 @@ export default class Blocks extends Component {
         if (this.props.loading) {
             return (
                 <Row>
-                    <Col><Spinner type="grow" color="primary" /></Col>
+                    <Col><Spinner type="grow" color="primary"/></Col>
                 </Row>
             )
         }
         else if (this.props.blocks.length > 0) {
             return this.state.blocks;
         }
-        else{
-            return <Row><Col><T>blocks.noBlock</T></Col></Row>
+        else {
+            return <div className="nodata">
+                <div>
+                    <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                    <h2>No Data</h2>
+                </div>
+            </div>
+                // <Row><Col><T>blocks.noBlock</T></Col></Row>
         }
     }
 }

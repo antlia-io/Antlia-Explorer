@@ -6,7 +6,7 @@ import Proposal from './ProposalContainer.js';
 import ChainStates from '../components/ChainStatesContainer.js'
 import { Helmet } from 'react-helmet';
 import i18n from 'meteor/universe:i18n';
-import SideNav, { NavItem, NavIcon, NavText} from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const T = i18n.createComponent();
@@ -21,8 +21,8 @@ const ProposalList = () => {
         </Row>
     </div>
 }
-export default class Proposals extends Component{
-    constructor(props){
+export default class Proposals extends Component {
+    constructor(props) {
         super(props);
     };
     state = {
@@ -41,33 +41,35 @@ export default class Proposals extends Component{
     render() {
         const { expanded, selected } = this.state;
         return (
-        <div>
-            <div id="proposals" style={{
-                            marginLeft: expanded ? 200 : 64,
-                            padding: '15px 20px 0 20px'
-                        }}>
-            <Helmet>
-                <title>Proposals on Color Explorer | Color</title>
-                <meta name="description" content="Color Explorer incorporates on-chain governance. Come to see how on-chain governance can be achieved on Color Explorer." />
-            </Helmet>
-            <Row>
-                <Col md={12} xs={12}><h1 className="d-none d-lg-block"><T>proposals.proposals</T></h1></Col>
-                {/* <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> */}
-            </Row>
-            <Switch>
-                <Route exact path="/proposals" component={ProposalList} />
-                <Route path="/proposals/:id" component={Proposal} />
-            </Switch>
-        </div>
-        <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
+            <div>
+                <div id="proposals" style={{
+                    marginLeft: expanded ? 200 : 64,
+                    padding: '15px 20px 0 20px'
+                }}>
+                    <Helmet>
+                        <title>Proposals on Antlia Explorer | Antlia</title>
+                        <meta name="description" content="Antlia Explorer incorporates on-chain governance. Come to see how on-chain governance can be achieved on Color Explorer." />
+                    </Helmet>
+                    <div className="topbar">
+                        <h1><T>proposals.proposals</T> List</h1>
+                        <div className="chainstate">
+                            <ChainStates />
+                        </div>
+                    </div>
+                    <Switch>
+                        <Route exact path="/proposals" component={ProposalList} />
+                        <Route path="/proposals/:id" component={Proposal} />
+                    </Switch>
+                </div>
+                <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="proposals">
                         <NavItem title="Explorer">
                             <NavIcon>
-                            <i className="fa fa-fw fa-angle-right" />
+                                <i className="fa fa-fw fa-angle-right" />
                             </NavIcon>
                             <NavText>
-                            Explorer
+                                Explorer
                         </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
@@ -121,7 +123,7 @@ export default class Proposals extends Component{
                     </SideNav.Nav>
                 </SideNav>
             </div>
-            )
+        )
     }
 
 }

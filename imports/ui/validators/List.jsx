@@ -6,6 +6,7 @@ import { Meteor } from "meteor/meteor";
 import numbro from "numbro";
 import Avatar from "../components/Avatar.jsx";
 
+
 //semi circle progress bar
 import SemiCircleProgressBar from "react-progressbar-semicircle";
 const ValidatorRow = props => {
@@ -20,10 +21,15 @@ const ValidatorRow = props => {
   return (
     <Card body>
       <Row className="validator-info">
-        <Col className="d-none d-md-block counter data" xs={12} md={1}>
-          <div className="validator-listindex"> {props.index + 1}</div>
+        <Col className="d-none d-md-block counter data mb" xs={12} sm={6} md={2} lg={1}>
+        <i className="fas fa-hashtag d-lg-none  d-md-none">
+                      </i>
+          <div className="validator-listindex mb"> {props.index + 1}</div>
         </Col>
-        <Col xs={12} md={1} className="data">
+        <Col xs={12} sm={6} md={4} lg={1} className="data mb">
+        <i className="material-icons d-lg-none  d-md-none">
+                        perm_contact_calendar
+                      </i>
           <Link to={"/validator/" + props.validator.operator_address}>
             <Avatar
               moniker={moniker}
@@ -35,11 +41,11 @@ const ValidatorRow = props => {
           </Link>
         </Col>
         <Col
-          className="voting-power data"
-          xs={{ size: 12, offset: 0 }}
-          //   md={{ size: 3, offset: 0 }}
-          //   lg={2}
-          md={2}
+          className="voting-power data mb"
+          xs={12}
+          sm={6}
+          md={3}
+          lg={2}
         >
           <i className="material-icons d-md-none">power</i>
           <SemiCircleProgressBar
@@ -54,17 +60,17 @@ const ValidatorRow = props => {
               : 0} */}
             {props.validator.voting_power
               ? numbro(props.validator.voting_power / props.totalPower).format(
-                  "0.00%"
-                )
+                "0.00%"
+              )
               : "0.00%"}
           </span>
         </Col>
         <Col
-          className="voting-power data"
-          xs={{ size: 12, offset: 0 }}
-          md={{ size: 2, offset: 0 }}
-          //   md={{ size: 3, offset: 0 }}
-          //   lg={2}
+          className="voting-power data mb"
+          xs={12}
+          sm={6}
+          md={3}
+          lg={2}
         >
           <i className="material-icons d-md-none">power</i>
           <SemiCircleProgressBar
@@ -80,16 +86,17 @@ const ValidatorRow = props => {
             <br />
             {props.validator.voting_power
               ? numbro(props.validator.voting_power / props.totalPower).format(
-                  "0.00%"
-                )
+                "0.00%"
+              )
               : "0.00%"}
           </span>
         </Col>
         <Col
-          className="self-delegation data"
-          xs={{ size: 12, offset: 0 }}
-          //   md={{ size: 2, offset: 0 }}
-          md={2}
+          className="self-delegation data mb"
+          xs={12}
+          sm={6}
+          md={4}
+          lg={2}
         >
           <i className="material-icons d-md-none">equalizer</i>
           <span>
@@ -100,10 +107,11 @@ const ValidatorRow = props => {
         </Col>
         {!props.inactive ? (
           <Col
-            className="commission data"
-            // xs={{ size: 4 }}
-            // md={{ size: 1, offset: 0 }}
-            // lg={2}
+            className="commission data mb"
+            xs={12}
+            sm={6}
+            md={4}
+            lg={2}
           >
             <i className="material-icons d-md-none">call_split</i>
             <span>
@@ -111,10 +119,10 @@ const ValidatorRow = props => {
             </span>
           </Col>
         ) : (
-          ""
-        )}
+            ""
+          )}
         {!props.inactive ? (
-          <Col className="uptime data" xs={{ size: 12, order: "last" }} md={2}>
+          <Col className="uptime data mb" xs={{ size: 12, order: "last" }} md={2}>
             {/* <Progress animated value={props.validator.uptime}> */}
             <i className="material-icons d-md-none">flash_on</i>
             <span className="d-md-inline">
@@ -123,8 +131,8 @@ const ValidatorRow = props => {
             {/* </Progress> */}
           </Col>
         ) : (
-          ""
-        )}
+            ""
+          )}
         {/* <span className="d-md-none">&nbsp;</span> */}
         {props.inactive ? (
           <Col
@@ -134,13 +142,13 @@ const ValidatorRow = props => {
           >
             {props.validator.lastSeen
               ? moment
-                  .utc(props.validator.lastSeen)
-                  .format("D MMM YYYY, h:mm:ssa")
+                .utc(props.validator.lastSeen)
+                .format("D MMM YYYY, h:mm:ssa")
               : ""}
           </Col>
         ) : (
-          ""
-        )}
+            ""
+          )}
         {props.inactive ? (
           <Col className="bond-status data" xs={2} md={1}>
             {props.validator.status == 0 ? (
@@ -150,16 +158,16 @@ const ValidatorRow = props => {
                 </span>
               </Badge>
             ) : (
-              <Badge color="warning">
-                <span>
-                  U<span className="d-none d-md-inline">nbonding</span>
-                </span>
-              </Badge>
-            )}
+                <Badge color="warning">
+                  <span>
+                    U<span className="d-none d-md-inline">nbonding</span>
+                  </span>
+                </Badge>
+              )}
           </Col>
         ) : (
-          ""
-        )}
+            ""
+          )}
         {props.inactive ? (
           <Col className="jail-status data" xs={2} md={1}>
             {props.validator.jailed ? (
@@ -169,12 +177,12 @@ const ValidatorRow = props => {
                 </span>
               </Badge>
             ) : (
-              ""
-            )}
+                ""
+              )}
           </Col>
         ) : (
-          ""
-        )}
+            ""
+          )}
       </Row>
     </Card>
   );

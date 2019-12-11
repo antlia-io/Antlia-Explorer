@@ -1,12 +1,12 @@
-Color is always free and open. We welcome everyone to contribute to Color as in contributing to the Color Network.
+Antlia is always free and open. We welcome everyone to contribute to Antlia as in contributing to the Antlia Network.
 
 You can contribute in the following ways:
 
 ## Submit issues
-If you find any errors, bugs, questions, feature requests when you are using Color (on [Color](http://18.223.52.186:3000/) please do not hestitate to submit any [issues](https://github.com/). Any bug report and comments are welcome. We are always open to learn more about how this application can help Color users.
+If you find any errors, bugs, questions, feature requests when you are using Antlia (on [Antlia](http://18.223.52.186:3000/) please do not hestitate to submit any [issues](https://github.com/). Any bug report and comments are welcome. We are always open to learn more about how this application can help Antlia users.
 
 ## Create Pull Request
-If you are generous enough and can resolve some issues Color is experiencing, please build everything in your own branch and create a Pull Request to us. We will review and merge if necessary. 
+If you are generous enough and can resolve some issues Antlia is experiencing, please build everything in your own branch and create a Pull Request to us. We will review and merge if necessary. 
 
 If it's just some simple errors like typo or missing a variable, etc, please create a Pull Request directly. If it's a feature change or some severe issues, please create an issue before creating a Pull Request.
 

@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import ChainStatus from './ChainStatus/ChainStatusContainer.js'
-import Consensus from './ConsensusContainer.js';
+// import Consensus from './ConsensusContainer.js';
 // import TopValidators from './TopValidatorsContainer.js';
-import RandomStatus from './RandomStatus/RandomStatus'
+// import RandomStatus from './RandomStatus/RandomStatus'
 import Blocks from './Block/BlocksTable.jsx'
 import Transaction from './Transactions/TransactionsList.jsx';
 import Test from './Transactions/TestContainer.js';
 // import Transactions from './Transactions'
 // import Chart from './ChartContainer.js';
-// import ChainStates from '../components/ChainStatesContainer.js'
+import ChainStates from '../components/ChainStatesContainer.js'
 import { Helmet } from "react-helmet";
 import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import {IndividualTransaction} from './Transactions/IndividualTransaction.jsx'
+import { IndividualTransaction } from './Transactions/IndividualTransaction.jsx'
 // import MainSideMenu from '../components/MainSideMenu.js'
-// import PieChart from './PieChart.js';
+import PieChart from './PieChart.js';
 
 export default class Home extends Component {
     constructor(props) {
@@ -69,33 +69,31 @@ export default class Home extends Component {
                         <title>Antlia | Explorer</title>
                         <meta name="description" content="Antlia is a decentralized network of independent parallel blockchains, each powered by BFT consensus algorithms like Prism consensus." />
                     </Helmet>
-                    <Row>
-                        <Col md={12} xs={12} className="topbar">
-                            <h1 className="d-none d-lg-block">{Meteor.settings.public.chainName}</h1>
-                            <div className="validatordetails">
-                                <Consensus />
-                            </div>
-                        </Col>
-                        {/* <Col md={9} xs={12} className="text-md-right"><ChainStates /></Col> */}
-                    </Row>
+                    <div className="topbar">
+                        <h1>{Meteor.settings.public.chainName}</h1>
+                        <div className="chainstate">
+                            {/* <Consensus /> */}
+                            <ChainStates />
+                        </div>
+                    </div>
                     {(this.state.chainStopped) ? <Card body inverse color="danger">
                         <span><T _purify={false} time={moment(this.props.consensus.latestBlockTime).fromNow(true)}>chainStatus.stopWarning</T></span>
                     </Card> : ''}
                     <Row>
-                        <Col lg={6} md={12}>
-                            <ChainStatus/>
+                        <Col lg={12} md={12}>
+                            <ChainStatus />
                         </Col>
-                        <Col lg={6} md={12}>
+                        {/* <Col lg={6} md={12}>
                             <RandomStatus />
 
-                        </Col>
+                        </Col> */}
                     </Row>
                     <Row>
                         <Col lg={5} md={12}>
-                            <Blocks/>
+                            <Blocks />
                         </Col>
                         <Col lg={7} md={12}>
-                        <Transaction/>
+                            <Transaction />
                         </Col>
                     </Row>
                     <Row>
@@ -120,10 +118,10 @@ export default class Home extends Component {
                     <SideNav.Nav selected={selected} defaultSelected="dashboard">
                         <NavItem title="Explorer">
                             <NavIcon>
-                            <i className="fa fa-fw fa-angle-right" />
+                                <i className="fa fa-fw fa-angle-right" />
                             </NavIcon>
                             <NavText>
-                            Explorer
+                                Explorer
                         </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">

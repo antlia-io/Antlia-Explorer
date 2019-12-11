@@ -24,8 +24,10 @@ export default class TwentyEighty extends Component{
                 data:{
                     labels:
                         [
-                            "Top 20% ("+this.props.stats.numTopTwenty+") validators",
-                            "Rest 80% ("+this.props.stats.numBottomEighty+") validators"
+                            "Top 10% ("+this.props.stats.numTopTwenty+") validators",
+                            "Rest 90% ("+this.props.stats.numBottomEighty+") validators",
+
+
                         ]
                     ,
                     datasets: [
@@ -35,12 +37,12 @@ export default class TwentyEighty extends Component{
                                 bottomPercent
                             ],
                             backgroundColor: [
-                                '#b43db7',
-                                '#59ccc8'
+                                '#004bff',
+                                '#ddd'
                             ],
                             hoverBackgroundColor: [
-                                '#b43db7',
-                                '#59ccc8'
+                                '#004bff',
+                                '#ddd'
                             ]
                         }
                     ]
@@ -73,9 +75,10 @@ export default class TwentyEighty extends Component{
             if (this.props.statsExist && this.props.stats){
                 return (                    
                     <Card>
-                        <div className="card-header backgroundcolor"><T>votingPower.pareto</T></div>
+                        {/* <div className="card-header backgroundcolor"><T>votingPower.pareto</T></div> */}
+                        <div className="header"><h4><T>votingPower.pareto</T></h4></div>
                         <CardBody>
-                            <Doughnut data={this.state.data} options={this.state.options} />
+                            <Doughnut data={this.state.data} />
                         </CardBody>
                     </Card>
                 );   

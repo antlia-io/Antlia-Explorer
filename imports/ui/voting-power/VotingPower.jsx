@@ -40,7 +40,7 @@ export default class VotingPower extends Component{
                 labels.push(this.props.stats[v].description?this.props.stats[v].description.moniker:'');
                 data.push(this.props.stats[v].voting_power);
                 let alpha = (this.props.stats.length+1-v)/this.props.stats.length*0.8+0.2;
-                backgroundColors.push('rgba(89, 204, 200,'+alpha+')');
+                // backgroundColors.push('#004bff'+alpha+')');
             }
             this.setState({
                 data:{
@@ -49,7 +49,10 @@ export default class VotingPower extends Component{
                         {
                             label: "Voting Power",
                             data: data,
-                            backgroundColor: backgroundColors
+                            backgroundColor: [
+                                '#004bff',
+                                '#ddd'
+                            ],
                         }
                     ]
                 },
@@ -88,7 +91,8 @@ export default class VotingPower extends Component{
             if (this.props.statsExist && this.props.stats){
                 return (                    
                     <Card>
-                        <div className="card-header backgroundcolor"><T>common.votingPower</T></div>
+                        {/* <div className="card-header backgroundcolor"><T>common.votingPower</T></div> */}
+                        <div className="header"><h4><T>common.votingPower</T></h4></div>
                         <CardBody id="voting-power-chart">
                             <HorizontalBar data={this.state.data} options={this.state.options} />
                         </CardBody>

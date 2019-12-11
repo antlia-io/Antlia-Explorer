@@ -15,9 +15,9 @@ import TimeAgo from "../../components/TimeAgo.jsx";
 export const TransactionRow = props => {
   let tx = props.tx;
   let txTags = props.tx.tags;
-  console.log(tx.tx.value.msg[0].type);
-  // let from = txTags[1].value;
-  // let to = txTags[2].value;
+  // console.log(tx.tx.value.msg[0].type);
+  let from = txTags[1].value;
+  let to = txTags[2].value;
   //    console.log(from)
   //    console.log(to)
   // console.log(tx);
@@ -65,7 +65,7 @@ export const TransactionRow = props => {
           <img src="/img/user.png" />
         </div>
         <div className="trans-details">
-          <div className="tc">
+          <div className="tc text-truncate">
             {" "}
             <Link to={"/transactions/" + tx.txhash} className="txlink">
               {tx.txhash}
@@ -75,14 +75,14 @@ export const TransactionRow = props => {
           <div className="from-to">
             {/* <TransactionActivities/> */}
             <p className="from">
-              {/* From: <Link to="#">{from}</Link>... */}
+              From: <Link to="#">{from}</Link>...
             </p>
             <p>
               {tx.tx.value.msg[0].type === "cosmos-sdk/MsgSubmitProposal" ? (
                 <React.Fragment></React.Fragment>
               ) : (
                 <React.Fragment>
-                  {/* To: <Link to="#">{to}</Link>... */}
+                  To: <Link to="#">{to}</Link>...
                 </React.Fragment>
               )}
             </p>

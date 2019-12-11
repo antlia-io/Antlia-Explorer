@@ -146,9 +146,9 @@ export default class Validator extends Component {
         else {
             if (this.props.validatorExist) {
                 let moniker = (this.props.validator.description && this.props.validator.description.moniker) ? this.props.validator.description.moniker : this.props.validator.address;
-                let identity = (this.props.validator.description && this.props.validator.description.identity) ? this.props.validator.description.identity : "";
+                let identity = (this.props.validator.description && this.props.validator.description.identity) ? this.props.validator.description.identity : "No data";
                 let website = (this.props.validator.description && this.props.validator.description.website) ? this.props.validator.description.website : undefined;
-                let details = (this.props.validator.description && this.props.validator.description.details) ? this.props.validator.description.details : "";
+                let details = (this.props.validator.description && this.props.validator.description.details) ? this.props.validator.description.details : "No data";
 
                 return (<div>
                     <Row>
@@ -168,17 +168,16 @@ export default class Validator extends Component {
                                                 <Avatar moniker={moniker} identity={identity} address={this.props.validator.address} list={false} />
                                             </div>
                                             <div className="validator-link">
-                                                <div className="moniker text-primary">{website ? <a href={addhttp(this.props.validator.description.website)} target="_blank">{moniker} <i className="fas fa-link"></i></a> : moniker}</div>
+                                                {/* <div className="moniker text-primary">{website ? <a href={addhttp(this.props.validator.description.website)} target="_blank">{moniker} <i className="fas fa-link"></i></a> : moniker}</div> */}
                                                 <div className="address" data-delegator-address={this.props.validator.delegator_address}>
                                                     <p>Address</p>
                                                     <Link to={"/account/" + this.props.validator.delegator_address}>{this.props.validator.delegator_address}</Link>
                                                 </div>
                                                 <StatusBadge bondingStatus={this.props.validator.status} jailed={this.props.validator.jailed} />
                                             </div>
-
-                                            <div className="identity"><KeybaseCheck identity={identity} showKey /></div>
-                                            <div className="details"><Markdown markup={details} /></div>
-                                            <div className="website"></div>
+                                            {/* <div className="identity"><KeybaseCheck identity={identity} showKey /></div> */}
+                                            {/* <div className="details"></div>
+                                            <div className="website"></div> */}
                                             {/* <div className="card-header backgroundcolor"><T>validators.validatorInfo</T></div> */}
                                         </div>
                                     </Col>
@@ -186,33 +185,31 @@ export default class Validator extends Component {
                                         <CardBody>
                                             <Row>
                                                 <Col lg={3} md={12} className="label">Website</Col>
-                                                <Col lg={9} md={12} className="value address"><Link to="#">stake.fish</Link></Col>
+                                                <Col lg={9} md={12} className="value address">{website ? <a href={addhttp(this.props.validator.description.website)} target="_blank">{moniker} <i className="fas fa-link"></i></a> : moniker}</Col>
                                                 <Col lg={3} md={12} className="label"><T>validators.commissionRate</T></Col>
                                                 <Col lg={9} md={12} className="value">{this.props.validator.commission ? numbro(this.props.validator.commission.rate * 100).format('0.00') + "%" : ''} <small className="text-secondary">({this.state.updateTime})</small></Col>
                                                 {/* <Col lg={3} md={12} className="label"><T>validators.maxRate</T></Col>
-                                            <Col lg={9} md={12} className="value">{this.props.validator.commission ? numbro(this.props.validator.commission.max_rate * 100).format('0.00') + "%" : ''}</Col>
-                                            <Col lg={3} md={12} className="label"><T>validators.maxChangeRate</T></Col>
-                                            <Col lg={9} md={12} className="value">{this.props.validator.commission ? numbro(this.props.validator.commission.max_change_rate * 100).format('0.00') + "%" : ''}</Col> */}
+                                                <Col lg={9} md={12} className="value">{this.props.validator.commission ? numbro(this.props.validator.commission.max_rate * 100).format('0.00') + "%" : ''}</Col>
+                                                <Col lg={3} md={12} className="label"><T>validators.maxChangeRate</T></Col>
+                                                <Col lg={9} md={12} className="value">{this.props.validator.commission ? numbro(this.props.validator.commission.max_change_rate * 100).format('0.00') + "%" : ''}</Col> */}
                                                 <Col lg={3} md={12} className="label">Uptime</Col>
-                                                <Col lg={9} md={12} className="value">100%</Col>
+                                                <Col lg={9} md={12} className="value">{numbro(this.props.validator.uptime).format('0.00')}%</Col>
                                                 <Col lg={3} md={12} className="label">Voting Power</Col>
-                                                <Col lg={9} md={12} className="value">6.83% (12,375,138.866197ATOM)</Col>
+                                                <Col lg={9} md={12} className="value">6{this.props.validator.self_delegation ? <span>{numbro(this.props.validator.self_delegation).format("0,0.00%")} <small className="text-secondary">(~{numbro(this.props.validator.voting_power * this.props.validator.self_delegation).format({ thousandSeparated: true, mantissa: 0 })} {Meteor.settings.public.stakingDenom})</small></span> : 'N/A'}</Col>
                                                 <Col lg={3} md={12} className="label">Bonded Height</Col>
                                                 <Col lg={9} md={12} className="value">1</Col>
                                                 <Col lg={3} md={12} className="label">Details</Col>
-                                                <Col lg={9} md={12} className="value">Winner of the Game of Stakes. Brought to you by stake.fish and bitfish.</Col>
+                                                <Col lg={9} md={12} className="value"><Markdown markup={details} /></Col>
                                                 <Col lg={3} md={12} className="label"><T>validators.operatorAddress</T></Col>
                                                 <Col lg={9} md={12} className="value address" data-operator-address={this.props.validator.operator_address}>{this.props.validator.operator_address}</Col>
-
                                             </Row>
                                         </CardBody>
                                     </Col>
                                 </Row>
-
-
                             </Card>
                         </Col>
                     </Row>
+                    {/* Component Desktop View */}
                     <div className="deskpart">
                         <Row>
                             <Col lg={4} md={6} sm={12}>
@@ -295,10 +292,12 @@ export default class Validator extends Component {
                                         <Route path="/(validator|validators)/:address/transactions" render={() => <ValidatorTransactions validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100} />} />
                                     </Switch>
                                 </Card>
-                                {/* <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link> */}
+                                
                             </Col>
                         </Row>
+                        <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link>
                     </div>
+                    {/* Component Responsive View */}
                     <div className="respart">
                         <Row>
                             <Col lg={6} md={6} sm={12}>
@@ -383,19 +382,28 @@ export default class Validator extends Component {
 
                                             </div>
                                         } />
-                                        <Route path="/(validator|validators)/:address/delegations" render={() => <ValidatorDelegations address={this.props.validator.operator_address} tokens={this.props.validator.tokens} shares={this.props.validator.delegator_shares} />} />
-                                        <Route path="/(validator|validators)/:address/transactions" render={() => <ValidatorTransactions validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100} />} />
+                                        <Route path="/(validator|validators)/:address/delegations" render={() =>
+                                            <ValidatorDelegations address={this.props.validator.operator_address} tokens={this.props.validator.tokens} shares={this.props.validator.delegator_shares} />}
+                                        />
+                                        <Route path="/(validator|validators)/:address/transactions" render={() =>
+                                            <ValidatorTransactions validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100} />}
+                                        />
                                     </Switch>
                                 </Card>
-                                {/* <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link> */}
+                              
                             </Col>
-                        </Row></div>
+                        </Row>
+                        <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link>
+                        </div>
                 </div>
                 )
 
             }
             else {
-                return <div><T>validators.validatorNotExists</T></div>
+                return <div>
+                    <T>validators.validatorNotExists</T>
+                    <h1>test</h1>
+                </div>
             }
         }
     }
