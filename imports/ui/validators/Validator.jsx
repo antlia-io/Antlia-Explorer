@@ -195,7 +195,7 @@ export default class Validator extends Component {
                                                 <Col lg={3} md={12} className="label">Uptime</Col>
                                                 <Col lg={9} md={12} className="value">{numbro(this.props.validator.uptime).format('0.00')}%</Col>
                                                 <Col lg={3} md={12} className="label">Voting Power</Col>
-                                                <Col lg={9} md={12} className="value">6{this.props.validator.self_delegation ? <span>{numbro(this.props.validator.self_delegation).format("0,0.00%")} <small className="text-secondary">(~{numbro(this.props.validator.voting_power * this.props.validator.self_delegation).format({ thousandSeparated: true, mantissa: 0 })} {Meteor.settings.public.stakingDenom})</small></span> : 'N/A'}</Col>
+                                                <Col lg={9} md={12} className="value">{this.props.validator.self_delegation ? <span>{numbro(this.props.validator.self_delegation).format("0,0.00%")} <small className="text-secondary">(~{numbro(this.props.validator.voting_power * this.props.validator.self_delegation).format({ thousandSeparated: true, mantissa: 0 })} {Meteor.settings.public.stakingDenom})</small></span> : 'N/A'}</Col>
                                                 <Col lg={3} md={12} className="label">Bonded Height</Col>
                                                 <Col lg={9} md={12} className="value">1</Col>
                                                 <Col lg={3} md={12} className="label">Details</Col>
@@ -402,7 +402,6 @@ export default class Validator extends Component {
             else {
                 return <div>
                     <T>validators.validatorNotExists</T>
-                    <h1>test</h1>
                 </div>
             }
         }

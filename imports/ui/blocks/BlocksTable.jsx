@@ -10,12 +10,12 @@ import Block from './BlockContainer.js'
 import ChainStates from '../components/ChainStatesContainer.js'
 import { Helmet } from 'react-helmet';
 import i18n from 'meteor/universe:i18n';
-import SideNav, { NavItem, NavIcon, NavText} from '@trendmicro/react-sidenav';
+import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
 const T = i18n.createComponent();
 export default class BlocksTable extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             limit: Meteor.settings.public.initialPageSize,
@@ -32,36 +32,36 @@ export default class BlocksTable extends Component {
     isBottom(el) {
         return el.getBoundingClientRect().bottom <= window.innerHeight;
     }
-      
+
     componentDidMount() {
         document.addEventListener('scroll', this.trackScrolling);
     }
-    
+
     componentWillUnmount() {
         document.removeEventListener('scroll', this.trackScrolling);
     }
-    
+
     trackScrolling = () => {
         const wrappedElement = document.getElementById('block-table');
         if (this.isBottom(wrappedElement)) {
             // console.log('header bottom reached');
             document.removeEventListener('scroll', this.trackScrolling);
-            this.setState({loadmore:true});
+            this.setState({ loadmore: true });
             this.setState({
-                limit: this.state.limit+10
+                limit: this.state.limit + 10
             }, (err, result) => {
-                if (!err){
+                if (!err) {
                     document.addEventListener('scroll', this.trackScrolling);
                 }
-                if (result){
-                    this.setState({loadmore:false});
+                if (result) {
+                    this.setState({ loadmore: false });
                 }
             })
         }
     };
 
-    componentDidUpdate(prevProps){
-        if (this.props.location.pathname != prevProps.location.pathname){
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname != prevProps.location.pathname) {
             this.setState({
                 sidebarOpen: (this.props.location.pathname.split("/blocks/").length == 2)
             })
@@ -70,14 +70,14 @@ export default class BlocksTable extends Component {
 
     onSetSidebarOpen(open) {
         // console.log(open);
-        this.setState({ sidebarOpen: open }, (error, result) =>{
+        this.setState({ sidebarOpen: open }, (error, result) => {
             let timer = Meteor.setTimeout(() => {
-                if (!open){
+                if (!open) {
                     this.props.history.push('/blocks');
                 }
                 Meteor.clearTimeout(timer);
-            },500)
-        }); 
+            }, 500)
+        });
     };
 
     onSelect = (selected) => {
@@ -88,57 +88,59 @@ export default class BlocksTable extends Component {
         this.setState({ expanded: expanded });
     };
 
-    render(){
+    render() {
         const { expanded, selected } = this.state;
         return (
-        <div>
-            <div id="blockstable" style={{
-                        marginLeft: expanded ? 200 : 64,
-                        padding: '15px 20px 0 20px'
-                    }}>
-            <Helmet>
-                <title>Latest Blocks on Color Explorer | Color</title>
-                <meta name="description" content="Latest blocks committed by validators on Color Explorer" />
-            </Helmet>
-            <div className="topbar">
-                            <h1><T>blocks.block</T></h1>
-                            <div className="chainstate">
-                                <ChainStates />
-                            </div>
+            <div>
+                <div id="blockstable" style={{
+                    marginLeft: expanded ? 200 : 64,
+                    padding: '15px 20px 0 20px'
+                }}>
+                    <Helmet>
+                        <title>Latest Blocks on Color Explorer | Color</title>
+                        <meta name="description" content="Latest blocks committed by validators on Color Explorer" />
+                    </Helmet>
+                    <div className="topbar">
+                        <h1><T>blocks.block</T></h1>
+                        <div className="chainstate">
+                            <ChainStates />
                         </div>
-            <Switch>
-                <Route path="/blocks/:blockId" render={(props)=> <Sidebar 
-                    sidebar={<Block {...props} />}
-                    open={this.state.sidebarOpen}
-                    onSetOpen={this.onSetSidebarOpen}
-                    styles={{ sidebar: { 
-                        background: "white", 
-                        position: "fixed",
-                        width: '85%',
-                        zIndex: 4
-                    }, overlay:{
-                        zIndex: 3
-                    } }}
-                >
-                </Sidebar>} />
-            </Switch>
-            <Card>
-            <Container fluid id="block-table">
-                <HeaderRecord />
-                <Blocks limit={this.state.limit} />
-            </Container>
-            <LoadMore show={this.state.loadmore} />
-            </Card>
-            </div>
-            <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
+                    </div>
+                    <Switch>
+                        <Route path="/blocks/:blockId" render={(props) => <Sidebar
+                            sidebar={<Block {...props} />}
+                            open={this.state.sidebarOpen}
+                            onSetOpen={this.onSetSidebarOpen}
+                            styles={{
+                                sidebar: {
+                                    background: "white",
+                                    position: "fixed",
+                                    width: '85%',
+                                    zIndex: 4
+                                }, overlay: {
+                                    zIndex: 3
+                                }
+                            }}
+                        >
+                        </Sidebar>} />
+                    </Switch>
+                    <Card>
+                        <Container fluid id="block-table">
+                            <HeaderRecord />
+                            <Blocks limit={this.state.limit} />
+                        </Container>
+                        <LoadMore show={this.state.loadmore} />
+                    </Card>
+                </div>
+                <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="blocks">
                         <NavItem title="Explorer">
-                            <NavIcon>
-                            <i className="fa fa-fw fa-tv" />
+                            <NavIcon className="disabled">
+                                <i className="fa fa-fw fa-th" />
                             </NavIcon>
-                            <NavText>
-                            Explorer
+                            <NavText className="disabled">
+                                Explorer
                         </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
@@ -192,6 +194,6 @@ export default class BlocksTable extends Component {
                     </SideNav.Nav>
                 </SideNav>
             </div>
-            )
+        )
     }
 }

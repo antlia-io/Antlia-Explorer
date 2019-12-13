@@ -109,11 +109,11 @@ export default class Transactions extends Component {
                         <meta name="description" content="See what is happening Antlia" />
                     </Helmet>
                     <div className="topbar">
-                            <h1><T>transactions.transactions</T></h1>
-                            <div className="chainstate">
-                                <ChainStates />
-                            </div>
+                        <h1><T>transactions.transactions</T></h1>
+                        <div className="chainstate">
+                            <ChainStates />
                         </div>
+                    </div>
                     <Switch>
                         <Route path="/transactions/:txId" render={(props) => <Sidebar
                             sidebar={<Transaction {...props} />}
@@ -140,11 +140,11 @@ export default class Transactions extends Component {
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="transactions">
                         <NavItem title="Explorer">
-                            <NavIcon>
-                            <i className="fa fa-fw fa-angle-right" />
+                            <NavIcon className="disabled">
+                                <i className="fa fa-fw fa-th" />
                             </NavIcon>
-                            <NavText>
-                            Explorer
+                            <NavText className="disabled">
+                                Explorer
                         </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">

@@ -128,7 +128,7 @@ export default class TransactionActivities extends Component {
                     }
                 })}</span> <T>activities.to</T> <Link to={"/proposals/" + msg.value.proposal_id}><T>proposals.proposal</T> {msg.value.proposal_id}</Link></p>
             case "cosmos-sdk/MsgVote":
-                return <p><Account address={msg.value.voter} /> {(this.props.invalid) ? <T>activities.failedTo</T> : ''}<MsgType type={msg.type} />  <Link to={"/proposals/" + msg.value.proposal_id}><T>activities.proposal</T> {msg.value.proposal_id}</Link> <T>activities.withA</T> <p className="text-info">{msg.value.option}</p></p>
+                return <p><Account address={msg.value.voter} /> {(this.props.invalid) ? <T>activities.failedTo</T> : ''}<MsgType type={msg.type} />  <Link to={"/proposals/" + msg.value.proposal_id}><T>proposals.proposal</T> {msg.value.proposal_id}</Link> <T>activities.withA</T> <p className="text-info">{msg.value.option}</p></p>
 
             // distribution
             case "cosmos-sdk/MsgWithdrawValidatorCommission":

@@ -171,7 +171,7 @@ export default class Validators extends Component {
                 <Card body>
                   <Row className="text-nowrap validator-tablehead-border">
                     <Col
-                      className="counter data mb"
+                      className="field counter"
                       xs={12}
                       sm={6}
                       md={2}
@@ -182,23 +182,23 @@ export default class Validators extends Component {
                       <p className="text-justify">List</p>
                     </Col>
                     <Col
-                      className="moniker mb"
+                      className="moniker field"
                       xs={12}
                       sm={6}
                       md={4}
-                      lg={1}
+                      lg={2}
                       onClick={e => this.toggleDir("moniker", e)}
                     >
                       <i className="material-icons">
                         perm_contact_calendar
                       </i>
-                      <span className=" d-lg-inline-block ">
+                      <span className="hlabel">
                         {/* <T>validators.moniker</T> */}Validators
                       </span>
                       {renderToggleIcon(this.state.monikerDir)}
                     </Col>
                     <Col
-                      className="voting-power mb"
+                      className="field"
                       xs={12}
                       sm={6}
                       md={3}
@@ -206,13 +206,13 @@ export default class Validators extends Component {
                       onClick={e => this.toggleDir("expectedSlashing", e)}
                     >
                       <i className="material-icons">power</i>
-                      <span className="d-inline-block d-lg-inline-block">
+                      <span className="hlabel">
                         {/* <T>common.votingPower</T> */}Expected Slashing
                       </span>
                       {renderToggleIcon(this.state.expectedSlashingDir)}
                     </Col>
                     <Col
-                      className="voting-power mb"
+                      className="field"
                       xs={12}
                       sm={6}
                       md={3}
@@ -220,29 +220,29 @@ export default class Validators extends Component {
                       onClick={e => this.toggleDir("votingPower", e)}
                     >
                       <i className="material-icons">power</i>
-                      <span className=" d-lg-inline-block">
+                      <span className="hlabel">
                         <T>common.votingPower</T>
                       </span>
                       {renderToggleIcon(this.state.votingPowerDir)}
                     </Col>
                     <Col
-                      className="self-delegation mb"
+                      className="field"
                       xs={12}
                       sm={6}
-                      md={4}
-                      lg={2}
+                      md={3}
+                      lg={1}
                       onClick={e => this.toggleDir("selfDel", e)}
                     >
                       <i className="material-icons">equalizer</i>
-                      <span className=" d-lg-inline-block">
-                        {/* <T>validators.selfPercentage</T> */}Commulative
-                        Share
+                      <span className="hlabel">
+                        {/* <T>validators.selfPercentage</T> */}
+                        Share %
                       </span>
                       {renderToggleIcon(this.state.selfDelDir == 1)}{" "}
                     </Col>
                     {!this.props.inactive ? (
                       <Col
-                        className="commission mb"
+                        className="field"
                         xs={12}
                         sm={6}
                         md={4}
@@ -250,7 +250,7 @@ export default class Validators extends Component {
                         onClick={e => this.toggleDir("commission", e)}
                       >
                         <i className="material-icons">call_split</i>
-                        <span className=" d-lg-inline-block">
+                        <span className="hlabel">
                           <T>validators.commission</T>
                         </span>
                         {renderToggleIcon(this.state.commissionDir == 1)}
@@ -260,7 +260,7 @@ export default class Validators extends Component {
                       )}
                     {!this.props.inactive ? (
                       <Col
-                        className="uptime mb"
+                        className="field"
                         xs={12}
                         sm={6}
                         md={4}
@@ -268,7 +268,7 @@ export default class Validators extends Component {
                         onClick={e => this.toggleDir("uptime", e)}
                       >
                         <i className="material-icons">flash_on</i>
-                        <span className=" d-lg-inline-block">
+                        <span className="hlabel">
                           <T>validators.uptime</T> (
                           {Meteor.settings.public.uptimeWindow}
                           <i className="fas fa-cube"></i>)
@@ -279,9 +279,13 @@ export default class Validators extends Component {
                         ""
                       )}
                     {this.props.inactive ? (
-                      <Col className="last-seen" md={2}>
+                      <Col className="last-seen field" 
+                      xs={12}
+                      sm={6}
+                      md={3}
+                      lg={2}>
                         <i className="far fa-clock"></i>{" "}
-                        <span className="d-md-none d-lg-inline-block">
+                        <span className="hlabel">
                           <T>validators.lastSeen</T> (UTC)
                         </span>
                       </Col>
@@ -290,12 +294,15 @@ export default class Validators extends Component {
                       )}
                     {this.props.inactive ? (
                       <Col
-                        className="bond-status d-none d-md-block"
-                        md={1}
+                        className="bond-status field"
+                        xs={12}
+                        sm={6}
+                        md={3}
+                        lg={1}
                         onClick={e => this.toggleDir("status", e)}
                       >
                         <i className="material-icons">toggle_on</i>{" "}
-                        <span className="d-md-none d-lg-inline-block">
+                        <span className="hlabel">
                           <T>validators.status</T>
                         </span>{" "}
                         {renderToggleIcon(this.state.statusDir)}{" "}
@@ -305,12 +312,15 @@ export default class Validators extends Component {
                       )}
                     {this.props.inactive ? (
                       <Col
-                        className="jail-status d-none d-md-block"
-                        md={1}
+                        className="jail-status field"
+                        xs={12}
+                        sm={6}
+                        md={3}
+                        lg={1}
                         onClick={e => this.toggleDir("jailed", e)}
                       >
                         <i className="material-icons">lock</i>{" "}
-                        <span className="d-md-none d-lg-inline-block">
+                        <span className="hlabel">
                           <T>validators.jailed</T>
                         </span>{" "}
                         {renderToggleIcon(this.state.jailedDir)}{" "}
@@ -359,12 +369,14 @@ export default class Validators extends Component {
         >
           <SideNav.Toggle />
           <SideNav.Nav selected={selected} defaultSelected="validators">
-            <NavItem title="Explorer">
-              <NavIcon>
-                <i className="fa fa-fw fa-angle-right" />
-              </NavIcon>
-              <NavText>Explorer</NavText>
-            </NavItem>
+          <NavItem title="Explorer">
+                            <NavIcon className="disabled">
+                                <i className="fa fa-fw fa-th" />
+                            </NavIcon>
+                            <NavText className="disabled">
+                                Explorer
+                        </NavText>
+                        </NavItem>
             <NavItem
               eventKey="dashboard"
               onClick={e => this.props.history.push("/")}

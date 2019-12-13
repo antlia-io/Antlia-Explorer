@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet';
 import posed from 'react-pose';
 import i18n from 'meteor/universe:i18n';
 import { Meteor } from 'meteor/meteor';
+import { TransactionRow } from './TransactionsRow.jsx';
 
 const T = i18n.createComponent();
 
@@ -24,6 +25,8 @@ const Result = posed.div({
 export default class Proposal extends Component {
     constructor(props) {
         super(props);
+
+
 
         let showdown = require('showdown');
         showdown.setFlavor('github');
@@ -40,7 +43,8 @@ export default class Proposal extends Component {
             noWithVetoPercent: 0,
             proposalValid: false,
             orderDir: -1,
-            breakDownSelection: 'Bar'
+            breakDownSelection: 'Bar',
+            governanceTxs: {},
         }
 
         if (Meteor.isServer) {
@@ -53,6 +57,7 @@ export default class Proposal extends Component {
             // console.log(this.props.proposal.value);
             this.setState({
                 proposal: this.props.proposal,
+                governanceTxs: this.props.governanceTxs,
                 deposit: <div>{this.props.proposal.total_deposit ? this.props.proposal.total_deposit.map((deposit, i) => {
                     return <div key={i}>{numbro(deposit.amount / Meteor.settings.public.stakingFraction).format(0, 0)} {Meteor.settings.public.stakingDenom}</div>
                 }) : ''} </div>
@@ -247,26 +252,59 @@ export default class Proposal extends Component {
                     // <Card body >
                     <Row className='voter-info'>
                         {/* <Col className="d-none d-md-block counter data" md={1}>{i + 1}</Col> */}
+
+
                         <Col className="moniker data" lg={3}>
                             <span key={i}> <Account address={vote.voter} /></span>
 
                         </Col>
                         <Col className="voting-power data" md={3}>
                             <i className="material-icons d-lg-none">reply</i>
-                            <VoteIcon vote="yes" /> {vote.option}
+                            <VoteIcon /> {vote.option}
                             {/* {(vote.votingPower !== undefined) ? numbro(vote.votingPower).format('0,0.00') : ""} */}
                         </Col>
-                        <Col className="voting-power-percent data" md={3}>
-                            <i className="material-icons d-md-none">equalizer</i>
-                            {(vote.votingPower !== undefined) && (this.state.totalVotes != 0) ? numbro(vote.votingPower / this.state.totalVotes).format('0,0.00%') : "0.00%"}
+                        <Col lg={6}>
+                            {(this.state.governanceTxs.length > 0) ? this.state.governanceTxs.map((tx, i) => {
+                                return (
+
+                                    <div>
+                                        {/* <div className="deskpart">
+                                <Row className="transfer-item">
+                                    <Col lg={6} md={12}> */}
+                                        <TransactionRow
+                                            key={i}
+                                            id={vote.proposal_id}
+                                            index={i}
+                                            tx={tx}
+                                            blockList />
+                                        {/* </Col>
+                                        </Row>
+                                    </div> */}
+                                    </div>
+                                )
+                            }) :
+                                (
+                                    <p>No Data</p>
+
+                                )
+                            }
                         </Col>
-                        <Col className="voting-power-percent data" md={3}>
-                            <i className="material-icons d-md-none">equalizer</i>
-                            {(vote.votingPower !== undefined) && (this.state.totalVotes != 0) ? numbro(vote.votingPower / this.state.totalVotes).format('0,0.00%') : "0.00%"}
-                        </Col>
+
                     </Row>
+                    
                     // </Card>
                 )}
+                <Row>
+                        <Col lg={12}>
+                            <div className="nodata">
+                                <div>
+                                    <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                    <h2>No Data</h2>
+                                </div>
+                            </div>
+                        </Col>
+                    </Row>
+                   
             </div>
         </Result>
     }
@@ -403,7 +441,7 @@ export default class Proposal extends Component {
                                             <TabContent activeTab={this.state.breakDownSelection == 'All' ? 'all' : 'all1'}>
                                                 <TabPane tabId="all">
                                                     <div>
-                                                        {this.renderTallyResultDetail(1, 'Yes')}
+                                                        {this.renderTallyResultDetail(1, 'All')}
                                                         {/* <Row className="header">
                                                             <Col lg={3} md={6} sm={6} xs={12}><i className="fas fa-user"></i>Voter</Col>
                                                             <Col lg={3} md={6} sm={6} xs={12}><i className="fas fa-reply"></i>Answer</Col>
@@ -459,10 +497,18 @@ export default class Proposal extends Component {
                                     <Col lg={3} md={6} sm={6} xs={12}><i className="fas fa-clock"></i>Time</Col>
                                 </Row>
                                 <Row className="depo-body">
-                                    <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-user d-d-none"></i>Depositor</Col>
+                                    <Col lg={12}>
+                                        <div className="nodata">
+                                            <div>
+                                                <img src="/img/nodata.png" className="img-fluid nodata-img" />
+                                                <h2>No Data</h2>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                    {/* <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-user d-d-none"></i>Depositor</Col>
                                     <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-dollar-sign d-d-none"></i>Amount</Col>
                                     <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-hashtag d-d-none"></i>TxHash</Col>
-                                    <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-clock d-d-none"></i>Time</Col>
+                                    <Col lg={3} md={6} sm={6} xs={12} className="mb"><i className="fas fa-clock d-d-none"></i>Time</Col> */}
                                 </Row>
                             </Card>
                         </div>
@@ -603,13 +649,15 @@ export default class Proposal extends Component {
                     </div>
                     <Row className='clearfix'>
                         <Link to={`/proposals/${proposalId - 1}`} className={`btn btn-outline-danger float-left ${proposalId - 1 <= 0 ? "disabled" : ""}`}><i className="fas fa-caret-left"></i> Prev Proposal </Link>
-                        <Link to="/proposals" className="btn btn-primary" style={{ margin: 'auto' }}><i className="fas fa-caret-up"></i> <T>common.backToList</T></Link>
+                        <Link to="/proposals" className="btn" style={{ margin: 'auto' }}><i className="fas fa-caret-up"></i> <T>common.backToList</T></Link>
                         <Link to={`/proposals/${proposalId + 1}`} className={`btn btn-outline-danger float-right ${proposalId >= maxProposalId ? "disabled" : ""}`}><i className="fas fa-caret-right"></i> Next Proposal</Link>
                     </Row>
                 </div>
             }
             else {
-                return <div><T>proposals.notFound</T></div>
+                return <div>
+                    <T>proposals.notFound</T>
+                </div>
             }
         }
     }

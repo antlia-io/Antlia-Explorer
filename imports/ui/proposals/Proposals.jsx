@@ -65,10 +65,10 @@ export default class Proposals extends Component {
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="proposals">
                         <NavItem title="Explorer">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-angle-right" />
+                            <NavIcon className="disabled">
+                                <i className="fa fa-fw fa-th" />
                             </NavIcon>
-                            <NavText>
+                            <NavText className="disabled">
                                 Explorer
                         </NavText>
                         </NavItem>

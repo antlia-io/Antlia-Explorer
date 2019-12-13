@@ -55,11 +55,11 @@ export default class ValidatorDetails extends Component {
                 <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="validators">
-                        <NavItem title="Explorer">
-                            <NavIcon>
-                                <i className="fa fa-fw fa-angle-right" />
+                    <NavItem title="Explorer">
+                            <NavIcon className="disabled">
+                                <i className="fa fa-fw fa-th" />
                             </NavIcon>
-                            <NavText>
+                            <NavText className="disabled">
                                 Explorer
                         </NavText>
                         </NavItem>

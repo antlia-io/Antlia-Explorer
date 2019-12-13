@@ -34,7 +34,7 @@ export default class Transaction extends Component {
                         <meta name="description" content={"Details of transaction " + tx.txhash} />
                     </Helmet>
                     <h2><T>transactions.transaction</T></h2>
-                    {/* {(tx.code) ? <Row><Col xs={{ size: 12, order: "last" }} className="error">
+                    {(tx.code) ? <Row><Col xs={{ size: 12, order: "last" }} className="error">
                         <Alert color="danger">
                             <ColorErrors
                                 code={tx.code}
@@ -43,7 +43,7 @@ export default class Transaction extends Component {
                                 gasUses={tx.gas_used}
                             />
                         </Alert>
-                    </Col></Row> : ''} */}
+                    </Col></Row> : ''}
                     <Card>
                         {/* <div className="card-header backgroundcolor"><T>common.information</T></div> */}
                         <CardBody>

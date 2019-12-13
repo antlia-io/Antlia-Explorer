@@ -3342,8 +3342,8 @@
  
  .btn-outline-danger:hover {
      color: #fff !important;
-     background-color: #2f2d3f;
-     border-color: #2f2d3f
+     background-color: #061d47;
+     border-color: #061d47
  }
  
  .btn-outline-danger:focus,
@@ -3358,8 +3358,11 @@
      background-color: transparent
  }
  
- .btn-outline-danger:not(:disabled):not(.disabled):active,
- .btn-outline-danger:not(:disabled):not(.disabled).active,
+ .btn-outline-danger:not(:disabled):not(.disabled).active{
+    color: #fff;
+    background-color: #061d47;
+    border-color: #061d47;
+}
  .show>.btn-outline-danger.dropdown-toggle {
      color: #fff;
      background-color: #2f2d3f;

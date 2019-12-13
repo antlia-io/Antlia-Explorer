@@ -16,6 +16,8 @@ import "react-circular-progressbar/dist/styles.css";
 import SemiCircleProgressBar from "react-progressbar-semicircle";
 
 const T = i18n.createComponent();
+let sum = 0
+var length = 0
 export default class ChainStatus extends React.Component {
     constructor(props) {
         super(props);
@@ -37,9 +39,19 @@ export default class ChainStatus extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+     
+        if(prevProps.validators.length !== this.props.validators.length){
+            this.props.validators.map((type,key)=>{
+                if(type.jailed===false){
+                  sum=sum+type.uptime
+                  length  = length+1
+                }
+            })
+        }
         if (prevProps != this.props) {
            
-            // if (this.props.validators.length > 0 && this.props.chainStatus) {
+            if (this.props.validators.length > 0 && this.props.chainStatus) {
+              
                 this.setState({
                     blockHeight: numbro(this.props.status.latestBlockHeight).format({ thousandSeparated: true }),
                     blockTime: moment.utc(this.props.status.latestBlockTime).format("D MMM YYYY hh:mm:ssa z"),
@@ -48,18 +60,14 @@ export default class ChainStatus extends React.Component {
                     totalNumValidators: this.props.status.totalValidators,
                     bondedTokens: this.props.states.bondedTokens,
                     notBondedTokens: this.props.states.notBondedTokens,
-                    validators: this.props.validators.map((validator, i) => {
-                        if (validator.jailed == false) {
-                            return this.state.activeValidatorsUpTime = this.state.activeValidatorsUpTime + validator.uptime
-                        }
-                    })
+                    validators: this.props.validators
                 })
-            // }
-            // else {
-            //     this.setState({
-            //         validators: ""
-            //     });
-            // }
+            }
+            else {
+                this.setState({
+                    validators: ""
+                });
+            }
 
             switch (this.state.avgBlockTimeType) {
                 case "":
@@ -263,10 +271,15 @@ export default class ChainStatus extends React.Component {
                                             </div>
                                             <div className="validators">
                                                 <CardTitle>Validators</CardTitle>
-                                                <CardText><span className="value">{numbro((this.state.activeValidatorsUpTime / this.props.validators.length) * 100).format('0.00%')}</span></CardText>
+                                                <CardText><span className="value">
+                                                    {/* {sum/length} */}
+                                                    {numbro((sum / length)).format('0.00%')}
+                                                    </span>
+                                                    </CardText>
                                                 <CardText>Active</CardText>
                                                 <SemiCircleProgressBar
-                                                    percentage={(this.state.activeValidatorsUpTime / this.props.validators.length) * 100}
+                                                    // percentage={(this.state.activeValidatorsUpTime / this.props.validators.length) * 100}
+                                                    percentage={sum/length}
                                                     diameter={130}
                                                     animationSpeed={4}
                                                     className="table-semi-circle"

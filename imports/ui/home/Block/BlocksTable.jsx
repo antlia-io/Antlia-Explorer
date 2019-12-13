@@ -106,7 +106,7 @@ export default class BlocksTable extends Component {
                     <div className="blocks">
                         <div className="header">
                             <h4>Blocks</h4>
-                            <Link to="#">View All Blocks</Link>
+                            <Link to="/blocks">View All Blocks</Link>
                         </div>
                         <Row>
                             <Col lg={12}>

@@ -103,6 +103,11 @@ a.navbar-brand .logo {
 .sidenav---navicon---3gCRo .fa{
     color: #fff;
 }
+.sidenav---navicon---3gCRo{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
 .searchicon{
     position: absolute;
     left:15px;
@@ -172,6 +177,7 @@ div.validator-list div.header div:not(.status){
 .validator-list .counter{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .validator-list .counter p{
     margin: 0;
@@ -184,19 +190,23 @@ div.validator-list div.validator-info div.data{
     display: flex !important;
     align-items: center;
 }
-div.validator-list div.validator-info div.data:nth-child(5),
+/* div.validator-list div.validator-info div.data:nth-child(5),
 div.validator-list div.validator-info div.data:nth-child(6),
 div.validator-list div.validator-info div.data:nth-child(7),
 div.validator-list div.validator-info div.data:last-child{
     justify-content: center;
+} */
+@media(min-width:992px) and (max-width:1300px){
+    .validator-list .hlabel{
+        display: none;
+    }
 }
 @media(max-width:991px){
-    div.validator-list div.validator-info div.data:nth-child(5),
-    div.validator-list div.validator-info div.data:nth-child(6),
-    div.validator-list div.validator-info div.data:nth-child(7),
-    div.validator-list div.validator-info div.data:last-child{
+    div.validator-list .field{
         justify-content: flex-start;
-    }   
+        margin: 0 0 1rem;
+    } 
+
 }
 @media(max-width:767px){
     div.validator-list div.validator-info div.data{
@@ -236,6 +246,10 @@ div.validator-list div.header div.last-seen span.d-md-none{
 
 #proposals-table {
     margin-top: 2.5em;
+}
+
+#proposals .nodata{
+    height: 50vh;
 }
 
 table#block-table,
@@ -1176,7 +1190,7 @@ div.transactions-list .time-align{
     } */
 
     div.validator-list div.validator-info img.moniker-avatar-list{
-        height: 48px;
+        /* height: 48px; */
         float: left;
     }
 
@@ -1721,6 +1735,7 @@ div.transactions-list .time-align{
         margin: 0 0 2rem;
     }
     .topbar h1{
+        color: #848688;
         margin: 0 !important;
     }
      .chainstate {
@@ -2802,7 +2817,6 @@ width: 100% !important;
     }
     #blockstable h1{
         color: #848688;
-        text-transform: uppercase;
         margin: 0 0 1rem;
     }
     #blockstable a{
@@ -2841,13 +2855,15 @@ width: 100% !important;
     }
 
       /* No Data Styels */
+      .nodata-container .card{
+        width: 100% !important;
+    }
       .nodata{
         display: flex;
         justify-content: center;
         align-items: center;
         height: 80vh;
     }
-
     .nodata h2{
         font-size: 30px;
         text-align: center;
@@ -3220,4 +3236,8 @@ font-weight: 400;
 }
 #voting-power-dist h4{
     color: #848688;
+}
+
+.disabled{
+    cursor: none !important;
 }
