@@ -174,7 +174,7 @@ export default class Validators extends Component {
                       className="field counter"
                       xs={12}
                       sm={6}
-                      md={2}
+                      md={6}
                       lg={1}
                     >
                        <i className="fas fa-hashtag">
@@ -185,7 +185,7 @@ export default class Validators extends Component {
                       className="moniker field"
                       xs={12}
                       sm={6}
-                      md={4}
+                      md={6}
                       lg={2}
                       onClick={e => this.toggleDir("moniker", e)}
                     >
@@ -201,7 +201,7 @@ export default class Validators extends Component {
                       className="field"
                       xs={12}
                       sm={6}
-                      md={3}
+                      md={6}
                       lg={2}
                       onClick={e => this.toggleDir("expectedSlashing", e)}
                     >
@@ -215,7 +215,7 @@ export default class Validators extends Component {
                       className="field"
                       xs={12}
                       sm={6}
-                      md={3}
+                      md={6}
                       lg={2}
                       onClick={e => this.toggleDir("votingPower", e)}
                     >
@@ -229,7 +229,7 @@ export default class Validators extends Component {
                       className="field"
                       xs={12}
                       sm={6}
-                      md={3}
+                      md={6}
                       lg={1}
                       onClick={e => this.toggleDir("selfDel", e)}
                     >
@@ -245,7 +245,7 @@ export default class Validators extends Component {
                         className="field"
                         xs={12}
                         sm={6}
-                        md={4}
+                        md={6}
                         lg={2}
                         onClick={e => this.toggleDir("commission", e)}
                       >
@@ -263,7 +263,7 @@ export default class Validators extends Component {
                         className="field"
                         xs={12}
                         sm={6}
-                        md={4}
+                        md={6}
                         lg={2}
                         onClick={e => this.toggleDir("uptime", e)}
                       >
@@ -282,7 +282,7 @@ export default class Validators extends Component {
                       <Col className="last-seen field" 
                       xs={12}
                       sm={6}
-                      md={3}
+                      md={6}
                       lg={2}>
                         <i className="far fa-clock"></i>{" "}
                         <span className="hlabel">
@@ -297,7 +297,7 @@ export default class Validators extends Component {
                         className="bond-status field"
                         xs={12}
                         sm={6}
-                        md={3}
+                        md={6}
                         lg={1}
                         onClick={e => this.toggleDir("status", e)}
                       >
@@ -315,7 +315,7 @@ export default class Validators extends Component {
                         className="jail-status field"
                         xs={12}
                         sm={6}
-                        md={3}
+                        md={6}
                         lg={1}
                         onClick={e => this.toggleDir("jailed", e)}
                       >

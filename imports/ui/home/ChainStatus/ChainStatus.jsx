@@ -273,7 +273,7 @@ export default class ChainStatus extends React.Component {
                                                 <CardTitle>Validators</CardTitle>
                                                 <CardText><span className="value">
                                                     {/* {sum/length} */}
-                                                    {numbro((sum / length)).format('0.00%')}
+                                                    {numbro((sum / length)).format('0.0%')}
                                                     </span>
                                                     </CardText>
                                                 <CardText>Active</CardText>

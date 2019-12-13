@@ -21,13 +21,13 @@ const ValidatorRow = props => {
   return (
     <Card body>
       <Row className="validator-info">
-        <Col className="d-none d-md-block counter field" xs={12} sm={6} md={2} lg={1}>
-        <i className="fas fa-hashtag d-lg-none  d-md-none">
+        <Col className="counter1" xs={12} sm={6} md={6} lg={1}>
+        <i className="fas fa-hashtag d-lg-none">
                       </i>
           <div className="validator-listindex"> {props.index + 1}</div>
         </Col>
-        <Col xs={12} sm={6} md={4} lg={2} className="data field">
-        <i className="material-icons d-lg-none  d-md-none">
+        <Col xs={12} sm={6} md={6} lg={2} className="field1">
+        <i className="material-icons d-lg-none">
                         perm_contact_calendar
                       </i>
           <Link to={"/validator/" + props.validator.operator_address}>
@@ -41,13 +41,13 @@ const ValidatorRow = props => {
           </Link>
         </Col>
         <Col
-          className="voting-power data field"
+          className=" field1"
           xs={12}
           sm={6}
-          md={3}
+          md={6}
           lg={2}
         >
-          <i className="material-icons d-md-none">power</i>
+          <i className="material-icons d-lg-none">power</i>
           <SemiCircleProgressBar
             percentage={(props.validator.voting_power / props.totalPower) * 100}
             diameter={75}
@@ -66,13 +66,13 @@ const ValidatorRow = props => {
           </span>
         </Col>
         <Col
-          className="voting-power data field"
+          className=" field1"
           xs={12}
           sm={6}
-          md={3}
+          md={6}
           lg={2}
         >
-          <i className="material-icons d-md-none">power</i>
+          <i className="material-icons d-lg-none">power</i>
           <SemiCircleProgressBar
             percentage={(props.validator.voting_power / props.totalPower) * 100}
             diameter={75}
@@ -92,13 +92,13 @@ const ValidatorRow = props => {
           </span>
         </Col>
         <Col
-          className="self-delegation data field"
+          className=" field1"
           xs={12}
           sm={6}
-          md={3}
+          md={6}
           lg={1}
         >
-          <i className="material-icons d-md-none">equalizer</i>
+          <i className="material-icons d-lg-none">equalizer</i>
           <span>
             {props.validator.self_delegation
               ? numbro(props.validator.self_delegation).format("0.00%")
@@ -107,13 +107,13 @@ const ValidatorRow = props => {
         </Col>
         {!props.inactive ? (
           <Col
-            className="commission data field"
+            className="field1"
             xs={12}
             sm={6}
-            md={4}
+            md={6}
             lg={2}
           >
-            <i className="material-icons d-md-none">call_split</i>
+            <i className="material-icons d-lg-none">call_split</i>
             <span>
               {numbro(props.validator.commission.rate).format("0.00%")}
             </span>
@@ -122,9 +122,9 @@ const ValidatorRow = props => {
             ""
           )}
         {!props.inactive ? (
-          <Col className="uptime data field" xs={{ size: 12, order: "last" }} md={2}>
+          <Col className="uptime field1" xs={12} md={6} lg={1}>
             {/* <Progress animated value={props.validator.uptime}> */}
-            <i className="material-icons d-md-none">flash_on</i>
+            <i className="material-icons d-lg-none">flash_on</i>
             <span className="d-md-inline">
               {props.validator.uptime ? props.validator.uptime.toFixed(2) : 0}%
             </span>
@@ -136,10 +136,10 @@ const ValidatorRow = props => {
         {/* <span className="d-md-none">&nbsp;</span> */}
         {props.inactive ? (
           <Col
-            className="last-seen data"
+            className="last-seen field1"
             xs={12}
             sm={6}
-            md={3}
+            md={6}
              lg={2}
           >
              <i className="far fa-clock d-lg-none"></i>
@@ -153,7 +153,7 @@ const ValidatorRow = props => {
             ""
           )}
         {props.inactive ? (
-          <Col className="bond-status data" xs={12} sm={6} md={3} lg={1}>
+          <Col className="bond-status field1" xs={12} sm={6} md={6} lg={1}>
              <i className="material-icons d-lg-none">toggle_on</i>
             {props.validator.status == 0 ? (
               <Badge color="secondary">
@@ -175,7 +175,7 @@ const ValidatorRow = props => {
             ""
           )}
         {props.inactive ? (
-          <Col className="jail-status data" xs={12} sm={6} md={3} lg={1}>
+          <Col className="jail-status field1" xs={12} sm={6} md={6} lg={1}>
             <i className="material-icons d-lg-none">lock</i>
             {props.validator.jailed ? (
               <Badge color="danger">

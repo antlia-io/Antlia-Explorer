@@ -10,17 +10,17 @@ export default class MenuLinks extends React.Component {
         {
           text: 'Dashborad',
           link: '/',
-          icon: 'fa fa-th'
+          icon: 'fa fa-home'
         },
         {
           text: 'Validators',
           link: '/validators',
-          icon: 'fa fa-user'
+          icon: 'fa fa-spinner'
         },
         {
           text: 'Blocks',
           link: '/blocks',
-          icon: 'fa fa-clone'
+          icon: 'fa fa-cube'
         },
         {
           text: 'Transactions',
@@ -30,12 +30,12 @@ export default class MenuLinks extends React.Component {
         {
           text: 'Proposals',
           link: '/proposals',
-          icon: 'fa fa-file'
+          icon: 'fa fa-edit'
         },
         {
           text: 'Voting Power',
           link: '/voting-power-distribution',
-          icon: 'fa fa-star'
+          icon: 'fa fa-chart-bar'
         },
       ]
     }
