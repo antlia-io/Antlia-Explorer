@@ -322,12 +322,12 @@ export default class AccountDetails extends Component {
                         <SideNav.Toggle />
                         <SideNav.Nav selected={selected} defaultSelected="transactions">
                             <NavItem title="Explorer">
-                                <NavIcon className="disabled">
-                                    <i className="fa fa-fw fa-th" />
-                                </NavIcon>
-                                <NavText className="disabled">
-                                    Explorer
-                        </NavText>
+                            <NavIcon className="explorer">
+                                <span className="ex">EX</span>
+                            </NavIcon>
+                            <NavText>
+                                <span className="explorer">PLORER</span>
+                            </NavText>
                             </NavItem>
                             <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
                                 <NavIcon>

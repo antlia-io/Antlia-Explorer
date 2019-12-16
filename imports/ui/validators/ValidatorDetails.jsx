@@ -55,13 +55,13 @@ export default class ValidatorDetails extends Component {
                 <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="validators">
-                    <NavItem title="Explorer">
-                            <NavIcon className="disabled">
-                                <i className="fa fa-fw fa-th" />
+                        <NavItem title="Explorer">
+                            <NavIcon className="explorer">
+                                <span className="ex">EX</span>
                             </NavIcon>
-                            <NavText className="disabled">
-                                Explorer
-                        </NavText>
+                            <NavText>
+                                <span className="explorer">PLORER</span>
+                            </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
                             <NavIcon>

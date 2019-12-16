@@ -117,12 +117,13 @@ export default class Home extends Component {
                     <SideNav.Toggle />
                     <SideNav.Nav selected={selected} defaultSelected="dashboard">
                         <NavItem title="Explorer">
-                            <NavIcon className="disabled">
-                                <i className="fa fa-fw fa-th" />
+                            <NavIcon className="explorer">
+                                {/* <i className="fa fa-fw fa-th" /> */}
+                                <span className="ex">EX</span>
                             </NavIcon>
-                            <NavText className="disabled">
-                                Explorer
-                        </NavText>
+                            <NavText>
+                                <span className="explorer">PLORER</span>
+                            </NavText>
                         </NavItem>
                         <NavItem eventKey="dashboard" onClick={e => this.props.history.push("/")} title="Dashboard">
                             <NavIcon>

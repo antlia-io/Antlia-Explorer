@@ -177,7 +177,7 @@ export default class Validators extends Component {
                       md={6}
                       lg={1}
                     >
-                       <i className="fas fa-hashtag">
+                      <i className="fas fa-hashtag">
                       </i>
                       <p className="text-justify">List</p>
                     </Col>
@@ -279,11 +279,11 @@ export default class Validators extends Component {
                         ""
                       )}
                     {this.props.inactive ? (
-                      <Col className="last-seen field" 
-                      xs={12}
-                      sm={6}
-                      md={6}
-                      lg={2}>
+                      <Col className="last-seen field"
+                        xs={12}
+                        sm={6}
+                        md={6}
+                        lg={2}>
                         <i className="far fa-clock"></i>{" "}
                         <span className="hlabel">
                           <T>validators.lastSeen</T> (UTC)
@@ -369,14 +369,14 @@ export default class Validators extends Component {
         >
           <SideNav.Toggle />
           <SideNav.Nav selected={selected} defaultSelected="validators">
-          <NavItem title="Explorer">
-                            <NavIcon className="disabled">
-                                <i className="fa fa-fw fa-th" />
-                            </NavIcon>
-                            <NavText className="disabled">
-                                Explorer
-                        </NavText>
-                        </NavItem>
+            <NavItem title="Explorer">
+              <NavIcon className="explorer">
+                <span className="ex">EX</span>
+              </NavIcon>
+              <NavText>
+                <span className="explorer">PLORER</span>
+              </NavText>
+            </NavItem>
             <NavItem
               eventKey="dashboard"
               onClick={e => this.props.history.push("/")}

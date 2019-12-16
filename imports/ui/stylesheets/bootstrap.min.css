@@ -678,12 +678,21 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important
  }
 
-
+ .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T
+  .ex{
+      font-size: 26px !important;
+  }
+ .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T
+  .explorer{
+      font-size: 26px !important;
+      margin: 0 0 0 -9px;
+  }
  .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T
   .sidenav---navicon---3gCRo, 
   .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- > .sidenav---navitem---9uL5T .sidenav---navtext---1AE_f {
      color: #fff !important;
      font-size: 18px !important; 
+     opacity: 1 !important;
  }
 
  .no-gutters>.col,
