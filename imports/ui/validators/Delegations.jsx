@@ -36,14 +36,11 @@ export default class ValidatorDelegations extends Component {
                     loading: false,
                     numDelegatiors: delegations.length,
                     delegations: delegations.map((d, i) => {
-                        return (
-                            <ScrollArea className="delegatescroll-list">
-                                <Row key={i} className="delegation-info">
-                                    <Col lg={5} md={12} className="text-nowrap text-truncate"><Account address={d.delegator_address} /></Col>
-                                    <Col lg={4} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
-                                    <Col lg={3} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
-                                </Row>
-                            </ScrollArea>
+                        return (<Row key={i} className="delegation-info">
+                            <Col lg={5} md={12} className="text-nowrap text-truncate"><Account address={d.delegator_address} /></Col>
+                            <Col lg={4} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                            <Col lg={3} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                        </Row>
                         )
                     })
                 })
@@ -61,14 +58,14 @@ export default class ValidatorDelegations extends Component {
                 <CardHeader><h4>Delegators</h4><span className="userdelegate"><i className="fas fa-user-circle"></i>{(this.state.numDelegatiors > 0) ? this.state.numDelegatiors : 'No'}  {(this.state.numDelegatiors > 0) ? <small className="text-secondary">(<i className="fas fa-arrow-up"></i>{numbro(this.props.tokens / this.state.numDelegatiors / Meteor.settings.public.stakingFraction).format('0,0.00')} {Meteor.settings.public.stakingDenom} in 24h)</small> : ''}</span></CardHeader>
                 <CardBody className="list">
                     <Container fluid>
-                        <Row className="header text-nowrap d-lg-flex">
+                        <Row className="header delegation-info text-nowrap d-lg-flex">
                             <Col lg={5} md={12}><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
                             <Col lg={4} md={12} className="textAlign"><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
                             <Col lg={3} md={12} className="textAlign"><i className="fas fa-share"></i> <span>Share</span></Col>
                         </Row>
-                        <div>
+                        <ScrollArea className="delegatescroll-list">
                             {this.state.delegations}
-                        </div>
+                        </ScrollArea>
                     </Container>
                 </CardBody>
             </div>

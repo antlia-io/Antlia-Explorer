@@ -173,13 +173,7 @@ export default class List extends Component {
             return <Spinner type="grow" color="primary" />
         }
         else if (!this.props.proposalsExist) {
-            return <div className="nodata">
-                <div>
-                    <img src="/img/nodata.png" className="img-fluid nodata-img" />
-                    <h2>No Data</h2>
-                </div>
-            </div>
-            // <div><T>No Proposal Found</T></div>
+            return <div><T>No Proposal Found</T></div>
         }
         else {
             return <div>

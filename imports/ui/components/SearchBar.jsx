@@ -59,7 +59,7 @@ export default class SearchBar extends Component {
   render() {
     return (
       <InputGroup
-        className={this.props.mobile ? "d-lg-none" : "d-none d-lg-flex"}
+        className={this.props.mobile ? "d-md-none" : "d-none d-lg-flex"}
         id={this.props.id}
       >
         <Input

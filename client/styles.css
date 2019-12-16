@@ -101,7 +101,7 @@ a.navbar-brand .logo {
     position: relative;
 }
 .sidenav---navicon---3gCRo .fa{
-    color: #fff;
+    color: #fff !important;
 }
 .sidenav---navicon---3gCRo{
     display: flex !important;
@@ -176,7 +176,7 @@ div.validator-list div.header div:not(.status){
 }
 .validator-list .counter{
     display: flex;
-    align-items: center;
+    align-items:baseline;
     /* padding: 0 1rem; */
 }
 .validator-list .counter .fas{
@@ -194,7 +194,22 @@ div.validator-list div.header div:not(.status){
 div.validator-list .field1{
     display: flex;
     align-items: center;
-} 
+}
+div.validator-list .field:nth-child(6),
+div.validator-list .field:last-child{
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    padding: 0 1rem 0 0;
+}
+
+div.validator-list .field1:nth-child(6),
+div.validator-list .field1:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1rem 0 0;
+}
 div.validator-list div.validator-info div.data{
     white-space: nowrap;
     /* overflow: hidden; */
@@ -228,6 +243,21 @@ div.validator-list div.validator-info div.data:last-child{
         justify-content: space-between;
         margin: 0 0 1rem;
     }
+    div.validator-list .fas,
+    div.validator-list .material-icons{
+        margin: 0 1rem 0 0 !important;
+    }
+    div.validator-list .field:nth-child(6),
+div.validator-list .field:last-child{
+    justify-content:flex-start;
+    padding: 0 1rem;
+}
+
+div.validator-list .field1:nth-child(6),
+div.validator-list .field1:last-child{
+    justify-content: space-between;
+    padding: 0 1rem;
+}
 }
 @media(max-width:767px){
    
@@ -872,8 +902,8 @@ padding: 1.5rem 0 0.5rem;
     /* transform: translateY(-5px); */
 }
 div.delegation-info{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #dee2e6;
 }
 /* div.tx-info{
@@ -969,11 +999,15 @@ div.transactions-list div.tx-info .activity .card-body ul {
     text-transform: uppercase;
 }
 .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ-:first-child .fa {
-font-size: 26px;
-color: #fff;;
+    font-size: 26px;
+    color: #fff !important;
+    }
+.sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- .fa {
+color: #fff !important;
 }
 .sidenav---sidenav-nav---3tvij{
-    background: rgb(6, 29, 71) !important;
+    /* background: rgb(6, 29, 71) !important; */
+    background:#000847 !important;
 height: 100vh;
 }
 
@@ -1021,7 +1055,7 @@ div.transactions-list  .badge {
     transform: translateY(0px) !important;
 }
 div.transactions-list div.header{
-    padding: 0 0 10px !important;
+    padding: 0 0 1erm;
     border-bottom: 1px solid #dee2e6;
     display: flex;
     align-items: center !important;
@@ -1062,18 +1096,31 @@ div.tx-info p{
      align-items: center;
  }
 @media(max-width:991px){
+    div.transactions-list div.header{
+        padding: 0;
+    }
+    div.transactions-list div.tx-row{
+        padding: 1rem 0 0;
+    }
+    div.transactions-list .type-align{
+       justify-content: space-between;
+    }
+    div.transactions-list span.status {
+        display: flex;
+        justify-content: space-between;
+    }
     div.transactions-list .material-icons,
     div.transactions-list .fas{
-        padding: 0 20px 0 0 !important;
+        padding: 0 1rem 0 0 !important;
     }
     div.transactions-list .htextalign{
         text-align: left;
         padding: 0 15px !important;
     }
     div.transactions-list .textalign{
-        text-align: left;
         padding: 0 15px !important;
         display: flex;
+        justify-content: space-between;
     }
     div.transactions-list .textalign span{
         transform: translateY(0px) !important;
@@ -1086,6 +1133,11 @@ div.transactions-list .col-lg-1{
 div.transactions-list .time-align{
     transform: translateY(-7px) !important;
 }
+}
+@media(max-width:575px){
+    div.transactions-list .card-body{
+        padding: 0.5rem;
+    }
 }
 
 .blocks-list{
@@ -1189,8 +1241,6 @@ div.transactions-list .time-align{
     display: block;
     overflow-y: scroll;
     }
-    
- 
     div#main, div#transaction, div#block{
         padding-top: 3.5rem;
         padding-bottom: 4.85rem;
@@ -1201,12 +1251,6 @@ div.transactions-list .time-align{
         height: 50%;
         line-height: 50%;
     }
-
-    .validator-list .card.card-body{
-        margin-bottom: 1rem;
-    }
-
-
     .proposal .tally-result-table .card.card-body{
         margin: 0.4rem 0.8rem;
     }
@@ -1243,16 +1287,30 @@ div.transactions-list .time-align{
         display: none
     }
 }
-@media (max-width: 768px){
-#validator-list .mb{
-    margin: 0 0 1.5rem;
-}
-}
+
 
 div.validator-list div.validator-info{
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #dee2e6;
+}
+#validator-list div.validator-list .card,
+.proposal .tally-result-table .card{
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+@media (max-width: 991px){
+    .validator-tablehead-border{
+        padding: 1rerm 0 0;
+    }
+    div.validator-list div.validator-info{
+        padding-bottom: 0;
+    }
+}
+@media (max-width: 768px){
+#validator-list .mb{
+    margin: 0 0 1.5rem;
+}
 }
 
 @media only screen and (min-width: 768px){
@@ -1271,13 +1329,7 @@ div.validator-list div.validator-info{
     .proposal .tally-result-table .card.card-body{
         padding: 0;
     }
-
-    #validator-list div.validator-list .card,
-    .proposal .tally-result-table .card{
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
-    
+  
     #validator-list div.validator-list div.header,
     .proposal .tally-result-table div.header{
         padding-top: 0.3rem;
@@ -1610,7 +1662,7 @@ div.validator-list div.validator-info{
 }
    
 .fa{
-    color: #fff;
+    color: #fff !important;
     padding-right: 15px;
 }
 
@@ -2037,6 +2089,7 @@ div.validator-list div.validator-info{
     }
     .blocks a{
         color: #085fff;
+        font-weight: 500;
         text-decoration: none;
         margin: 0 5px 0 0;
     }
@@ -2107,6 +2160,7 @@ div.validator-list div.validator-info{
     }
     .transactions a.link{
         color: #085fff;
+        font-weight: 500;
         text-decoration: none;
         margin: 0 5px 0 0;
     }
@@ -2402,6 +2456,7 @@ width: 100% !important;
 
     .validator-tablehead-border{
         border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 1rem 0;
     }
 
     /* Validator Details - Delegated Styles */
@@ -2614,8 +2669,11 @@ width: 100% !important;
         padding: 0;
         border-bottom: 1px solid #ddd;
     }
+    /* .delegation .header{
+        padding: 1rem 0;
+    } */
     .delegation .card-body{
-        padding: 1.25rem 0;
+        padding: 0;
     }
     .delegation h4{
         font-size: 30px;
@@ -2836,12 +2894,13 @@ width: 100% !important;
   
     /* Blocks Page Styles */
     div.block-info{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #dee2e6;
     display: flex;
     align-items: center;
 }
+
     #blockstable .card{
         padding: 30px;
     }
@@ -2863,6 +2922,13 @@ width: 100% !important;
     @media(max-width:991px){
         #blockstable .col-12{
             margin: 0 0 15px;
+        }
+        div.block-info{
+            padding-bottom:0;
+        }
+        #blockstable .fas,
+        #blockstable .material-icons{
+            margin: 0 1rem 0 0 !important;
         }
     }
     @media(max-width:575px){

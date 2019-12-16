@@ -122,7 +122,7 @@ const ValidatorRow = props => {
             ""
           )}
         {!props.inactive ? (
-          <Col className="uptime field1" xs={12} md={6} lg={1}>
+          <Col className="uptime field1" xs={12} md={6} lg={2}>
             {/* <Progress animated value={props.validator.uptime}> */}
             <i className="material-icons d-lg-none">flash_on</i>
             <span className="d-md-inline">
