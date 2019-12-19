@@ -2054,8 +2054,11 @@ div.validator-list div.validator-info{
         display: block;
         margin: 0 10px 0 0;
     }
-    .randomstatus .validators .color-values .item:first-child span {
+    .randomstatus .validators .color-values .item .uptime {
         background: #ffb901;
+    }
+    .randomstatus .validators .color-values .item .votingpower{
+        background: #061d47;
     }
     .randomstatus p{
         margin: 0;

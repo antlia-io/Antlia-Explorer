@@ -288,7 +288,7 @@ export default class ChainStatus extends React.Component {
                                                 />
                                                 <div className="color-values">
                                                     <div className="item">
-                                                        <span></span>
+                                                        <span className="uptime"></span>
                                                         <p>UpTime</p>
                                                     </div>
                                                    
@@ -306,7 +306,7 @@ export default class ChainStatus extends React.Component {
                                                 <div className="color-values">
                                                  
                                                     <div className="item">
-                                                        <span></span>
+                                                        <span className="votingpower"></span>
                                                         <p>Voting Power</p>
                                                     </div>
                                                 </div>
