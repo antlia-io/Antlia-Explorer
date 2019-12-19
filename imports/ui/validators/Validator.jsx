@@ -106,21 +106,18 @@ export default class Validator extends Component {
                         history: this.props.validator.history().map((history, i) => {
                             return (
                                 <div>
-                                    <ScrollArea className="pcscroll-list">
-                                        <PowerHistory
-                                            key={i}
-                                            type={history.type}
-                                            prevVotingPower={history.prev_voting_power}
-                                            votingPower={history.voting_power}
-                                            time={history.block_time}
-                                            height={history.height}
-                                            address={this.props.validator.operator_address}
-                                        />
-                                    </ScrollArea>
+
+                                    <PowerHistory
+                                        key={i}
+                                        type={history.type}
+                                        prevVotingPower={history.prev_voting_power}
+                                        votingPower={history.voting_power}
+                                        time={history.block_time}
+                                        height={history.height}
+                                        address={this.props.validator.operator_address}
+                                    />
                                 </div>
                             )
-
-
                         })
                     })
                 }
@@ -292,7 +289,7 @@ export default class Validator extends Component {
                                         <Route path="/(validator|validators)/:address/transactions" render={() => <ValidatorTransactions validator={this.props.validator.operator_address} delegator={this.props.validator.delegator_address} limit={100} />} />
                                     </Switch>
                                 </Card>
-                                
+
                             </Col>
                         </Row>
                         <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link>
@@ -300,7 +297,7 @@ export default class Validator extends Component {
                     {/* Component Responsive View */}
                     <div className="respart">
                         <Row>
-                            <Col lg={6} md={6} sm={12}>
+                            <Col lg={12} md={12} sm={12}>
                                 <div className="delegated">
                                     <Card>
                                         <div className="header"><h4>Delegated</h4></div>
@@ -361,7 +358,7 @@ export default class Validator extends Component {
                             </CardBody>
                         </Card> */}
                             </Col>
-                            <Col lg={6} md={6} sm={12} className="validator_tabs">
+                            <Col lg={12} md={12} sm={12} className="validator_tabs">
                                 <Card>
                                     <Nav pills>
                                         <NavItem>
@@ -377,9 +374,9 @@ export default class Validator extends Component {
                                     <Switch>
                                         <Route exact path="/(validator|validators)/:address" render={() =>
                                             <div className="power-history">
-
-                                                {this.state.history}
-
+                                                <ScrollArea className="pcscroll-list">
+                                                    {this.state.history}
+                                                </ScrollArea>
                                             </div>
                                         } />
                                         <Route path="/(validator|validators)/:address/delegations" render={() =>
@@ -390,11 +387,11 @@ export default class Validator extends Component {
                                         />
                                     </Switch>
                                 </Card>
-                              
+
                             </Col>
                         </Row>
                         <Link to="/validators" className="btn btn-link"><i className="fas fa-caret-left"></i> <T>common.backToList</T></Link>
-                        </div>
+                    </div>
                 </div>
                 )
 

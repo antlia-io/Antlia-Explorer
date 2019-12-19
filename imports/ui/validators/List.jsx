@@ -142,7 +142,7 @@ const ValidatorRow = props => {
             md={6}
              lg={2}
           >
-             <i className="far fa-clock d-lg-none"></i>
+             <i className="fas fa-clock d-lg-none"></i>
             {props.validator.lastSeen
               ? moment
                 .utc(props.validator.lastSeen)

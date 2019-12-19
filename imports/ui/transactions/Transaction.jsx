@@ -47,7 +47,7 @@ export default class Transaction extends Component {
                     <Card>
                         {/* <div className="card-header backgroundcolor"><T>common.information</T></div> */}
                         <CardBody>
-                            <Row><Col md={12} lg={6}>
+                            {/* <Row><Col md={12} lg={6}>
                                 <div className="error">
                                     <Alert color="danger">
                                         <ColorErrors
@@ -60,7 +60,7 @@ export default class Transaction extends Component {
                                 </div>
                             </Col>
                                 <Col md={12} lg={6}></Col>
-                            </Row>
+                            </Row> */}
                             <hr />
                             <Row className="mb">
                                 <Col md={4} className="label"><T>common.hash</T></Col>

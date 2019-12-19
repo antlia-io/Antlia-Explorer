@@ -6,7 +6,7 @@ import ChainStatus from './ChainStatus/ChainStatusContainer.js'
 // import RandomStatus from './RandomStatus/RandomStatus'
 import Blocks from './Block/BlocksTable.jsx'
 import Transaction from './Transactions/TransactionsList.jsx';
-import Test from './Transactions/TestContainer.js';
+// import Test from './Transactions/TestContainer.js';
 // import Transactions from './Transactions'
 // import Chart from './ChartContainer.js';
 import ChainStates from '../components/ChainStatesContainer.js'
@@ -15,7 +15,7 @@ import SideNav, { NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import { IndividualTransaction } from './Transactions/IndividualTransaction.jsx'
 // import MainSideMenu from '../components/MainSideMenu.js'
-import PieChart from './PieChart.js';
+// import PieChart from './PieChart.js';
 
 export default class Home extends Component {
     constructor(props) {
@@ -111,12 +111,10 @@ export default class Home extends Component {
                     </Row> */}
 
                 </div>
-
-                {/* <MainSideMenu/> */}
                 <SideNav className="sidenav position-fixed" onSelect={this.onSelect} onToggle={this.onToggle}>
-                    <SideNav.Toggle />
+                    <SideNav.Toggle /> 
                     <SideNav.Nav selected={selected} defaultSelected="dashboard">
-                        <NavItem title="Explorer">
+                  <NavItem title="Explorer">
                             <NavIcon className="explorer">
                                 {/* <i className="fa fa-fw fa-th" /> */}
                                 <span className="ex">EX</span>

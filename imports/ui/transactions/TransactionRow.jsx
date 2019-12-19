@@ -33,9 +33,9 @@ export const TransactionRow = (props) => {
                 {/* {numbro(fee.amount).format(0,0)} CLR</span> */ }
             }) : <span>No fee</span>}</Col>
         {(!props.blockList) ? <Col xs={12} sm={6} md={6} lg={2} className="textalign"><i className="fas fa-database d-lg-none"></i> <Link to={"/blocks/" + tx.height}>{numbro(tx.height).format("0,0")}</Link></Col> : ''}
-        <Col xs={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} md={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} lg={(!props.blockList) ? { size: 2, order: "first" } : { size: 4, order: "first" }} className="text-truncate">
+        <Col xs={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} md={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} lg={(!props.blockList) ? { size: 1, order: "first" } : { size: 4, order: "first" }} className="text-truncate">
             <i className="fas fa-hashtag d-lg-none"></i> <Link to={"/transactions/" + tx.txhash}>{tx.txhash}</Link></Col>
-        {(!props.blockList) ? <Col xs={12} sm={6} md={6} lg={1} className="textalign">
+        {(!props.blockList) ? <Col xs={12} sm={6} md={6} lg={2} className="textalign">
             <i className="material-icons d-lg-none">schedule</i>
             <span className="time-align">
                 <TimeAgo time={tx.block().time} />

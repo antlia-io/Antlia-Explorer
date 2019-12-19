@@ -74,10 +74,10 @@ export const TransactionRow = props => {
           {/* <p className="tc">cosmosdjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p> */}
           <div className="from-to">
             {/* <TransactionActivities/> */}
-            <p className="from">
+            <p className="from text-truncate">
               From: <Link to="#">{from}</Link>...
             </p>
-            <p>
+            <p className="text-truncate">
               {tx.tx.value.msg[0].type === "cosmos-sdk/MsgSubmitProposal" ? (
                 <React.Fragment></React.Fragment>
               ) : (
@@ -100,7 +100,7 @@ export const TransactionRow = props => {
           ) : (
             ""
           )}
-          <TimeAgo time={tx.block().time} />
+          <TimeAgo time={tx.timestamp} />
         </div>
         <div className="statushow">
           <Button>{!tx.code ? <TxIcon valid /> : <TxIcon />}</Button>

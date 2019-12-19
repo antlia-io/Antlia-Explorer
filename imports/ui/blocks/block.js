@@ -17,10 +17,10 @@ export default class Block extends Component {
             let moniker = (proposer.description && proposer.description.moniker) ? proposer.description.moniker : proposer.address;
             let identity = (proposer.description && proposer.description.identity) ? proposer.description.identity : "";
             return <Row className="block-info">
-                <Col xs={12} sm={6} md={6} lg={3} className="text-truncate"><i className="fas fa-hashtag d-lg-none"></i><Link to="#">{this.props.block.hash}</Link> </Col>
-                <Col xs={12} sm={6} md={6} lg={3}><i className="fas fa-calendar d-lg-none"></i><Link to={"/validator/" + this.props.block.proposerAddress}><Avatar moniker={moniker} identity={identity} address={this.props.block.proposerAddress} list={true} /> {moniker}</Link></Col>
-                <Col xs={12} sm={6} md={6} lg={2}><i className="fas fa-sync d-lg-none"></i> {numbro(this.props.block.transNum).format('0,0')}</Col>
-                <Col xs={12} sm={6} md={6} lg={2}><i className="fas fa-database d-lg-none"></i> <Link to={"/blocks/" + this.props.block.height}>{numbro(this.props.block.height).format('0,0')}</Link></Col>
+                <Col xs={12} sm={12} md={12} lg={3} className="text-truncate"><i className="fas fa-hashtag d-lg-none"></i><Link to="#">{this.props.block.hash}</Link> </Col>
+                <Col xs={12} sm={6} md={6} lg={3} className="field"><i className="fas fa-calendar d-lg-none"></i><Link to={"/validator/" + this.props.block.proposerAddress}><Avatar moniker={moniker} identity={identity} address={this.props.block.proposerAddress} list={true} /> {moniker}</Link></Col>
+                <Col xs={12} sm={6} md={6} lg={2} className="field"><i className="fas fa-sync d-lg-none"></i> {numbro(this.props.block.transNum).format('0,0')}</Col>
+                <Col xs={12} sm={6} md={6} lg={2} className="field"><i className="fas fa-database d-lg-none"></i> <Link to={"/blocks/" + this.props.block.height}>{numbro(this.props.block.height).format('0,0')}</Link></Col>
                 <Col xs={12} sm={6} md={6} lg={2}>
                     <div className="timealign"> <i className="fas fa-clock d-lg-none"></i>
                         <TimeAgo time={this.props.block.time} /></div>

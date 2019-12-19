@@ -487,6 +487,7 @@ div#countdown {
 .proposal .tally-result-detail{
     /* overflow: hidden; */
     width: 100%;
+    height: 100% !important;
 }
 
 
@@ -1056,7 +1057,7 @@ div.transactions-list  .badge {
     transform: translateY(0px) !important;
 }
 div.transactions-list div.header{
-    padding: 0 0 1erm;
+    padding: 0 0 1rem;
     border-bottom: 1px solid #dee2e6;
     display: flex;
     align-items: center !important;
@@ -1174,6 +1175,9 @@ div.transactions-list .time-align{
     margin: 0 10px;
     transform: initial !important;
 }
+.power-history .address {
+   display: flex;
+}
 
 .power-history .card .card-footer{
     font-size: 85%;
@@ -1219,7 +1223,6 @@ div.transactions-list .time-align{
 }
 
 
-
 #block ul.tx-types{
     height: 3.5em;
     display: block;
@@ -1235,7 +1238,16 @@ div.transactions-list .time-align{
 #block ul.tx-types .nav-link{
     cursor: pointer;
 }
+@media (max-width: 991px){
+.power-history .card-footer .fee {
+    text-align: left;
+}
+.power-history .badge{
+    margin: 0.5rem 0;
+}
 
+
+}
 @media only screen and (max-width: 767px){
     .sidenav---sidenav-nav---3tvij{
 
@@ -1740,11 +1752,11 @@ div.validator-list div.validator-info{
     }
     .activestatus .activevalidator{
         /* border-bottom: 1px solid #dcdcdc; */
-        padding: 15px;
+        padding: 1rem;
         width: 100%;
     }
     .activestatus .averagetime{
-        padding: 15px;
+        padding: 1rem;
         width: 100%;
     }
     .activestatus .activevalidator .value{
@@ -1780,17 +1792,27 @@ div.validator-list div.validator-info{
         margin: 0 0 20px;
     }
     .activestatus .validator-height .CircularProgressbar{
-        max-width: 305px;
+        max-width: 290px;
      }
     .activestatus .statusdetail {
         border-left: none;
         width: 100%;
     }
 }
+/* @media(min-width:992px) and (max-width:1050px){
+   
+    .activestatus .activevalidator{
+        padding: 1.3rem 1rem;
+    }
+    .activestatus .averagetime{
+        padding: 1.3rem 1rem;
+    }
+} */
 @media(min-width:768px) and (max-width:991px){
     .activestatus .validator-height .CircularProgressbar{
         max-width: 250px;
     }
+
 }
 @media(max-width:767px){
     .activestatus .validator-height{
@@ -1883,7 +1905,7 @@ div.validator-list div.validator-info{
         padding: 15px;
     }
     .randomstatus .semicircle-container{
-        margin: 1.35rem 0;
+        margin: 0.7rem 0;
     }
     
     .randomstatus .content{
@@ -1897,6 +1919,9 @@ div.validator-list div.validator-info{
         font-size: 22px;
         color: #737373;
         margin: 0 0 20px;
+    }
+    .randomstatus .card-title{
+        font-weight: 500;
     }
     .randomstatus .validators{
         padding: 15px;
@@ -2222,15 +2247,14 @@ div.validator-list div.validator-info{
     }
     .transactions .transaction-item .from{
         margin: 0 20px 0 0;
+        width: 50%
+    }
+    .transactions .transaction-item .to{
+        width: 50%
     }
     .transactions .transaction-item .from-to a{
         color: #84a0a0;
         margin: 0 0 0 5px;
-        width: 100%;
-        max-width: 50px;
-        max-width: 95px;
-        overflow: hidden;
-        display: inline-flex;
     }
     .transactions .transaction-item a:hover{
         color: #004bff;
@@ -2461,10 +2485,13 @@ width: 100% !important;
     }
 
     /* Validator Details - Delegated Styles */
-   
+  
+
+    .delegated{
+        margin: 0 0 1.5rem;
+    }
     .delegated .card{
         padding: 15px;
-
     }
     .delegated h4{
         font-size: 30px;
@@ -2509,18 +2536,24 @@ width: 100% !important;
     .delegated .chart-details p{
         margin: 5px 0;
     }
-    @media(min-width:767px) and (max-width:1024px){
-        .delegated .chart-details {
-            flex-wrap: wrap;
-            padding: 0 30px;
-        }
-        .delegated .chart-details .self{
-            width: 100%;
-            margin: 0 0 20px;
-        }
-        .delegated .chart-details .others{
-            width: 100%;
-        }
+    @media(min-width:991px) and (max-width:1236px){
+    .delegated-details{
+        display: flex;
+        justify-content: space-between;
+    }
+    .delegated .chart-details {
+        flex-wrap: wrap;
+        padding: 0 0 0 2rem;
+        border-left: 1px solid #ccc;
+        align-items: center;
+    }
+    .delegated .chart-details .self{
+        width: 100%;
+        margin: 0 0 20px;
+    }
+    .delegated .chart-details .others{
+        width: 100%;
+    }
     }
     @media(max-width:767px){
         .delegated{
@@ -2543,7 +2576,7 @@ width: 100% !important;
 
       /* Validator Details - Validator Tabs Styles */
       .validator_tabs .card {
-           padding: 30px;
+           padding: 2rem;
       }
   
       .validator_tabs .nav-item{
@@ -2561,6 +2594,9 @@ width: 100% !important;
         background-color: #660099 !important;
         border: 1px solid #660099 !important;
     }
+    .validator_tabs .activity .text-truncate{
+        display: flow-root;
+}
     @media(max-width:1236px){
         .validator_tabs .nav-pills{
             display: flex;
@@ -2568,7 +2604,8 @@ width: 100% !important;
         }
        .validator_tabs .activity{
                 margin: 0 0 10px;
-            }
+        }
+    
     }
 
     .power-history .card-body{
@@ -2585,20 +2622,26 @@ width: 100% !important;
         color: #323232;
         margin: 0 10px 0 0;
     }
-    .power-history .col-md-1,
+    /* .power-history .col-md-1,
     .power-history .col-lg-1{
         padding: 0 7px 0 15px;
     }
     .power-history .col-md-7,
     .power-history .col-lg-7{
         padding: 0 7px;
-    }
+    } */
     .power-history .ta,
     .power-history .changevalues{
         display: flex;
         align-items: center;
     }
-    @media(min-width:768px) and (max-width:991px){
+    @media(max-width:767px){
+        .validator_tabs .card {
+            padding: 1rem;
+       }
+        .validator_tabs .nav-pills{
+            padding: 1rem;
+        }
         .power-history .changevalues{
             flex-wrap: wrap;
             justify-content: center;
@@ -2624,10 +2667,6 @@ width: 100% !important;
         }
     }
     @media(max-width:575px){
-        .power-history .changevalues{
-            flex-wrap: wrap;
-            justify-content: center;
-        }
         .power-history .material-icons{
             transform: rotate(90deg);
             text-align: center;
@@ -2688,7 +2727,20 @@ width: 100% !important;
         padding: 5px 10px;
     }
     .delegation .textAlign{
-        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    @media(max-width:991px){
+        .delegation .fas{
+            margin: 0 1rem 0 0;
+        } 
+        .delegation .mb{
+            margin: 0 0 1rem;
+        } 
+        .delegatescroll-list{
+            height: 412px;
+        } 
     }
 @media(min-width:768px) and (max-width:1200px){
     .delegation .card-header{
@@ -2734,6 +2786,9 @@ width: 100% !important;
     }
     .delegate-trans .transfer-item{
         margin: 10px auto;
+    }
+    .delegate-trans .transfer-item .address{ 
+        display: flex;
     }
     .delegate-trans .nav-link{
         font-size: 14px;
@@ -2822,6 +2877,10 @@ width: 100% !important;
     .transfer-item .al{
         font-weight: 400;
     }
+    .transfer-item .fee {
+        display: flex;
+        align-items: center;
+    }
     .transfer-item p {
         color: #848688;
         font-family: 'Roboto', sans-serif;
@@ -2869,17 +2928,19 @@ width: 100% !important;
         font-weight: 400;
        
     }
-    /* .tx-info .address{
-        width: 100%;
-        display: flex;
-    } */
-    @media(max-width:575px){
+    @media(max-width:991px){
+        .tranfer-item .al{
+            margin: 0.5rem 0 ;
+        } 
+    }
+    @media(max-width:767px){
+        .transfer-item .status{
+            margin: 0.5rem 0;
+        }
         .transfer-item .al{
             width: 100%;
-            display: block;
-        }
+        } 
     }
-
     .respart {
         display: none;
     }
@@ -2921,6 +2982,15 @@ width: 100% !important;
         color: #004bff;
     }
     @media(max-width:991px){
+        #blockstable  .field {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        #blockstable .timealign{
+            justify-content: space-between;
+            align-items: baseline;
+        }
         #blockstable .col-12{
             margin: 0 0 15px;
         }

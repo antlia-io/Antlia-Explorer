@@ -8,7 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  UncontrolledDropdown, 
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem
@@ -68,8 +68,8 @@ export default class Header extends Component {
                         {i < networks.length - 1 ? (
                           <DropdownItem divider />
                         ) : (
-                          ""
-                        )}
+                            ""
+                          )}
                       </span>
                     );
                   })}
@@ -102,8 +102,11 @@ export default class Header extends Component {
             className="form-control"
             history={this.props.history}
           />
-
           <UncontrolledDropdown inNavbar>
+            <DropdownToggle caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
+            {this.state.networks}
+          </UncontrolledDropdown>
+          {/* <UncontrolledDropdown inNavbar>
             <DropdownToggle nav caret>
               {Meteor.settings.public.chainId}
             </DropdownToggle>
@@ -112,7 +115,7 @@ export default class Header extends Component {
               <DropdownItem>Cosmoshub2</DropdownItem>
               <DropdownItem>Cosmoshub2</DropdownItem>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
 
           <UncontrolledDropdown inNavbar>
             <DropdownToggle nav caret>

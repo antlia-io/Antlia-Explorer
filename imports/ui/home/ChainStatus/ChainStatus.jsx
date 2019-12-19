@@ -271,12 +271,12 @@ export default class ChainStatus extends React.Component {
                                             </div>
                                             <div className="validators">
                                                 <CardTitle>Validators</CardTitle>
-                                                <CardText><span className="value">
-                                                    {/* {sum/length} */}
+                                                {/* <CardText><span className="value">
+
                                                     {numbro((sum / length)).format('0.0%')}
                                                     </span>
                                                     </CardText>
-                                                <CardText>Active</CardText>
+                                                <CardText>Active</CardText> */}
                                                 <SemiCircleProgressBar
                                                     // percentage={(this.state.activeValidatorsUpTime / this.props.validators.length) * 100}
                                                     percentage={sum/length}
@@ -291,6 +291,20 @@ export default class ChainStatus extends React.Component {
                                                         <span></span>
                                                         <p>UpTime</p>
                                                     </div>
+                                                   
+                                                </div>
+                                                <SemiCircleProgressBar
+                                                    // percentage={(this.state.activeValidatorsUpTime / this.props.validators.length) * 100}
+                                                    percentage={sum/length}
+                                                    diameter={130}
+                                                    animationSpeed={4}
+                                                    className="table-semi-circle"
+                                                    stroke="#061d47
+                                                    "
+                                                    strokeWidth={20}
+                                                />
+                                                <div className="color-values">
+                                                 
                                                     <div className="item">
                                                         <span></span>
                                                         <p>Voting Power</p>

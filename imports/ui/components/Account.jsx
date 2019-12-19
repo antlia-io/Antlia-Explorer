@@ -48,7 +48,7 @@ export default class Account extends Component {
       <span
         className={
           this.props.copy
-            ? "copy"
+            ? "copy text-truncate"
             : "text-truncate"
         }
       >

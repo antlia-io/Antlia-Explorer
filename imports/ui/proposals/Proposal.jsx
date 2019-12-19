@@ -19,7 +19,7 @@ import { TransactionRow } from './TransactionsRow.jsx';
 const T = i18n.createComponent();
 
 const Result = posed.div({
-    closed: { height: 250 },
+    // closed: { height: 250 },
     open: { height: 'auto' }
 });
 export default class Proposal extends Component {
@@ -217,24 +217,25 @@ export default class Proposal extends Component {
         let orderDir = this.state.orderDir;
         votes = votes.sort((vote1, vote2) => (vote1['votingPower'] - vote2['votingPower']) * orderDir);
 
-        return <Result className="tally-result-detail" pose={this.state.open === openState ? 'open' : 'closed'}>
+        return <Result className="tally-result-detail">
             <div className='tally-result-table'>
                 {(votes.length) ? <Row className="header text-nowrap">
                     {/* <Col className="d-none d-md-block counter" md={1}>No.</Col> */}
-                    <Col className="moniker" md={3}>
+                    <Col className="moniker" lg={3} md={6} sm={12} xs={12}>
                         <i className="material-icons">perm_contact_calendar</i>
                         <span className="d-inline-block d-md-none d-lg-inline-block"><T>common.voter</T></span>
                     </Col>
-                    <Col className="voting-power" md={3} onClick={(e) => this.toggleDir(e)}>
+                    {/* <Col className="voting-power" lg={3} md={6} sm={12} xs={12} onClick={(e) => this.toggleDir(e)}> */}
+                    <Col className="voting-power" lg={3} md={6} sm={12} xs={12}>
                         <i className="material-icons">reply</i>
                         <span className="d-inline-block d-md-none d-lg-inline-block">Answer</span>
-                        <i className="material-icons"> {(this.state.orderDir == 1) ? 'arrow_drop_up' : 'arrow_drop_down'}</i>
+                        {/* <i className="material-icons"> {(this.state.orderDir == 1) ? 'arrow_drop_up' : 'arrow_drop_down'}</i> */}
                     </Col>
-                    <Col className="voting-power-percent" md={3}>
+                    <Col className="voting-power-percent" lg={3} md={6} sm={12} xs={12}>
                         <i className="fas fa-hashtag"></i>
                         <span className="d-inline-block d-md-none d-lg-inline-block">TxHash</span>
                     </Col>
-                    <Col className="voting-power-percent" md={3}>
+                    <Col className="voting-power-percent" lg={3} md={6} sm={12} xs={12}>
                         <i className="fas fa-clock"></i>
                         <span className="d-inline-block d-md-none d-lg-inline-block">Time</span>
                     </Col>
@@ -254,11 +255,12 @@ export default class Proposal extends Component {
                         {/* <Col className="d-none d-md-block counter data" md={1}>{i + 1}</Col> */}
 
 
-                        <Col className="moniker data" lg={3}>
-                            <span key={i}> <Account address={vote.voter} /></span>
+                        <Col className="moniker data" lg={3} md={6} sm={12}>
+                        {/* <i className="material-icons d-lg-none">perm_contact_calendar</i> */}
+                            <span key={i}><Account address={vote.voter} /></span>
 
                         </Col>
-                        <Col className="voting-power data" md={3}>
+                        <Col className="voting-power data" lg={3} md={6} sm={12}>
                             <i className="material-icons d-lg-none">reply</i>
                             <VoteIcon /> {vote.option}
                             {/* {(vote.votingPower !== undefined) ? numbro(vote.votingPower).format('0,0.00') : ""} */}
@@ -294,7 +296,7 @@ export default class Proposal extends Component {
                     
                     // </Card>
                 )}
-                <Row>
+                {/* <Row>
                         <Col lg={12}>
                             <div className="nodata">
                                 <div>
@@ -303,7 +305,7 @@ export default class Proposal extends Component {
                                 </div>
                             </div>
                         </Col>
-                    </Row>
+                    </Row> */}
                    
             </div>
         </Result>
@@ -429,10 +431,10 @@ export default class Proposal extends Component {
                                             <h2>Votes</h2>
                                             <Nav tabs className='card-header-tabs'>
                                                 {/* {['Bar', 'All', 'Yes', 'No', 'NoWithVeto', 'Abstain'].map((option) => */}
-                                                {['All', 'Yes', 'No', 'NoWithVeto', 'Abstain'].map((option) =>
+                                                {['Yes', 'No', 'NoWithVeto', 'Abstain'].map((option) =>
                                                     <NavItem key={option}><NavLink active={this.state.breakDownSelection == option}
                                                         onClick={() => this.setState({ breakDownSelection: option })}>
-                                                        {option == 'All' ? 'All(0)' : option}
+                                                        {option == 'Yes' ? 'Yes(0)': option}
                                                     </NavLink></NavItem>
                                                 )}
                                             </Nav>

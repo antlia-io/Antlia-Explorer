@@ -284,7 +284,7 @@ export default class Validators extends Component {
                         sm={6}
                         md={6}
                         lg={2}>
-                        <i className="far fa-clock"></i>{" "}
+                        <i className="fas fa-clock"></i>{" "}
                         <span className="hlabel">
                           <T>validators.lastSeen</T> (UTC)
                         </span>

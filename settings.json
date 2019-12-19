@@ -1,7 +1,7 @@
 {
     "public":{
         "chainName": "Dashboard",
-        "chainId": "colors-test-01",
+        "chainId": "local-testnet",
         "gtm": "{Add your Google Tag Manager ID here}",
         "slashingWindow": 10000,
         "uptimeWindow": 250,

@@ -12,18 +12,17 @@ import TimeAgo from '../components/TimeAgo.jsx';
 
 export const TransactionRow = (props) => {
     let tx = props.tx;
-    if(props.id == props.tx.tx.value.msg[0].value.proposal_id)
-    {
-    return <Row className={(!props.blockList) ? "tx-info tx-row":"bb"}>
-        <Col xs={12} sm={6} md={6} lg={6} className="text-truncate textalign">
-                    <i className="fas fa-hashtag d-lg-none"></i> <Link to={"/transactions/" + tx.txhash}>{tx.txhash}</Link></Col>
-                <Col xs={12} sm={6} md={6} lg={6}>
-                    <i className="material-icons d-lg-none">schedule</i>
-                    <span className="time-align">
-                        <TimeAgo time={tx.block().time} />
-                    </span>
-                </Col>
-            </Row>
+    if (props.id == props.tx.tx.value.msg[0].value.proposal_id) {
+        return <Row className={(!props.blockList) ? "tx-info tx-row" : "bb"}>
+            <Col xs={12} sm={12} md={6} lg={6} className="text-truncate textalign">
+                <i className="fas fa-hashtag d-lg-none"></i> <Link to={"/transactions/" + tx.txhash}>{tx.txhash}</Link></Col>
+            <Col xs={12} sm={12} md={6} lg={6}>
+                <i className="material-icons d-lg-none">schedule</i>
+                <span className="time-align">
+                    <TimeAgo time={tx.block().time} />
+                </span>
+            </Col>
+        </Row>
     }
     else {
         return <p>No Data</p>

@@ -37,9 +37,9 @@ export default class ValidatorDelegations extends Component {
                     numDelegatiors: delegations.length,
                     delegations: delegations.map((d, i) => {
                         return (<Row key={i} className="delegation-info">
-                            <Col lg={5} md={12} className="text-nowrap text-truncate"><Account address={d.delegator_address} /></Col>
-                            <Col lg={4} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
-                            <Col lg={3} md={12} className="textAlign">{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                            <Col lg={5} md={12} className="text-nowrap text-truncate mb"><i className="fas fa-at d-lg-none"></i><Account address={d.delegator_address} /></Col>
+                            <Col lg={4} md={12} className="textAlign mb"><i className="fas fa-piggy-bank d-lg-none"></i>{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
+                            <Col lg={3} md={12} className="textAlign"><i className="fas fa-share d-lg-none"></i>{numbro(d.shares / this.props.shares * this.props.tokens / Meteor.settings.public.stakingFraction).format("0,0.00")} {Meteor.settings.public.stakingDenom}</Col>
                         </Row>
                         )
                     })
@@ -59,9 +59,9 @@ export default class ValidatorDelegations extends Component {
                 <CardBody className="list">
                     <Container fluid>
                         <Row className="header delegation-info text-nowrap d-lg-flex">
-                            <Col lg={5} md={12}><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
-                            <Col lg={4} md={12} className="textAlign"><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
-                            <Col lg={3} md={12} className="textAlign"><i className="fas fa-share"></i> <span>Share</span></Col>
+                            <Col lg={5} md={12} className="mb"><i className="fas fa-at"></i> <span><T>common.addresses</T></span></Col>
+                            <Col lg={4} md={12} className="mb"><i className="fas fa-piggy-bank"></i> <span><T>common.amounts</T></span></Col>
+                            <Col lg={3} md={12}><i className="fas fa-share"></i> <span>Share</span></Col>
                         </Row>
                         <ScrollArea className="delegatescroll-list">
                             {this.state.delegations}
