@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { HTTP } from "meteor/http";
+
 import {
   Badge,
   Collapse,
@@ -68,8 +70,8 @@ export default class Header extends Component {
                         {i < networks.length - 1 ? (
                           <DropdownItem divider />
                         ) : (
-                            ""
-                          )}
+                          ""
+                        )}
                       </span>
                     );
                   })}
@@ -103,7 +105,14 @@ export default class Header extends Component {
             history={this.props.history}
           />
           <UncontrolledDropdown inNavbar>
-            <DropdownToggle caret={(this.state.networks !== "")} tag="span" size="sm" id="network-nav">{Meteor.settings.public.chainId}</DropdownToggle>
+            <DropdownToggle
+              caret={this.state.networks !== ""}
+              tag="span"
+              size="sm"
+              id="network-nav"
+            >
+              {Meteor.settings.public.chainId}
+            </DropdownToggle>
             {this.state.networks}
           </UncontrolledDropdown>
           {/* <UncontrolledDropdown inNavbar>
@@ -139,7 +148,7 @@ export default class Header extends Component {
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
-          <UncontrolledDropdown inNavbar>
+          {/* <UncontrolledDropdown inNavbar>
             <DropdownToggle nav caret>
               <img src="/img/user.png" className="img-fluid usericon" />
             </DropdownToggle>
@@ -148,7 +157,13 @@ export default class Header extends Component {
               <DropdownItem>Views</DropdownItem>
               <DropdownItem>Sign Out</DropdownItem>
             </DropdownMenu>
-          </UncontrolledDropdown>
+          </UncontrolledDropdown> */}
+
+          <NavLink to="/sign-in">
+            <span className="headerSignIn">
+              <T>navbar.signIn</T>
+            </span>
+          </NavLink>
         </div>
       </Navbar>
     );

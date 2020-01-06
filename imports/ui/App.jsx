@@ -19,6 +19,8 @@ import SentryBoundary from "/imports/ui/components/SentryBoundary.jsx";
 import NotFound from "/imports/ui/pages/NotFound.jsx";
 
 import { ToastContainer, toast } from "react-toastify";
+import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 
 if (Meteor.isClient) import "react-toastify/dist/ReactToastify.min.css";
 
@@ -68,7 +70,6 @@ class App extends Component {
 
   render() {
     const history = createMemoryHistory();
-
     return (
       // <Router history={history}>
       <div>
@@ -77,8 +78,23 @@ class App extends Component {
         ) : (
           ""
         )}
-        <RouteHeader />
-        <Container fluid id="main">
+
+        {window.location.pathname.includes("sign-in") ||
+        window.location.pathname.includes("sign-up") ? (
+          ""
+        ) : (
+          <RouteHeader />
+        )}
+
+        <Container
+          fluid
+          className={
+            window.location.pathname.includes("sign-in") ||
+            window.location.pathname.includes("sign-up")
+              ? "mainSignUpSignIn"
+              : "main"
+          }
+        >
           <ToastContainer />
           <SentryBoundary>
             <MobileSearchBar />
@@ -104,11 +120,19 @@ class App extends Component {
                 component={ValidatorDetails}
               />
               <Route path="/proposals" component={Proposals} />
+              <Route path="/sign-in" component={SignIn} />
+              <Route path="/sign-up" component={SignUp} />
               <Route component={NotFound} />
             </Switch>
           </SentryBoundary>
         </Container>
-        <Footer />
+
+        {window.location.pathname.includes("sign-in") ||
+        window.location.pathname.includes("sign-up") ? (
+          ""
+        ) : (
+          <Footer />
+        )}
       </div>
       // </Router>
     );

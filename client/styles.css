@@ -2,6 +2,7 @@
 
 body {
     font-size: inherit !important;
+    font-family: 'Roboto', sans-serif;
 }
 
 .no-select {
@@ -153,9 +154,14 @@ a.navbar-brand .logo {
 div#main{
     background: #f4f4f4;
 }
-div#main, div#transaction, div#block{
+div.main, div#transaction, div#block{
     padding-top: 5rem;
     padding-bottom: 3.85rem;
+}
+
+div.mainSignUpSignIn{
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 div#transaction .card.card-body{
@@ -927,6 +933,8 @@ div#main, div#transaction, div#block
 #transaction a {
     color: #004bff;
 }
+
+
 
 @media(max-width:480px){
     div#transaction .card-body{
@@ -3418,4 +3426,207 @@ font-weight: 400;
 
 .disabled{
     cursor: none !important;
+}
+
+.headerSignIn{
+    color: #fff !important;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.signInImage{
+    width: 100%;
+    height: 80vh;
+}
+
+/* STYLES FOR SIGN IN AND SIGN UP PAGES */
+.mainContainer img {
+    /* min-height: 474px !important; */
+    max-height: inherit;
+     /* height: 78vh !important */
+}
+.mainContainer  .signInImageText{
+
+    color: white;
+    line-height: 35px;
+}
+.mainContainer  .signInImageText h3{
+    font-size: 31px !important;
+}
+.mainContainer  .signInImageText h1{
+    font-size: 40px !important;
+    margin-bottom: 47px
+}
+.mainContainer  .signInImageText span{
+    font-size: 16px !important;
+    line-height: 20px;
+}
+
+
+.antaliaSvg{
+    width: 120px;
+
+    height: auto !important;
+    /* max-height:55px !important; */
+    margin-bottom: 32px;
+}
+.containerForSigninform{
+    margin: auto;
+    width: 80% !important;
+        position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.containerForSigninform input {
+    border: 1px solid #ded5d5;
+    height:30px !important;
+    padding-left: 9px;
+       height: 50px !important;
+    font-size: 15px;
+    border-radius: 4px;
+}
+#createAdressBtn{
+    background: #004bff!important;
+    color: white;
+}
+#createAdressBtn:hover{
+    background: #0136b7 !important;
+    color: white !important;
+}
+
+.signInImageContainer{
+    background-image: url('/img/Group_658.jpg');
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    /* margin: 3px; */
+    align-items: center
+
+    
+}
+
+@media(max-width:991px){
+    #signInImageContainerColumn{
+        display: none;
+    }
+     .containerForSigninform{
+        width:100% !important
+    }
+    #formColumn{
+        position: relative;
+        margin-top: 100px !important;
+    margin-bottom: 100px !important;
+    }
+    .antaliaSvg{
+        display: none;
+    }
+    #svgReplacement{
+        display: block !important;
+    }
+ 
+}
+
+.signUpImageContainer{
+    background-image: url('/img/Mask_Group_6.jpg');
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center
+
+    
+}
+
+.containerForSigninform label{
+    font-size: 15px;
+    color: black;
+    margin-bottom: 0 !important;
+    margin-bottom: 7px !important
+}
+.containerForSigninform button{
+        font-weight: 600;
+        color: white;
+        padding: 9px;
+        height:50px;
+        margin-bottom: 10px;    
+          width:100%;
+    font-size: 11px !important;
+    border:1px solid #dfd4d5 !important;
+    box-shadow: none !important;
+    font-size: 16px;    
+}
+
+
+.facebookLoginButton{
+    width:100%;
+}
+
+.kep-login-facebook, .metro{
+    background: white !important;
+    color: #857d7d !important;
+    font-size: 15px !important;
+    border-radius: 0;
+    border: 1px solid #f7f4f4 !important;
+    padding: 52px auto;
+    padding: 5px auto !important;
+    display: flex;
+    align-items: center;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px; */
+    font-family: Roboto, sans-serif !important;
+    font-weight: 500!important;
+    font-size: 9px !important;
+    font-weight: bold;
+    display: flex !important;
+    width: 100%;
+       border:1px solid #dfd4d5 !important;
+}
+
+.metro i {
+    color: blue!important;
+    font-size: 19px;
+}
+
+ .mainContainer {
+    height: 100vh;
+    max-height: fit-content;
+   
+    margin-top: 20px !important;
+    position: relative;
+}
+.mainContainer h1{
+    font-weight: 500;
+}
+
+.formColumn{
+    height: 83%;
+    margin: auto auto !important;
+}
+
+.signInSignUpArrowIcon{
+      padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #c7c7c7;
+    border-radius: 50%;
+    color: #848688;
+    cursor: pointer;
+    position: absolute;
+    top: 25px;
+    right: 65px;
+}
+.signInSignUpArrowIcon:hover{
+    
+    color: #fff;
+    background:#004bff
+ 
+}
+
+#signUpText{
+    color: #004bff!important
 }
