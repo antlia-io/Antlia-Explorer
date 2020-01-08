@@ -47,7 +47,7 @@ export default ProposalContainer = withTracker((props) => {
         chain: proposalExist ? chain : {},
         governanceTxs: transactionsExist ? Transactions.find({
             $or: [
-                {"tx.value.msg.type":"cosmos-sdk/MsgVote"}
+                {"tx.value.msg.type":"color/MsgVote"}
             ]
         }).fetch() : {},
         proposalCount: proposalExist? proposalCount: 0

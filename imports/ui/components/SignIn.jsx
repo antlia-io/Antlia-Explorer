@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {signUp} from "../../api/signup/signup.js";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import {
@@ -12,18 +13,52 @@ import {
   Label,
   Input
 } from "reactstrap";
+import ForgetPasswordModal from "./forgetPasswordModal.jsx";
 
 class SignIn extends Component {
+  state={
+    email: '',
+    password: '',
+    message: '',
+    modalOpen: false
+  }
   //  Google Authetication
   responseGoogle = response => {
     console.log(response);
+    this.props.history.push('/')
   };
 
   // facebook Authetication
   responseFacebook = response => {
     console.log(response);
+    this.props.history.push('/')
   };
+
+  signInFormSubmit = e => {
+    e.preventDefault();
+    var {email, password} =  this.state;
+    const existing = signUp._collection.findOne({email:email, password:password});
+    if(!existing){
+      this.setState({
+        message: 'User Not Found'
+      })
+      return
+    }
+    this.props.history.push('/')
+  }
+
+  onChange = e => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
+
+  //  on label clicked
+
+  onForgetPassword = e => this.setState({modalOpen:!this.state.modalOpen})
   render() {
+    const {email,password,message, modalOpen} = this.state;
     return (
       <React.Fragment>
         <Row className="mainContainer mt-0">
@@ -63,25 +98,31 @@ class SignIn extends Component {
                   src={"/img/antlia-logo.jpg"}
                   alt={"Antlia"}
                 />
-                <Form onSubmit={e => e.preventDefault()}>
+                <Form onSubmit={this.signInFormSubmit}>
                   <FormGroup>
-                    <Label for="exampleEmail">Email / Mobile</Label>
+                    <Label for="email">Email / Mobile</Label>
                     <Input
-                      type="email"
+                      type="text"
                       name="email"
-                      id="exampleEmail"
+                      id="email"
+                      value={email}
+                      onChange={this.onChange}
                       placeholder="example@example.com"
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="examplePassword">Password</Label>
+                    <Label for="password">Password</Label>
+                    <Label className="float-right" onClick={this.onForgetPassword}>Forget Password?</Label>
                     <Input
                       type="password"
                       name="password"
-                      // id="examplePassword"
+                      id="password"
+                      value={password}
+                      onChange={this.onChange}
                       placeholder="Enter password..."
                     />
                   </FormGroup>
+                  {message && <div className="text-center"><span className="text-danger">{message}</span></div>}
                   <Button className="btn-block" color="success">
                     LOGIN
                   </Button>{" "}
@@ -92,7 +133,7 @@ class SignIn extends Component {
                     </Button>
                   </Link>
                 </Form>
-
+                <Row className="mt-4"><Col lg={12}><div className="line"><span>OR</span></div></Col></Row>
                 <Row className="mt-4">
                   <Col xs={12} md={12} sm={12} lg={6}>
                     <GoogleLogin
@@ -107,12 +148,13 @@ class SignIn extends Component {
                   <Col xs={12} md={12} sm={12} lg={6}>
                     <FacebookLogin
                       appId="1007814429617488"
-                      autoLoad={true}
+                      // autoLoad={true}
                       fields="name,email,picture"
                       onClick={this.componentClicked}
                       callback={this.responseFacebook}
                       className="facebookLoginButton"
-                      buttonText="Login"
+                      textButton="Sign in with Facebook"
+                      // buttonText="Login"
                       icon="fab fa-facebook-square"
                     />
                   </Col>
@@ -129,6 +171,7 @@ class SignIn extends Component {
             </div>
           </Col>
         </Row>
+        <ForgetPasswordModal modalOpen= {modalOpen} history={this.props.history.push('/sign-in')}/>
       </React.Fragment>
     );
   }

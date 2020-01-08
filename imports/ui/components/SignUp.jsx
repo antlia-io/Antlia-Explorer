@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {signUp} from "../../api/signup/signup.js";
 import { Link } from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
@@ -14,16 +15,63 @@ import {
 } from "reactstrap";
 
 class SignUp extends Component {
+  state={
+    email: '',
+    password: '',
+    confirmPassword: '',
+    message: ''
+  }
   //  Google Authetication
   responseGoogle = response => {
     console.log(response);
+    this.props.history.push('/')
   };
 
   // facebook Authetication
   responseFacebook = response => {
     console.log(response);
+    this.props.history.push('/')
   };
+
+  signUpFormSubmit = e => {
+    e.preventDefault();
+    var {email, password,confirmPassword} =  this.state;
+    const existing = signUp._collection.findOne({
+      email: email
+    })
+    if(password.length < 8){
+      this.setState({
+        message: 'Password should contain minimum 8 characters'
+      })
+      return
+    }
+    if(password !== confirmPassword){
+      this.setState({
+        message: "Password doesn't match"
+      })
+      return
+    }
+    if(existing){
+      this.setState({
+        message: 'User Already exists'
+      })
+      return
+    }
+    signUp._collection.insert({
+      email : email,
+      password: password
+    });
+    this.props.history.push('/sign-in')
+  };
+
+  onChange = e => {
+    this.setState({
+      [e.target.name] : e.target.value
+    })
+  }
+
   render() {
+    const {email,password, confirmPassword,message} = this.state;
     return (
       <React.Fragment>
         <Row className="mainContainer mt-0">
@@ -70,41 +118,47 @@ class SignUp extends Component {
                     secure
                   </h1>
                 </div>
-                <Form onSubmit={e => e.preventDefault()}>
+                <Form onSubmit={this.signUpFormSubmit}>
                   <FormGroup>
-                    <Label for="exampleEmail">Email / Mobile</Label>
+                    <Label for="email">Email / Mobile</Label>
                     <Input
-                      type="email"
+                      type="text"
                       name="email"
-                      id="exampleEmail"
+                      id="email"
+                      value={email}
+                      onChange={this.onChange}
                       placeholder="example@example.com"
                     />
                   </FormGroup>
 
                   <FormGroup>
-                    <Label for="examplePassword">Password</Label>
+                    <Label for="password">Password</Label>
                     <Input
                       type="password"
                       name="password"
-                      id="examplePassword"
+                      id="password"
+                      value={password}
+                      onChange={this.onChange}
                       placeholder="Enter password..."
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="examplePassword">Confirm Password</Label>
+                    <Label for="password">Confirm Password</Label>
                     <Input
                       type="password"
-                      name="password"
-                      // id="examplePassword"
+                      name="confirmPassword"
+                      onChange={this.onChange}
+                      value={confirmPassword}
+                      id="confirmPassword"
                       placeholder="Confirm Password..."
                     />
                   </FormGroup>
-
-                  <Button className="btn-block" id={"createAdressBtn"}>
+                  {message && <div className="text-center"><span className="text-danger">{message}</span></div>}
+                  <Button className="btn-block" id={"createAdressBtn"} >
                     CREATE ADDRESS
                   </Button>
                 </Form>
-
+                <Row className="mt-4"><Col lg={12}><div className="line"><span>OR</span></div></Col></Row>
                 <Row className="mt-4">
                   <Col xs={12} md={12} sm={12} lg={6}>
                     <GoogleLogin
@@ -119,12 +173,13 @@ class SignUp extends Component {
                   <Col xs={11} md={12} sm={12} lg={6}>
                     <FacebookLogin
                       appId="1007814429617488"
-                      autoLoad={true}
+                      // autoLoad={true}
                       fields="name,email,picture"
                       onClick={this.componentClicked}
                       callback={this.responseFacebook}
                       className="facebookLoginButton"
-                      buttonText="Login"
+                      textButton="Sign in with Facebook"
+                      // buttonText="Login"
                       icon="fab fa-facebook-square"
                     />
                   </Col>

@@ -3434,6 +3434,14 @@ font-weight: 400;
     font-weight: 600;
 }
 
+.headerSignIn:focus {
+    outline: none !important;
+}
+
+.signIn:hover {
+    text-decoration: none !important;
+}
+
 .signInImage{
     width: 100%;
     height: 80vh;
@@ -3629,4 +3637,26 @@ font-weight: 400;
 
 #signUpText{
     color: #004bff!important
+}
+
+.line {
+    position: relative;
+    height: 1px;
+    width: 100%;
+    background: black;
+}
+
+.line span{
+    position: absolute;
+    background: white;
+    top: -11px;
+    padding: 0 5px;
+    left: 47%;
+    right: 0;
+    height: 20px;
+    width: 32px;
+}
+
+.kep-login-facebook.metro {
+    text-transform: capitalize;
 }

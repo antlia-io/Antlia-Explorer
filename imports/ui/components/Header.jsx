@@ -159,7 +159,7 @@ export default class Header extends Component {
             </DropdownMenu>
           </UncontrolledDropdown> */}
 
-          <NavLink to="/sign-in">
+          <NavLink to="" className="signIn">
             <span className="headerSignIn">
               <T>navbar.signIn</T>
             </span>

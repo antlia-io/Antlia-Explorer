@@ -9,6 +9,7 @@ import { VotingPowerHistory } from '../../api/voting-power/history.js';
 import { Evidences } from '../../api/evidences/evidences.js';
 import { CoinStats } from '../../api/coin-stats/coin-stats.js';
 import { ChainStates } from '../../api/chain/chain.js';
+import { signUp } from '../../api/signup/signup.js';
 
 ChainStates.rawCollection().createIndex({height: -1},{unique:true});
 
@@ -47,3 +48,5 @@ VotingPowerHistory.rawCollection().createIndex({address:1,height:-1});
 VotingPowerHistory.rawCollection().createIndex({type:1});
 
 CoinStats.rawCollection().createIndex({last_updated_at:-1},{unique:true});
+
+signUp.rawCollection().createIndex({height: -1},{unique:true});
