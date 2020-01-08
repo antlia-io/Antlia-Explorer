@@ -3495,6 +3495,19 @@ font-weight: 400;
     font-size: 15px;
     border-radius: 4px;
 }
+
+.forgotPasswordEmailInput {
+    border: 1px solid #ded5d5 !important;
+    padding-left: 9px !important;
+    height: 50px !important;
+    font-size: 15px !important;
+    border-radius: 4px !important;
+}
+
+.forgotPasswordCursor {
+    cursor: pointer;    
+}
+
 #createAdressBtn{
     background: #004bff!important;
     color: white;
@@ -3658,5 +3671,5 @@ font-weight: 400;
 }
 
 .kep-login-facebook.metro {
-    text-transform: capitalize;
+    text-transform: none;
 }
