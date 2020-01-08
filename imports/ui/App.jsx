@@ -21,6 +21,7 @@ import NotFound from "/imports/ui/pages/NotFound.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
+import MyProfileMain from "./accountOverView/MyProfileMain";
 
 if (Meteor.isClient) import "react-toastify/dist/ReactToastify.min.css";
 
@@ -119,6 +120,7 @@ class App extends Component {
                 path="/(validator|validators)"
                 component={ValidatorDetails}
               />
+              <Route path="/my-account" component={MyProfileMain} />
               <Route path="/proposals" component={Proposals} />
               <Route path="/sign-in" component={SignIn} />
               <Route path="/sign-up" component={SignUp} />

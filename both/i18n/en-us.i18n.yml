@@ -65,6 +65,11 @@ analytics:
   averageBlockTime: "Average Block Time"
   blockInterval: "Block Interval"
   noOfValidators: "No. of Validators"
+myProfile:
+  myProfile: "My profile"
+  pinList: "Pin list"
+  txn: "TXN private Notes"
+  signOut: "Sign out"
 validators:
   randomValidators: "Random Validators"
   moniker: "Node Name"

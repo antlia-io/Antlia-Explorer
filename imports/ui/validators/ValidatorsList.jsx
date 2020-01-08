@@ -7,7 +7,7 @@ import i18n from "meteor/universe:i18n";
 import qs from "querystring";
 import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import ChainStates from '../components/ChainStatesContainer.js'
+import ChainStates from "../components/ChainStatesContainer.js";
 
 const T = i18n.createComponent();
 
@@ -156,8 +156,8 @@ export default class Validators extends Component {
                     className="vnav-search"
                     value={this.state.search}
                     onChange={this.handleInput}
-                  // placeholder={i18n.__('common.searchPlaceholder')}
-                  // onKeyDown={this.handleSearch}
+                    // placeholder={i18n.__('common.searchPlaceholder')}
+                    // onKeyDown={this.handleSearch}
                   />
                   <img src="/img/searchicon.png" className="searchicon" />
                 </InputGroup>
@@ -170,15 +170,8 @@ export default class Validators extends Component {
               <Col md={12}>
                 <Card body>
                   <Row className="text-nowrap validator-tablehead-border">
-                    <Col
-                      className="field counter"
-                      xs={12}
-                      sm={6}
-                      md={6}
-                      lg={1}
-                    >
-                      <i className="fas fa-hashtag">
-                      </i>
+                    <Col className="field counter" xs={12} sm={6} md={6} lg={1}>
+                      <i className="fas fa-hashtag"></i>
                       <p className="text-justify">List</p>
                     </Col>
                     <Col
@@ -189,9 +182,7 @@ export default class Validators extends Component {
                       lg={2}
                       onClick={e => this.toggleDir("moniker", e)}
                     >
-                      <i className="material-icons">
-                        perm_contact_calendar
-                      </i>
+                      <i className="material-icons">perm_contact_calendar</i>
                       <span className="hlabel">
                         {/* <T>validators.moniker</T> */}Validators
                       </span>
@@ -256,8 +247,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.commissionDir == 1)}
                       </Col>
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                     {!this.props.inactive ? (
                       <Col
                         className="field"
@@ -276,22 +267,24 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.uptimeDir == 1)}
                       </Col>
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                     {this.props.inactive ? (
-                      <Col className="last-seen field"
+                      <Col
+                        className="last-seen field"
                         xs={12}
                         sm={6}
                         md={6}
-                        lg={2}>
+                        lg={2}
+                      >
                         <i className="fas fa-clock"></i>{" "}
                         <span className="hlabel">
                           <T>validators.lastSeen</T> (UTC)
                         </span>
                       </Col>
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                     {this.props.inactive ? (
                       <Col
                         className="bond-status field"
@@ -308,8 +301,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.statusDir)}{" "}
                       </Col>
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                     {this.props.inactive ? (
                       <Col
                         className="jail-status field"
@@ -326,8 +319,8 @@ export default class Validators extends Component {
                         {renderToggleIcon(this.state.jailedDir)}{" "}
                       </Col>
                     ) : (
-                        ""
-                      )}
+                      ""
+                    )}
                   </Row>
                 </Card>
                 {this.props.inactive ? (
@@ -346,17 +339,17 @@ export default class Validators extends Component {
                     searchValid={this.state.search}
                   />
                 ) : (
-                    <List
-                      monikerDir={this.state.monikerDir}
-                      expectedSlashingDir={this.state.expectedSlashingDir}
-                      votingPowerDir={this.state.votingPowerDir}
-                      uptimeDir={this.state.uptimeDir}
-                      commissionDir={this.state.commissionDir}
-                      selfDelDir={this.state.selfDelDir}
-                      priority={this.state.priority}
-                      searchValid={this.state.search}
-                    />
-                  )}
+                  <List
+                    monikerDir={this.state.monikerDir}
+                    expectedSlashingDir={this.state.expectedSlashingDir}
+                    votingPowerDir={this.state.votingPowerDir}
+                    uptimeDir={this.state.uptimeDir}
+                    commissionDir={this.state.commissionDir}
+                    selfDelDir={this.state.selfDelDir}
+                    priority={this.state.priority}
+                    searchValid={this.state.search}
+                  />
+                )}
               </Col>
             </Row>
           </Card>
