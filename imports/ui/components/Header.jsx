@@ -19,13 +19,15 @@ import { NavLink } from "react-router-dom";
 import SearchBar from "./SearchBar.jsx";
 import i18n from "meteor/universe:i18n";
 import ToggleMenu from "./ToggleMenu.jsx";
+import SignInModal from "./SignInModal.jsx";
 
 const T = i18n.createComponent();
 export default class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      network: ""
+      network: "",
+      toggle: false
     };
   }
 
@@ -33,6 +35,14 @@ export default class Header extends Component {
     i18n.setLocale(lang);
   };
 
+  //  on SignIn Click
+  onSignInClick = () =>
+    this.setState(prevState => ({ toggle: !prevState.toggle }));
+
+  //  on modal close
+
+  onModalClose = () =>
+    this.setState(prevState => ({ toggle: !prevState.toggle }));
   componentDidMount() {
     let url = Meteor.settings.public.networks;
     if (!url) return;
@@ -87,6 +97,7 @@ export default class Header extends Component {
   }
 
   render() {
+    const { toggle } = this.state;
     return (
       <Navbar className="background" dark expand="lg" fixed="top" id="header">
         <ToggleMenu className="displayres" />
@@ -159,12 +170,13 @@ export default class Header extends Component {
             </DropdownMenu>
           </UncontrolledDropdown> */}
 
-          <NavLink to="/sign-in">
-            <span className="headerSignIn">
-              <T>navbar.signIn</T>
-            </span>
-          </NavLink>
+          {/* <NavLink to="/" onClick={this.onSignInClick}> */}
+          <span className="headerSignIn" onClick={this.onSignInClick}>
+            <T>navbar.signIn</T>
+          </span>
+          {/* </NavLink> */}
         </div>
+        <SignInModal toggle={toggle} onModalClose={this.onModalClose} />
       </Navbar>
     );
   }

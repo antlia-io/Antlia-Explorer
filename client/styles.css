@@ -2389,7 +2389,7 @@ width: 100% !important;
     border:1px solid grey;
     margin-right: 10px;
     height:2.5rem;
-    width:100px;
+    /* width:100px; */
     text-align: center;
 }
 .vnav-item.active{
@@ -3629,4 +3629,71 @@ font-weight: 400;
 
 #signUpText{
     color: #004bff!important
+}
+
+.logoutModalIcon{
+    font-size: 31px;
+    color: blueviolet;
+}
+
+.Links{
+    text-decoration: none!important;
+    color: #000;
+}
+
+
+.myAccountForSigninform input {
+    border: 1px solid #ded5d5;
+    height:30px !important;
+    padding-left: 9px;
+       height: 40px !important;
+    font-size: 15px;
+    border-radius: 4px;
+        padding: 0px 49px;
+}
+.myAccountForSigninform i {
+    top: 42px;
+    left: 10px;
+    color: gray;
+}
+.myAccountForSigninform  .btn {
+   background-color: #fc4a00;
+   color: white;
+}
+
+.userDp{
+    width: 140px;
+    height: auto;
+}
+
+.pinList .confirmBtn{
+    background: blue;
+}
+.pinListTable .smallTd {
+    color: blue!important;
+}
+.pinListTable .trash {
+    color: #fcaa8a;
+    cursor: pointer;
+}
+.pinListTable,
+.fa-chevron-up,
+.fa-chevron-up,
+ .fa-ellipsis-v {
+    cursor: pointer;
+}
+
+.signOutComponent .logOutBtn{
+    background: #fc4a00!important;
+    color: white!important;
+}
+
+.signOutComponent input {
+    border: 1px solid #ded5d5;
+    height: 30px !important;
+    padding-left: 9px;
+    height: 40px !important;
+    font-size: 15px;
+    border-radius: 4px;
+
 }
