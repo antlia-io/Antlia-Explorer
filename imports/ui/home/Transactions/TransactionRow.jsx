@@ -78,7 +78,7 @@ export const TransactionRow = props => {
               From: <Link to="#">{from}</Link>...
             </p>
             <p className="text-truncate">
-              {tx.tx.value.msg[0].type === "cosmos-sdk/MsgSubmitProposal" ? (
+              {tx.tx.value.msg[0].type === "color/MsgSubmitProposal" ? (
                 <React.Fragment></React.Fragment>
               ) : (
                 <React.Fragment>

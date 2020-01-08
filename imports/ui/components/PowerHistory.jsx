@@ -28,7 +28,7 @@ export default class PowerHistory extends React.Component {
                             <Col md={12} lg={8}>
                                 {(msg.tx.value.msg && msg.tx.value.msg.length > 0) ? msg.tx.value.msg.map((m, j) => {
                                     switch (m.type) {
-                                        case "cosmos-sdk/MsgBeginRedelegate":
+                                        case "color/MsgBeginRedelegate":
                                             return <Row key={j}>
                                                 <Col xs={12}>
                                                     <Row>
@@ -49,7 +49,7 @@ export default class PowerHistory extends React.Component {
                                                     </Row>
                                                 </Col>
                                             </Row>
-                                        case "cosmos-sdk/MsgDelegate":
+                                        case "color/MsgDelegate":
                                             if (m.value.validator_address == self.props.address) {
                                                 return <Row key={j}>
                                                     <Col xs={12}>
@@ -69,7 +69,7 @@ export default class PowerHistory extends React.Component {
                                             else {
                                                 return;
                                             }
-                                        case "cosmos-sdk/MsgCreateValidator":
+                                        case "color/MsgCreateValidator":
                                             return <Row key={j}>
                                                 <Col xs={12}>
                                                     <Row>
@@ -84,7 +84,7 @@ export default class PowerHistory extends React.Component {
                                                     </Row>
                                                 </Col>
                                             </Row>
-                                        case "cosmos-sdk/MsgUndelegate":
+                                        case "color/MsgUndelegate":
                                             return <Row key={j}>
                                                 <Col xs={12}>
                                                     <Row>
@@ -109,19 +109,19 @@ export default class PowerHistory extends React.Component {
                                             <Col xs={12}>
                                                 {(msg.tx.value.msg && msg.tx.value.msg.length > 0) ? msg.tx.value.msg.map((m, j) => {
                                                     switch (m.type) {
-                                                        case "cosmos-sdk/MsgBeginRedelegate":
+                                                        case "color/MsgBeginRedelegate":
                                                             return <div key={j}><Badge color="success"><T>messageTypes.redelegate</T></Badge></div>;
-                                                        case "cosmos-sdk/MsgDelegate":
+                                                        case "color/MsgDelegate":
                                                             if (m.value.validator_address == self.props.address) {
                                                                 return <div key={j}><Badge color="success"><T>messageTypes.delegate</T></Badge></div>;
                                                             }
                                                             else
                                                                 return;
-                                                        case "cosmos-sdk/MsgCreateValidator":
+                                                        case "color/MsgCreateValidator":
                                                             return <div key={j}><Badge color="warning"><T>messageTypes.createValidator</T></Badge></div>;
-                                                        case "cosmos-sdk/MsgUnjail":
+                                                        case "color/MsgUnjail":
                                                             return <div key={j}><Badge color="info"><T>messageTypes.unjail</T></Badge></div>;
-                                                        case "cosmos-sdk/MsgUndelegate":
+                                                        case "color/MsgUndelegate":
                                                             return <div key={j}><Badge color="danger"><T>messageTypes.undelegate</T></Badge></div>;
                                                     }
                                                 }) : ''}
