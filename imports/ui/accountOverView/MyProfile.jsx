@@ -17,7 +17,8 @@ function MyProfile(props) {
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
-    let image = reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+    setImageSrc(reader.result);
   };
 
   return (

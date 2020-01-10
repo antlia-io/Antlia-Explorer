@@ -15,13 +15,19 @@ const PinListModal = props => {
   return (
     <div>
       <Modal isOpen={props.toggle} toggle={props.toggle}>
-        <div className="p-3 d-flex justify-content-between">
-          <h5>Add a new address to your PIN list</h5>
-          <i
-            className="fas fa-times float-right cursor-pointer"
-            onClick={props.onModalClose}
-          />
-        </div>
+        <Container>
+          <Container>
+            {" "}
+            <div className="pt-3 d-flex justify-content-between">
+              <h5>Add a new address to your PIN list</h5>
+              <i
+                className="fas fa-times float-right cursor-pointer"
+                onClick={props.onModalClose}
+              />
+            </div>
+            <hr></hr>
+          </Container>
+        </Container>
         <ModalBody>
           <Container className={" mb-4  myAccountForSigninform pinList "}>
             <Container className={"mt-4 mb-4"}>
@@ -53,23 +59,23 @@ const PinListModal = props => {
                   <strong>Select your notification type</strong>
                 </div>
                 <div className="d-flex align-items-center mb-1">
-                  <input type="checkbox" className="rounded" />
+                  <input type="checkbox" className="" />
                   <span className="ml-4">No notification</span>
                 </div>
                 <div className="d-flex align-items-center mb-1">
-                  <input type="checkbox" className="rounded" />
+                  <input type="checkbox" className="" />
                   <span className="ml-4">
                     Notify on Incoming & Outgoing Txnxs
                   </span>
                 </div>
                 <div className="d-flex align-items-center mb-1">
-                  <input type="checkbox" className="rounded" />
+                  <input type="checkbox" className="" />
                   <span className="ml-4">
                     Notify on Incoming (Receive) Txns Only
                   </span>
                 </div>
                 <div className="d-flex align-items-center mb-1">
-                  <input type="checkbox" className="rounded" />
+                  <input type="checkbox" className="" />
                   <span className="ml-4">
                     Notify on Outgoig (Sent) Txns Only
                   </span>
