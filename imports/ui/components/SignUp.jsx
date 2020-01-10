@@ -120,14 +120,14 @@ class SignUp extends Component {
                 </div>
                 <Form onSubmit={this.signUpFormSubmit}>
                   <FormGroup>
-                    <Label for="email">Email / Mobile</Label>
+                    <Label for="email">Email / Phone</Label>
                     <Input
                       type="text"
                       name="email"
                       id="email"
                       value={email}
                       onChange={this.onChange}
-                      placeholder="example@example.com"
+                      placeholder="Enter Email / Phone"
                     />
                   </FormGroup>
 
@@ -139,7 +139,7 @@ class SignUp extends Component {
                       id="password"
                       value={password}
                       onChange={this.onChange}
-                      placeholder="Enter password..."
+                      placeholder="Enter Password"
                     />
                   </FormGroup>
                   <FormGroup>
@@ -150,7 +150,7 @@ class SignUp extends Component {
                       onChange={this.onChange}
                       value={confirmPassword}
                       id="confirmPassword"
-                      placeholder="Confirm Password..."
+                      placeholder="Confirm Password"
                     />
                   </FormGroup>
                   {message && <div className="text-center"><span className="text-danger">{message}</span></div>}
@@ -178,7 +178,7 @@ class SignUp extends Component {
                       onClick={this.componentClicked}
                       callback={this.responseFacebook}
                       className="facebookLoginButton"
-                      textButton="Sign in with Facebook"
+                      textButton="Sign in with facebook"
                       // buttonText="Login"
                       icon="fab fa-facebook-square"
                     />

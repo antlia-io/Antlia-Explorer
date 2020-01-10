@@ -53,7 +53,7 @@ class SignIn extends Component {
     })
   }
 
-
+  onModalClose = e => this.setState({modalOpen:!this.state.modalOpen})
   //  on label clicked
 
   onForgetPassword = e => this.setState({modalOpen:!this.state.modalOpen})
@@ -100,26 +100,26 @@ class SignIn extends Component {
                 />
                 <Form onSubmit={this.signInFormSubmit}>
                   <FormGroup>
-                    <Label for="email">Email / Mobile</Label>
+                    <Label for="email">Email / Phone</Label>
                     <Input
                       type="text"
                       name="email"
                       id="email"
                       value={email}
                       onChange={this.onChange}
-                      placeholder="example@example.com"
+                      placeholder="Enter Email / Phone"
                     />
                   </FormGroup>
                   <FormGroup>
                     <Label for="password">Password</Label>
-                    <Label className="float-right" onClick={this.onForgetPassword}>Forget Password?</Label>
+                    <Label className="float-right forgotPasswordCursor" onClick={this.onForgetPassword}>Forget Password?</Label>
                     <Input
                       type="password"
                       name="password"
                       id="password"
                       value={password}
                       onChange={this.onChange}
-                      placeholder="Enter password..."
+                      placeholder="Enter Password"
                     />
                   </FormGroup>
                   {message && <div className="text-center"><span className="text-danger">{message}</span></div>}
@@ -153,7 +153,7 @@ class SignIn extends Component {
                       onClick={this.componentClicked}
                       callback={this.responseFacebook}
                       className="facebookLoginButton"
-                      textButton="Sign in with Facebook"
+                      textButton="Sign in with facebook"
                       // buttonText="Login"
                       icon="fab fa-facebook-square"
                     />
@@ -171,7 +171,7 @@ class SignIn extends Component {
             </div>
           </Col>
         </Row>
-        <ForgetPasswordModal modalOpen= {modalOpen} history={this.props.history.push('/sign-in')}/>
+        <ForgetPasswordModal modalOpen= {modalOpen} onModalClose = {this.onModalClose} />
       </React.Fragment>
     );
   }
