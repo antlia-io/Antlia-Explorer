@@ -95,7 +95,7 @@ function MyProfile(props) {
                   <br />
                   <small>
                     <a className="text-primary">
-                      cosmos1p0kljdkajine342lk4j3342jl34k2i345e
+                      antlia1p0kljdkajine342lk4j3342jl34k2i345e
                     </a>
                   </small>
                 </div>

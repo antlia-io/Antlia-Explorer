@@ -12,6 +12,6 @@ export const IndividualTransaction = (props) => {
          {/* <div className="nodname"><p>node name</p></div>
             <div className="sendbtn">Button</div>
             <div className="amount">3,300 ATOM to</div>
-            <div className="address"><p>cosmosdifsdoir7843jd8493ur8j483ojer9843jr.</p></div> */}
+            <div className="address"><p>antliadifsdoir7843jd8493ur8j483ojer9843jr.</p></div> */}
     </div>
 }

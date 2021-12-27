@@ -211,7 +211,7 @@ export default class AccountDetails extends Component {
                                             <Col lg={6} md={12} sm={12}>
                                                 <div className="addresslink">
                                                     <p>Reward Address</p>
-                                                    <p>colors1eld45rphtn8p8gjdv96rcfl06ghwl25rayq3nf</p>
+                                                    <p>antlia1eld45rphtn8p8gjdv96rcfl06ghwl25rayq3nf</p>
                                                 </div>
                                             </Col>
                                         </Row>

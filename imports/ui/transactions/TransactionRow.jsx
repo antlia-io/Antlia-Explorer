@@ -30,7 +30,7 @@ export const TransactionRow = (props) => {
             <i className="material-icons d-lg-none">monetization_on</i>
             {tx.tx.value.fee.amount ? tx.tx.value.fee.amount.map((fee, i) => {
                 return <span key={i}>{new Coin(fee.amount).toString()}</span>
-                {/* {numbro(fee.amount).format(0,0)} CLR</span> */ }
+                {/* {numbro(fee.amount).format(0,0)} ANA</span> */ }
             }) : <span>No fee</span>}</Col>
         {(!props.blockList) ? <Col xs={12} sm={6} md={6} lg={2} className="textalign"><i className="fas fa-database d-lg-none"></i> <Link to={"/blocks/" + tx.height}>{numbro(tx.height).format("0,0")}</Link></Col> : ''}
         <Col xs={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} md={(!props.blockList) ? { size: 12, order: "first" } : { size: 12, order: "first" }} lg={(!props.blockList) ? { size: 1, order: "first" } : { size: 4, order: "first" }} className="text-truncate">

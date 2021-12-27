@@ -32,7 +32,7 @@ export default class Block extends Component {
                                       <p>{items.time}</p>
                                   </div>
                                   <div className="block-content">
-                                      <p>includes Txns {items.Txns}, Fees {items.Fees} uclr</p>
+                                      <p>includes Txns {items.Txns}, Fees {items.Fees} uana</p>
                                       <p>Node: {items.nodeName}</p>
                                   </div>
                               </div>
@@ -45,7 +45,7 @@ export default class Block extends Component {
                         <p>{moment.utc(this.props.block.time).format("D MMM YYYY, h:mm:ssa")}</p>
                     </div>
                     <div className="block-content">
-                        <p>includes Txns {numbro(this.props.block.transNum).format('0,0')}, Fees 2323 uclr</p>
+                        <p>includes Txns {numbro(this.props.block.transNum).format('0,0')}, Fees 2323 uana</p>
                         <p>Node: {moniker}</p>
                     </div>
                 </div>

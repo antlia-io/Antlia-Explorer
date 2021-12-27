@@ -131,9 +131,9 @@ export default class Header extends Component {
               {Meteor.settings.public.chainId}
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>Cosmoshub2</DropdownItem>
-              <DropdownItem>Cosmoshub2</DropdownItem>
-              <DropdownItem>Cosmoshub2</DropdownItem>
+              <DropdownItem>Antliahub2</DropdownItem>
+              <DropdownItem>Antliahub2</DropdownItem>
+              <DropdownItem>Antliahub2</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown> */}
 

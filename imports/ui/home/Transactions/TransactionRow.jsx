@@ -38,7 +38,7 @@ export const TransactionRow = props => {
 
         <Col xs={(!props.blockList) ? 3 : 2} md={(!props.blockList) ? 2 : 2} className="fee"><i className="material-icons d-lg-none">monetization_on</i> {tx.tx.value.fee.amount ? tx.tx.value.fee.amount.map((fee, i) => {
             return <span key={i}>{new Coin(fee.amount).toString()}</span>
-            <span>{numbro(fee.amount).format(0,0)} CLR</span> 
+            <span>{numbro(fee.amount).format(0,0)} ANA</span> 
         }) : <span>No fee</span>}</Col>
         {(!props.blockList) ? 
         <Col xs={2} md={2}><i className="fas fa-database d-lg-none"></i> <Link to={"/blocks/" + tx.height}>{numbro(tx.height).format("0,0")}</Link></Col> : ''}
@@ -71,7 +71,7 @@ export const TransactionRow = props => {
               {tx.txhash}
             </Link>...
           </div>
-          {/* <p className="tc">cosmosdjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p> */}
+          {/* <p className="tc">antliadjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p> */}
           <div className="from-to">
             {/* <TransactionActivities/> */}
             <p className="from text-truncate">

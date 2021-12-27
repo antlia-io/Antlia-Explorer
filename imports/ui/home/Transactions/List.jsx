@@ -115,7 +115,7 @@ export default class Transactions extends Component {
         //                               <img src="/img/user.png" />
         //                           </div>
         //                           <div className="trans-details">
-        //                               <p className="tc">cosmosdjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p>
+        //                               <p className="tc">antliadjowur9874u8ejiif8e90uf43809ujfiofj489rueoos...</p>
         //                               <div className="from-to">
         //                                   <p className="from">From: <Link to="#">ft456f546565f46456435rfreyrtertret</Link>...</p>
         //                                   <p>To: <Link to="#">erect045483054380reifreutirutgy54ry</Link>...</p>
